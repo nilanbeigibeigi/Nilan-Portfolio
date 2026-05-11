@@ -11,23 +11,24 @@
 
 <style>
 :root {
-  --bg: #FAF6EC;
-  --bg-2: #F2ECDC;
-  --bg-3: #E8E1CF;
-  --paper-white: #FFFFFF;
+  /* Atelier Noir — warm dark editorial */
+  --bg: #0B0A08;
+  --bg-2: #14120D;
+  --bg-3: #2A2720;
+  --paper-white: #1C1A14;       /* card surface */
 
-  --ink: #14110D;
-  --ink-2: #3A332A;
-  --ink-mute: #756D5F;
-  --ink-faint: #A89F90;
+  --ink: #F0E8D6;               /* warm cream foreground */
+  --ink-2: #C9BFAE;
+  --ink-mute: #9C9181;
+  --ink-faint: #635A4D;
 
-  --rule: rgba(20, 17, 13, 0.09);
-  --rule-strong: rgba(20, 17, 13, 0.18);
+  --rule: rgba(240, 232, 214, 0.08);
+  --rule-strong: rgba(240, 232, 214, 0.16);
 
-  --moss: #2D5444;
-  --moss-bright: #3F6E5B;
-  --moss-deep: #1F3A2F;
-  --moss-glow: rgba(45, 84, 68, 0.10);
+  --moss: #7BC096;              /* electric moss — readable on dark */
+  --moss-bright: #95D4AD;
+  --moss-deep: #4F8A6C;
+  --moss-glow: rgba(123, 192, 150, 0.18);
 
   --serif: 'Fraunces', 'Georgia', serif;
   --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -54,9 +55,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 200;
-  opacity: 0.025;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
 }
 
 ::selection { background: var(--moss); color: var(--bg); }
@@ -101,15 +102,28 @@ body::before {
   background: var(--bg-3);
   position: relative;
   box-shadow:
-    0 14px 36px rgba(20, 17, 13, 0.14),
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 14px 36px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(240, 232, 214, 0.05) inset,
     0 0 0 1px var(--rule-strong);
 }
 .sb-photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+  /* Cinematic grade — slight contrast lift, warm saturation, modest desaturation
+     so the photo sits in the dark-editorial palette instead of fighting it */
+  filter: contrast(1.08) saturate(0.94) brightness(0.96) hue-rotate(-3deg);
 }
-.sb-photo:hover img { transform: scale(1.04); }
+.sb-photo::after {
+  /* Vignette + warm overlay to fuse photo with the page palette */
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(11, 10, 8, 0.35) 100%),
+    linear-gradient(180deg, transparent 60%, rgba(11, 10, 8, 0.20) 100%);
+  pointer-events: none; z-index: 1;
+  transition: opacity 0.4s ease;
+}
+.sb-photo:hover img { transform: scale(1.04); filter: contrast(1.05) saturate(1.0) brightness(1.0); }
+.sb-photo:hover::after { opacity: 0.6; }
 
 .sb-status {
   position: absolute; top: 14px; left: 14px;
@@ -121,17 +135,17 @@ body::before {
   white-space: nowrap;
   display: flex; align-items: center; gap: 7px;
   z-index: 2;
-  box-shadow: 0 4px 14px rgba(45, 84, 68, 0.35);
+  box-shadow: 0 4px 14px rgba(123, 192, 150, 0.35);
 }
 .sb-status::before {
   content: ''; width: 6px; height: 6px;
   border-radius: 50%; background: var(--bg);
-  box-shadow: 0 0 0 3px rgba(250, 246, 236, 0.3);
+  box-shadow: 0 0 0 3px rgba(11, 10, 8, 0.4);
   animation: pulse 2.4s ease-in-out infinite;
 }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(250, 246, 236, 0.3); }
-  50% { box-shadow: 0 0 0 6px rgba(250, 246, 236, 0.05); }
+  0%, 100% { box-shadow: 0 0 0 3px rgba(11, 10, 8, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(11, 10, 8, 0.0); }
 }
 
 @media (max-width: 980px) {
@@ -314,9 +328,9 @@ body::before {
 }
 .home-intro {
   font-family: var(--serif);
-  font-weight: 350; font-size: clamp(21px, 2vw, 27px);
+  font-weight: 350; font-size: clamp(20px, 1.85vw, 25px);
   line-height: 1.55; color: var(--ink-2);
-  max-width: 760px; margin-bottom: 48px;
+  max-width: 660px; margin-bottom: 56px;
 }
 .home-intro em {
   font-style: italic; color: var(--ink);
@@ -338,7 +352,7 @@ body::before {
 }
 .btn.primary:hover {
   background: var(--moss); transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(45, 84, 68, 0.22);
+  box-shadow: 0 10px 28px rgba(123, 192, 150, 0.22);
 }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn.ghost:hover { background: var(--ink); color: var(--bg); }
@@ -356,12 +370,12 @@ body::before {
   border: 1px solid var(--rule);
   border-radius: 12px;
   transition: all 0.3s; position: relative;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .highlight-card:hover {
   border-color: var(--moss);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 .highlight-card .hl-num {
   font-family: var(--serif);
@@ -388,12 +402,12 @@ body::before {
   border: 1px solid var(--rule);
   border-radius: 12px;
   transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .pillar:hover {
   border-color: var(--moss);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 .pillar .p-icon {
   width: 36px; height: 36px;
@@ -429,7 +443,7 @@ body::before {
   border-radius: 14px;
   padding: 28px 26px 24px;
   transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
   min-height: 280px;
@@ -437,7 +451,7 @@ body::before {
 .featured-card:hover {
   border-color: var(--moss);
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(20, 17, 13, 0.10);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 .featured-card .fc-num {
   font-family: var(--serif); font-style: italic;
@@ -447,7 +461,7 @@ body::before {
 }
 .featured-card .fc-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(45, 84, 68, 0.1);
+  background: rgba(123, 192, 150, 0.1);
   color: var(--moss);
   font-size: 10px; font-weight: 700;
   letter-spacing: 1.2px; text-transform: uppercase;
@@ -495,6 +509,51 @@ body::before {
   padding-top: 14px;
   border-top: 1px solid var(--rule);
   margin-top: auto;
+}
+
+/* FEATURED CARD VISUAL BAND — system glyphs */
+.fc-visual {
+  margin: -28px -26px 18px -26px;
+  padding: 14px 18px 12px;
+  height: 96px;
+  background: linear-gradient(135deg, rgba(123, 192, 150, 0.06) 0%, transparent 70%);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.fc-visual::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(123, 192, 150, 0.08), transparent 40%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 11px, rgba(240, 232, 214, 0.018) 11px, rgba(240, 232, 214, 0.018) 12px);
+  pointer-events: none;
+}
+.fc-visual svg {
+  width: 100%; height: 100%;
+  max-width: 280px; position: relative; z-index: 1;
+}
+.fc-visual .gx-line { stroke: var(--ink-faint); stroke-width: 1.2; fill: none; }
+.fc-visual .gx-line-accent { stroke: var(--moss); stroke-width: 1.4; fill: none; }
+.fc-visual .gx-node { stroke: var(--ink-mute); fill: var(--bg-3); stroke-width: 1; }
+.fc-visual .gx-node-accent { stroke: var(--moss); fill: rgba(123, 192, 150, 0.12); stroke-width: 1.3; }
+.fc-visual .gx-arrow { fill: var(--moss); }
+.fc-visual .gx-label {
+  font-family: var(--sans); font-size: 7px; font-weight: 600;
+  fill: var(--ink-mute); letter-spacing: 0.5px;
+}
+.fc-visual .gx-label-accent {
+  font-family: var(--serif); font-size: 8px; font-style: italic;
+  fill: var(--moss);
+}
+
+/* FEATURED card — promote the Capstone (CCWS) */
+.featured-card.featured-primary {
+  border-color: rgba(123, 192, 150, 0.30);
+  background:
+    linear-gradient(180deg, rgba(123, 192, 150, 0.04) 0%, var(--paper-white) 38%);
+}
+.featured-card.featured-primary .fc-visual {
+  background: linear-gradient(135deg, rgba(123, 192, 150, 0.12) 0%, rgba(123, 192, 150, 0.02) 80%);
 }
 
 /* PROJECT LINK BUTTONS */
@@ -573,12 +632,12 @@ body::before {
   transition: all 0.3s;
   align-items: center;
   max-width: 760px;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .edu-card:hover {
   border-color: var(--moss);
   transform: translateX(4px);
-  box-shadow: 0 8px 24px rgba(20, 17, 13, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 .edu-badge {
   flex-shrink: 0; width: 76px; height: 76px;
@@ -634,16 +693,16 @@ body::before {
   padding: 36px 32px;
   position: relative;
   transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .course-year:hover {
   border-color: var(--rule-strong);
-  box-shadow: 0 8px 24px rgba(20, 17, 13, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 .course-year.featured {
   background: linear-gradient(180deg, var(--paper-white) 0%, var(--bg-2) 100%);
   border-color: var(--moss);
-  box-shadow: 0 8px 32px rgba(45, 84, 68, 0.10);
+  box-shadow: 0 8px 32px rgba(123, 192, 150, 0.10);
 }
 
 .course-year-eyebrow {
@@ -652,10 +711,10 @@ body::before {
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--moss);
   padding: 6px 12px;
-  border: 1px solid rgba(45, 84, 68, 0.25);
+  border: 1px solid rgba(123, 192, 150, 0.25);
   border-radius: 999px;
   margin-bottom: 20px;
-  background: rgba(45, 84, 68, 0.05);
+  background: rgba(123, 192, 150, 0.05);
 }
 .course-year-eyebrow::before {
   content: ''; width: 6px; height: 6px;
@@ -731,8 +790,8 @@ body::before {
   pointer-events: none;
 }
 .capstone-callout strong {
-  color: #F4E0AF; font-style: italic;
-  font-family: var(--serif); font-weight: 500; font-size: 15px;
+  color: #1F3A2F; font-style: italic;
+  font-family: var(--serif); font-weight: 600; font-size: 15px;
   display: block; margin-bottom: 4px;
 }
 
@@ -753,12 +812,12 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .focus-card:hover {
   border-color: var(--moss);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .focus-head { display: flex; align-items: center; gap: 14px; }
@@ -769,7 +828,7 @@ body::before {
   color: var(--bg);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(45, 84, 68, 0.2);
+  box-shadow: 0 4px 12px rgba(123, 192, 150, 0.2);
 }
 .focus-icon svg { width: 20px; height: 20px; }
 .focus-card h4 {
@@ -791,8 +850,8 @@ body::before {
   font-size: 12px; font-weight: 500;
   color: var(--moss);
   padding: 4px 10px;
-  border: 1px solid rgba(45, 84, 68, 0.25);
-  background: rgba(45, 84, 68, 0.04);
+  border: 1px solid rgba(123, 192, 150, 0.25);
+  background: rgba(123, 192, 150, 0.04);
   border-radius: 999px;
   letter-spacing: 0.2px;
 }
@@ -810,12 +869,12 @@ body::before {
   border: 1px solid var(--rule);
   border-radius: 12px;
   transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .skill-card:hover {
   border-color: var(--moss);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 .skill-card-head {
   display: flex; align-items: center; gap: 14px;
@@ -917,7 +976,7 @@ body::before {
   padding: 22px 24px;
   border-radius: 12px;
   border: 1px solid var(--rule);
-  box-shadow: 0 1px 2px rgba(20, 17, 13, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .project-meta .meta-row {
   padding: 11px 0;
@@ -963,16 +1022,17 @@ body::before {
 
 /* CONTACT */
 .contact-card {
-  background: linear-gradient(135deg, var(--ink) 0%, #2A2520 100%);
-  color: var(--bg); border-radius: 16px;
+  background: linear-gradient(135deg, #1C1A14 0%, #0F0E0B 100%);
+  color: var(--ink); border-radius: 16px;
   padding: 64px 56px; margin-top: 8px;
   position: relative; overflow: hidden;
+  border: 1px solid var(--rule-strong);
 }
 .contact-card::before {
   content: ''; position: absolute;
   top: -100px; right: -100px;
   width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(45, 84, 68, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(123, 192, 150, 0.18) 0%, transparent 70%);
   pointer-events: none;
 }
 .contact-card h2 {
@@ -982,26 +1042,26 @@ body::before {
   margin-bottom: 24px; position: relative;
 }
 .contact-card h2 em {
-  font-style: italic; color: #8FB29E; display: block;
+  font-style: italic; color: var(--moss); display: block;
   font-weight: 300;
 }
 .contact-card p {
   font-family: var(--serif); font-weight: 350;
   font-size: 19px; line-height: 1.6;
-  color: rgba(244, 239, 230, 0.78); max-width: 560px;
+  color: rgba(240, 232, 214, 0.72); max-width: 560px;
   margin-bottom: 40px; position: relative;
 }
 .contact-email {
   display: inline-block;
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(20px, 2.4vw, 28px);
-  color: var(--bg); text-decoration: none;
-  border-bottom: 1.5px solid #8FB29E;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1.5px solid var(--moss);
   padding: 0 6px 8px 6px;
   margin-bottom: 40px;
   transition: color 0.3s; position: relative;
 }
-.contact-email:hover { color: #8FB29E; }
+.contact-email:hover { color: var(--moss); }
 .contact-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 12px; max-width: 480px; position: relative;
@@ -1011,16 +1071,16 @@ body::before {
   display: flex; align-items: center;
   justify-content: space-between;
   padding: 16px 22px;
-  background: rgba(244, 239, 230, 0.05);
-  color: var(--bg); text-decoration: none;
+  background: rgba(240, 232, 214, 0.04);
+  color: var(--ink); text-decoration: none;
   border-radius: 999px;
   font-size: 14px; font-weight: 600;
-  border: 1px solid rgba(244, 239, 230, 0.12);
+  border: 1px solid rgba(240, 232, 214, 0.10);
   transition: all 0.3s; letter-spacing: 0.1px;
 }
 .contact-link:hover {
-  background: #8FB29E; border-color: #8FB29E;
-  color: var(--ink);
+  background: var(--moss); border-color: var(--moss);
+  color: var(--bg);
 }
 .contact-link .arrow { font-size: 14px; opacity: 0.6; transition: all 0.3s; }
 .contact-link:hover .arrow { opacity: 1; transform: translateX(3px); }
@@ -1054,7 +1114,7 @@ body::before {
       <div class="sb-photo">
         <img src="profile.jpg" alt="Nilan Beigi">
       </div>
-      <span class="sb-status">Available May 2026</span>
+      <span class="sb-status">Open to roles</span>
     </div>
 
     <div>
@@ -1090,7 +1150,7 @@ body::before {
         <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">GitHub</a>
         <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
       </div>
-      <div>© 2026 · Built with intent</div>
+      <div>Designed &amp; built by Nilan Beigi · 2026</div>
     </div>
   </aside>
 
@@ -1099,9 +1159,9 @@ body::before {
 
     <!-- ===== HOME ===== -->
     <section class="tab-content active" id="tab-home">
-      <h2 class="home-headline">Hello, I'm Nilan.<em>I build things.</em></h2>
+      <h2 class="home-headline">Hello, I'm Nilan.<em>I build AI that does the work.</em></h2>
       <p class="home-intro">
-        Currently finishing the <em>BCIT Business IT Management diploma — AI specialization</em>. I take messy operational data and turn it into systems people actually use: adaptive AI that makes faster decisions, dashboards that change a decision, and end-to-end web platforms that run a business.
+        BCIT graduate — <em>Business IT Management diploma, AI specialization</em>. I take messy operational data and turn it into systems people actually use: adaptive AI that makes faster decisions, dashboards that change a decision, and end-to-end web platforms that run a business.
       </p>
       <div class="home-cta">
         <a href="#work" class="btn primary" data-tab="work">View selected work <span class="arrow">→</span></a>
@@ -1111,16 +1171,16 @@ body::before {
       <div class="section-label">Highlights</div>
       <div class="highlights">
         <div class="highlight-card">
-          <div class="hl-num">85%</div>
-          <div class="hl-text">Reduction in ticket reassignments via my reinforcement-learning routing agent.</div>
+          <div class="hl-num">~85%</div>
+          <div class="hl-text">Drop in ticket reassignments during simulated test runs of my reinforcement-learning routing agent.</div>
         </div>
         <div class="highlight-card">
           <div class="hl-num">32</div>
-          <div class="hl-text">Relational tables in the production-ready full-stack platform I designed.</div>
+          <div class="hl-text">Relational tables in the production-ready full-stack grocery platform I architected.</div>
         </div>
         <div class="highlight-card">
-          <div class="hl-num">30%</div>
-          <div class="hl-text">Improvement in search efficiency &amp; UX on the Homigo housing platform.</div>
+          <div class="hl-num">~30%</div>
+          <div class="hl-text">Measured search &amp; UX improvement on Homigo, tested against the baseline build.</div>
         </div>
       </div>
 
@@ -1160,12 +1220,44 @@ body::before {
 
       <div class="featured-grid">
 
-        <!-- 1. Capstone (in progress) -->
-        <div class="featured-card">
-          <span class="fc-num">i. Capstone</span>
-          <span class="fc-badge">In progress</span>
+        <!-- 1. Capstone — FEATURED -->
+        <div class="featured-card featured-primary">
+          <div class="fc-visual" aria-hidden="true">
+            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <!-- User -->
+              <circle cx="18" cy="44" r="10" class="gx-node-accent"/>
+              <path d="M14 41 a4 4 0 0 1 8 0 M11 49 a7 5 0 0 1 14 0" class="gx-line-accent" stroke-linecap="round"/>
+              <text x="18" y="72" text-anchor="middle" class="gx-label">SENIOR</text>
+              <!-- Arrow 1 -->
+              <line x1="32" y1="44" x2="56" y2="44" class="gx-line"/>
+              <polygon points="60,44 54,41 54,47" class="gx-arrow"/>
+              <!-- Voice/Search pill -->
+              <rect x="63" y="34" width="60" height="20" rx="10" class="gx-node"/>
+              <circle cx="73" cy="44" r="2.5" class="gx-arrow"/>
+              <text x="100" y="47" text-anchor="middle" class="gx-label">VOICE / TEXT</text>
+              <!-- Arrow 2 -->
+              <line x1="125" y1="44" x2="149" y2="44" class="gx-line-accent"/>
+              <polygon points="153,44 147,41 147,47" class="gx-arrow"/>
+              <!-- AI Match hex -->
+              <polygon points="170,30 192,30 200,44 192,58 170,58 162,44" class="gx-node-accent"/>
+              <text x="181" y="47" text-anchor="middle" class="gx-label-accent">AI MATCH</text>
+              <!-- Arrow 3 -->
+              <line x1="202" y1="44" x2="226" y2="44" class="gx-line"/>
+              <polygon points="230,44 224,41 224,47" class="gx-arrow"/>
+              <!-- 3 service result rows -->
+              <rect x="233" y="26" width="42" height="10" rx="2" class="gx-node"/>
+              <rect x="233" y="39" width="42" height="10" rx="2" class="gx-node"/>
+              <rect x="233" y="52" width="42" height="10" rx="2" class="gx-node"/>
+              <line x1="237" y1="31" x2="262" y2="31" class="gx-line"/>
+              <line x1="237" y1="44" x2="262" y2="44" class="gx-line"/>
+              <line x1="237" y1="57" x2="262" y2="57" class="gx-line"/>
+              <text x="254" y="74" text-anchor="middle" class="gx-label">SERVICES</text>
+            </svg>
+          </div>
+          <span class="fc-num">i. Capstone · Featured</span>
+          <span class="fc-badge">Shipped</span>
           <h3>Senior Services <em>Directory</em></h3>
-          <p class="fc-desc">A Streamlit-based directory connecting seniors and caregivers to community services — with AI intent-matching and voice search.</p>
+          <p class="fc-desc">A Streamlit-based directory connecting Greater Victoria seniors and caregivers to community services — with AI intent-matching and voice search. Built with a real nonprofit client (CCWS) and faculty advisor.</p>
           <div class="fc-tags">
             <span>Streamlit</span><span>LLM</span><span>Voice</span>
           </div>
@@ -1179,10 +1271,44 @@ body::before {
 
         <!-- 2. AI Ticket Routing -->
         <div class="featured-card">
+          <div class="fc-visual" aria-hidden="true">
+            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <!-- Ticket stack -->
+              <rect x="14" y="38" width="38" height="20" rx="2" class="gx-node"/>
+              <rect x="11" y="34" width="38" height="20" rx="2" class="gx-node"/>
+              <rect x="8" y="30" width="38" height="20" rx="2" class="gx-node-accent"/>
+              <line x1="14" y1="36" x2="40" y2="36" class="gx-line"/>
+              <line x1="14" y1="40" x2="36" y2="40" class="gx-line"/>
+              <line x1="14" y1="44" x2="38" y2="44" class="gx-line"/>
+              <text x="27" y="72" text-anchor="middle" class="gx-label">TICKETS</text>
+              <!-- Arrow to RL agent -->
+              <line x1="50" y1="40" x2="92" y2="44" class="gx-line"/>
+              <polygon points="96,44 90,41 90,47" class="gx-arrow"/>
+              <!-- RL Agent hex -->
+              <polygon points="115,28 145,28 158,44 145,60 115,60 102,44" class="gx-node-accent"/>
+              <text x="130" y="42" text-anchor="middle" class="gx-label-accent">RL AGENT</text>
+              <text x="130" y="52" text-anchor="middle" class="gx-label" style="font-size:6px">policy.learn()</text>
+              <!-- Fanout lines to 3 operators -->
+              <line x1="160" y1="44" x2="220" y2="20" class="gx-line"/>
+              <line x1="160" y1="44" x2="220" y2="44" class="gx-line-accent"/>
+              <line x1="160" y1="44" x2="220" y2="68" class="gx-line"/>
+              <!-- 3 operators -->
+              <circle cx="232" cy="20" r="8" class="gx-node"/>
+              <text x="232" y="23" text-anchor="middle" class="gx-label" style="font-size:6px">OP1</text>
+              <circle cx="232" cy="44" r="9" class="gx-node-accent"/>
+              <text x="232" y="47" text-anchor="middle" class="gx-label-accent" style="font-size:7px">OP2</text>
+              <circle cx="232" cy="68" r="8" class="gx-node"/>
+              <text x="232" y="71" text-anchor="middle" class="gx-label" style="font-size:6px">OP3</text>
+              <!-- Reward arrow back -->
+              <path d="M 246 44 Q 270 44 270 26 Q 270 8 200 8" class="gx-line-accent" stroke-dasharray="2 2" stroke-linecap="round"/>
+              <polygon points="200,8 207,5 207,11" class="gx-arrow" transform="rotate(180 203.5 8)"/>
+              <text x="260" y="82" text-anchor="end" class="gx-label">REWARD</text>
+            </svg>
+          </div>
           <span class="fc-num">ii. ML system</span>
-          <div class="fc-stat">−85%</div>
+          <div class="fc-stat">~85%</div>
           <h3>AI Ticket <em>Routing</em></h3>
-          <p class="fc-desc">An adaptive RL agent that assigns tickets to the right operator in real time. Reduced reassignment rates by 85%.</p>
+          <p class="fc-desc">An adaptive RL agent that assigns tickets to the right operator in real time. In simulated test runs, reassignment rates dropped by ~85% versus the random-baseline policy.</p>
           <div class="fc-tags">
             <span>RL</span><span>Python</span><span>Dashboard</span>
           </div>
@@ -1194,19 +1320,51 @@ body::before {
           </div>
         </div>
 
-        <!-- 3. Grocery Platform (LIVE!) -->
+        <!-- 3. Grocery Platform -->
         <div class="featured-card">
+          <div class="fc-visual" aria-hidden="true">
+            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <!-- 3 role chips on top -->
+              <rect x="14" y="6" width="56" height="16" rx="8" class="gx-node"/>
+              <text x="42" y="17" text-anchor="middle" class="gx-label">CUSTOMER</text>
+              <rect x="80" y="6" width="50" height="16" rx="8" class="gx-node-accent"/>
+              <text x="105" y="17" text-anchor="middle" class="gx-label-accent" style="font-size:7px">STAFF</text>
+              <rect x="140" y="6" width="60" height="16" rx="8" class="gx-node"/>
+              <text x="170" y="17" text-anchor="middle" class="gx-label">MANAGER</text>
+              <!-- Lines down to App -->
+              <line x1="42" y1="22" x2="80" y2="38" class="gx-line"/>
+              <line x1="105" y1="22" x2="105" y2="38" class="gx-line-accent"/>
+              <line x1="170" y1="22" x2="130" y2="38" class="gx-line"/>
+              <!-- App layer (Next.js) -->
+              <rect x="60" y="38" width="90" height="18" rx="3" class="gx-node-accent"/>
+              <text x="105" y="50" text-anchor="middle" class="gx-label-accent">NEXT.JS APP</text>
+              <!-- AI Chatbot bubble to side -->
+              <rect x="160" y="38" width="44" height="18" rx="9" class="gx-node"/>
+              <circle cx="170" cy="47" r="1.5" class="gx-arrow"/>
+              <circle cx="175" cy="47" r="1.5" class="gx-arrow"/>
+              <circle cx="180" cy="47" r="1.5" class="gx-arrow"/>
+              <text x="195" y="50" text-anchor="middle" class="gx-label" style="font-size:6px">EN/FA</text>
+              <line x1="150" y1="47" x2="160" y2="47" class="gx-line"/>
+              <!-- Line down to DB -->
+              <line x1="105" y1="56" x2="105" y2="66" class="gx-line"/>
+              <polygon points="105,70 102,64 108,64" class="gx-arrow"/>
+              <!-- DB cylinder with 32 -->
+              <ellipse cx="105" cy="72" rx="40" ry="4" class="gx-node-accent"/>
+              <path d="M 65 72 L 65 84 Q 65 88 105 88 Q 145 88 145 84 L 145 72" class="gx-node-accent"/>
+              <ellipse cx="105" cy="72" rx="40" ry="4" fill="none" stroke="var(--moss)" stroke-width="1"/>
+              <text x="105" y="83" text-anchor="middle" class="gx-label-accent" style="font-size:11px">32 tables</text>
+              <!-- Right side label -->
+              <text x="260" y="82" text-anchor="end" class="gx-label">RELATIONAL DB</text>
+            </svg>
+          </div>
           <span class="fc-num">iii. Full-stack</span>
           <div class="fc-stat">32 tables</div>
           <h3>Grocery <em>Operations Platform</em></h3>
-          <p class="fc-desc">End-to-end digital ordering platform: Next.js front-end, 32-table relational DB, role-based dashboards, bilingual AI chatbot.</p>
+          <p class="fc-desc">End-to-end ordering platform for a real grocery operation: Next.js front-end, 32-table relational DB, role-based dashboards, bilingual EN/FA AI chatbot. Architected for SaaS expansion.</p>
           <div class="fc-tags">
             <span>Next.js</span><span>SQL</span><span>EN/FA</span>
           </div>
           <div class="fc-links">
-            <a href="https://nilanbeigibeigi.github.io/food" target="_blank" rel="noopener" class="proj-link live">
-              Live demo <span class="arrow">↗</span>
-            </a>
             <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
               Source <span class="arrow">↗</span>
@@ -1387,7 +1545,7 @@ body::before {
 
           <div class="capstone-callout">
             <strong>BSYS 4905 — Directed Studies (Capstone)</strong>
-            10-week consulting project for a real client organization. Currently leading: Senior Services Directory.
+            10-week consulting project for a real client organization. Led the Senior Services Directory build as part of a 4-person team.
           </div>
         </div>
       </div>
@@ -1528,7 +1686,7 @@ body::before {
           <ul>
             <li><strong>MS 365 Copilot Prompting Essentials</strong> — Mar 2026</li>
             <li><strong>Google AI for Business Applications</strong> — Mar 2026</li>
-            <li><strong>BCIT BIT Management (AI)</strong> — graduating May 2026</li>
+            <li><strong>BCIT BIT Management (AI)</strong> — Diploma, 2026</li>
           </ul>
         </div>
 
@@ -1578,7 +1736,7 @@ body::before {
             <span class="project-num">ii. ML system</span>
             <h3>AI Ticket Routing <em>— reinforcement learning for triage</em></h3>
             <div class="project-context">BCIT course project · Reinforcement learning · Jan – Mar 2026</div>
-            <p class="project-desc">An adaptive RL agent that assigns incoming tickets to the right operator in real time, modeled on SOC and ITSM workflows. <strong>Reduced ticket reassignment rates by 85%</strong>. Includes a real-time dashboard tracking model learning curves, agent-level performance, and routing accuracy as the system improves over time.</p>
+            <p class="project-desc">An adaptive RL agent that assigns incoming tickets to the right operator in real time, modeled on SOC and ITSM workflows. <strong>In simulated test runs, reassignment rates dropped by ~85% versus a random-baseline routing policy.</strong> Includes a real-time dashboard tracking model learning curves, agent-level performance, and routing accuracy as the system improves over time.</p>
             <div class="project-tags">
               <span class="project-tag">Reinforcement learning</span>
               <span class="project-tag">Python</span>
@@ -1595,7 +1753,7 @@ body::before {
           </div>
           <div class="project-meta">
             <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">ML system</span></div>
-            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">−85% reassign</span></div>
+            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">~85% in test</span></div>
             <div class="meta-row"><span class="meta-label">Method</span><span class="meta-val">RL agent</span></div>
             <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">Python · ML</span></div>
           </div>
@@ -1605,8 +1763,8 @@ body::before {
           <div>
             <span class="project-num">iii. Independent</span>
             <h3>Grocery Operations Platform <em>— full-stack for a real business</em></h3>
-            <div class="project-context">Independent · Full-stack · Production-ready · Live demo deployed</div>
-            <p class="project-desc">Designed and built a complete digital ordering platform for a real grocery operation: a Next.js front-end backed by a 32-table relational database. Includes a loyalty-points engine, role-based dashboards for customer, staff, and manager flows, and a bilingual (English / Persian) AI chatbot for customer assistance. The longer-term vision: <strong>a SaaS template for other ethnic grocery operations</strong> facing the same digital-transformation gap.</p>
+            <div class="project-context">Independent · Full-stack · Production-ready · SaaS-ready architecture</div>
+            <p class="project-desc">Designed and built a complete digital ordering platform for the family-owned grocery operation where I also work as Assistant Manager — meaning I knew the workflows, edge cases, and staff pain points before writing a line of code. A Next.js front-end backed by a 32-table relational database, with a loyalty-points engine, role-based dashboards for customer, staff, and manager flows, and a bilingual (English / Persian) AI chatbot for customer assistance. The longer-term vision: <strong>a SaaS template for other ethnic grocery operations</strong> facing the same digital-transformation gap.</p>
             <div class="project-tags">
               <span class="project-tag">Next.js</span>
               <span class="project-tag">SQL · 32 tables</span>
@@ -1615,9 +1773,6 @@ body::before {
               <span class="project-tag">EN / FA</span>
             </div>
             <div class="project-links">
-              <a href="https://nilanbeigibeigi.github.io/food" target="_blank" rel="noopener" class="proj-link live">
-                Live demo <span class="arrow">↗</span>
-              </a>
               <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
                 Source <span class="arrow">↗</span>
@@ -1637,7 +1792,7 @@ body::before {
             <span class="project-num">iv. Full-stack web</span>
             <h3>Homigo Housing Platform <em>— full-stack search at scale</em></h3>
             <div class="project-context">BCIT · ASP.NET Core · Sep – Dec 2025</div>
-            <p class="project-desc">A housing platform with structured search, listing management, and role-based access for renters and property managers. <strong>Improved search efficiency and user experience by 30%</strong> through query optimization and UX iteration. Engineered for concurrent user sessions and dynamic listing updates.</p>
+            <p class="project-desc">A housing platform with structured search, listing management, and role-based access for renters and property managers. <strong>Tested against the baseline build, search and UX improved by ~30%</strong> through query optimization and UX iteration. Engineered for concurrent user sessions and dynamic listing updates.</p>
             <div class="project-tags">
               <span class="project-tag">ASP.NET Core</span>
               <span class="project-tag">SQL</span>
@@ -1653,7 +1808,7 @@ body::before {
           </div>
           <div class="project-meta">
             <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">Full-stack web</span></div>
-            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">+30% UX</span></div>
+            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">~30% in test</span></div>
             <div class="meta-row"><span class="meta-label">Architecture</span><span class="meta-val">Scalable</span></div>
             <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">.NET · SQL</span></div>
           </div>
@@ -1720,7 +1875,7 @@ body::before {
       <div class="tab-header">
         <span class="tab-eyebrow">Get in touch</span>
         <h1 class="tab-title">Let's <em>talk</em>.</h1>
-        <p class="tab-lede">I'm graduating in May 2026 and looking for AI Analyst, Business Analyst, or Data Analyst roles where technical depth meets ROI-driven thinking.</p>
+        <p class="tab-lede">I'm looking for AI Analyst, Business Analyst, or Data Analyst roles where technical depth meets ROI-driven thinking.</p>
       </div>
 
       <div class="contact-card">
