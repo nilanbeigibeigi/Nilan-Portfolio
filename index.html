@@ -3,1927 +3,490 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nilan Beigi — AI Analyst & Builder</title>
-<meta name="description" content="Nilan Beigi: BCIT Business IT Management student (AI specialization). Reinforcement learning, Power BI, end-to-end web platforms.">
+<title>Nilan Beigi — Full-stack developer & data/AI</title>
+<meta name="description" content="Nilan Beigi — full-stack developer and BCIT Business IT grad in Vancouver. I build web apps, data dashboards, and AI tools for businesses.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Nilan Beigi — Full-stack developer & data/AI">
+<meta property="og:description" content="I build web apps, data dashboards, and AI tools for businesses. Based in Vancouver, BC.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  /* Atelier Noir — warm dark editorial */
-  --bg: #0B0A08;
-  --bg-2: #14120D;
-  --bg-3: #2A2720;
-  --paper-white: #1C1A14;       /* card surface */
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --ink: #18181B;
+  --ink-2: #52525B;
+  --ink-3: #8C8C92;
+  --line: #E5E4DD;
+  --line-strong: #D6D5CC;
+  --accent: #9A6B1F;
+  --accent-soft: rgba(154, 107, 31, 0.09);
 
-  --ink: #F0E8D6;               /* warm cream foreground */
-  --ink-2: #C9BFAE;
-  --ink-mute: #9C9181;
-  --ink-faint: #635A4D;
+  --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --rule: rgba(240, 232, 214, 0.08);
-  --rule-strong: rgba(240, 232, 214, 0.16);
-
-  --moss: #7BC096;              /* electric moss — readable on dark */
-  --moss-bright: #95D4AD;
-  --moss-deep: #4F8A6C;
-  --moss-glow: rgba(123, 192, 150, 0.18);
-
-  --serif: 'Fraunces', 'Georgia', serif;
-  --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --maxw: 1080px;
+  --pad: clamp(20px, 5vw, 48px);
 }
+
+html { color-scheme: light; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--sans);
-  font-weight: 400;
-  line-height: 1.65;
+  font-family: var(--body);
   font-size: 17px;
-  overflow-x: hidden;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 200;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: screen;
+::selection { background: var(--accent); color: var(--bg); }
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.nav.scrolled { border-color: var(--line); }
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 16px var(--pad);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand {
+  font-family: var(--display); font-weight: 600;
+  font-size: 16px; letter-spacing: -0.01em;
+  display: inline-flex; align-items: center; gap: 9px;
+}
+.brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-family: var(--mono); font-size: 13px; color: var(--ink-2);
+  letter-spacing: 0.02em; transition: color 0.2s; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a.cta { color: var(--accent); }
+@media (max-width: 640px) {
+  .nav-links { gap: 18px; }
+  .nav-links a.hide-sm { display: none; }
 }
 
-::selection { background: var(--moss); color: var(--bg); }
-
-/* ========== LAYOUT ========== */
-.app {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  min-height: 100vh;
+/* ============ HERO ============ */
+.hero { padding: clamp(70px, 13vh, 150px) 0 clamp(60px, 10vh, 110px); }
+.eyebrow {
+  font-family: var(--mono); font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--ink-3); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
-
-@media (max-width: 980px) { .app { grid-template-columns: 1fr; } }
-
-/* ========== SIDEBAR ========== */
-.sidebar {
-  background: var(--bg-2);
-  color: var(--ink);
-  padding: 40px 32px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  overflow-y: auto;
-  z-index: 10;
-  border-right: 1px solid var(--rule-strong);
+.eyebrow::before {
+  content: ''; width: 24px; height: 1px; background: var(--accent);
+  display: inline-block;
 }
-.sidebar::-webkit-scrollbar { width: 4px; }
-.sidebar::-webkit-scrollbar-track { background: var(--bg-2); }
-.sidebar::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 2px; }
-
-@media (max-width: 980px) {
-  .sidebar { position: static; height: auto; padding: 36px 24px 28px; }
+.hero h1 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(38px, 6.4vw, 78px);
+  line-height: 1.04; letter-spacing: -0.03em;
+  max-width: 16ch; margin-bottom: 30px;
 }
-
-.sb-photo-wrap { position: relative; width: 100%; max-width: 260px; }
-.sb-photo {
-  width: 100%; aspect-ratio: 1;
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--bg-3);
-  position: relative;
-  box-shadow:
-    0 14px 36px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(240, 232, 214, 0.05) inset,
-    0 0 0 1px var(--rule-strong);
+.hero h1 .em { color: var(--accent); }
+.hero-lede {
+  font-size: clamp(17px, 1.6vw, 20px);
+  color: var(--ink-2); line-height: 1.6;
+  max-width: 60ch; margin-bottom: 40px;
 }
-.sb-photo img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
-  /* Cinematic grade — slight contrast lift, warm saturation, modest desaturation
-     so the photo sits in the dark-editorial palette instead of fighting it */
-  filter: contrast(1.08) saturate(0.94) brightness(0.96) hue-rotate(-3deg);
-}
-.sb-photo::after {
-  /* Vignette + warm overlay to fuse photo with the page palette */
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(11, 10, 8, 0.35) 100%),
-    linear-gradient(180deg, transparent 60%, rgba(11, 10, 8, 0.20) 100%);
-  pointer-events: none; z-index: 1;
-  transition: opacity 0.4s ease;
-}
-.sb-photo:hover img { transform: scale(1.04); filter: contrast(1.05) saturate(1.0) brightness(1.0); }
-.sb-photo:hover::after { opacity: 0.6; }
-
-.sb-status {
-  position: absolute; top: 14px; left: 14px;
-  background: var(--moss);
-  color: var(--bg);
-  font-size: 11px; font-weight: 700;
-  padding: 7px 13px; border-radius: 999px;
-  letter-spacing: 0.6px; text-transform: uppercase;
-  white-space: nowrap;
-  display: flex; align-items: center; gap: 7px;
-  z-index: 2;
-  box-shadow: 0 4px 14px rgba(123, 192, 150, 0.35);
-}
-.sb-status::before {
-  content: ''; width: 6px; height: 6px;
-  border-radius: 50%; background: var(--bg);
-  box-shadow: 0 0 0 3px rgba(11, 10, 8, 0.4);
-  animation: pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(11, 10, 8, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(11, 10, 8, 0.0); }
-}
-
-@media (max-width: 980px) {
-  .sb-photo-wrap { max-width: 220px; align-self: center; margin-bottom: 8px; }
-}
-
-.sb-name {
-  font-family: var(--serif);
-  font-weight: 350; font-size: 40px;
-  line-height: 1; letter-spacing: -0.025em;
-  color: var(--ink);
-}
-.sb-name em {
-  font-style: italic; color: var(--moss);
-  font-weight: 300; display: block;
-}
-.sb-title {
-  font-family: var(--serif);
-  font-weight: 350; font-style: italic;
-  font-size: 17px; color: var(--ink-2);
-  line-height: 1.45; max-width: 280px;
-}
-
-.sb-meta {
-  display: flex; flex-direction: column;
-  gap: 10px; font-size: 14px;
-  color: var(--ink-2);
-  letter-spacing: 0.05px;
-  padding: 18px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.sb-meta-row { display: flex; gap: 11px; align-items: center; }
-.sb-meta-row svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.85; color: var(--moss); }
-
-.sb-nav { display: flex; flex-direction: column; gap: 2px; }
-.sb-nav a {
-  font-family: var(--sans); font-size: 15px; font-weight: 500;
-  color: var(--ink-2); text-decoration: none;
-  padding: 13px 16px; border-radius: 8px;
-  transition: all 0.25s;
-  display: flex; align-items: center; gap: 14px;
-  letter-spacing: 0.1px;
-}
-.sb-nav a .nav-num {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 300; font-size: 14px;
-  opacity: 0.55; width: 16px; color: var(--moss);
-}
-.sb-nav a:hover { background: var(--bg-3); color: var(--ink); }
-.sb-nav a:hover .nav-num { opacity: 1; }
-.sb-nav a.active {
-  background: var(--ink); color: var(--bg);
-}
-.sb-nav a.active .nav-num { opacity: 0.85; color: var(--bg); }
-
-.sb-foot {
-  margin-top: auto; padding-top: 20px;
-  border-top: 1px solid var(--rule);
-  font-size: 12px; color: var(--ink-mute);
-  letter-spacing: 0.4px;
-  display: flex; flex-direction: column; gap: 12px;
-}
-.sb-socials { display: flex; gap: 8px; flex-wrap: wrap; }
-.sb-socials a {
-  font-family: var(--sans); font-size: 12px; font-weight: 500;
-  color: var(--ink-2); text-decoration: none;
-  padding: 8px 14px;
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  letter-spacing: 0.4px; transition: all 0.25s;
-  background: var(--paper-white);
-}
-.sb-socials a:hover { border-color: var(--moss); color: var(--moss); }
-
-/* ========== MAIN ========== */
-.main { position: relative; min-height: 100vh; background: var(--bg); }
-.tab-content {
-  display: none;
-  padding: 88px 88px 96px;
-  max-width: 1200px;
-  animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.tab-content.active { display: block; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media (max-width: 1100px) { .tab-content { padding: 64px 48px 96px; } }
-@media (max-width: 720px) { .tab-content { padding: 48px 24px 80px; } }
-
-.tab-header { margin-bottom: 56px; }
-.tab-eyebrow {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 1.8px; text-transform: uppercase;
-  color: var(--moss); margin-bottom: 20px;
-}
-.tab-eyebrow::before {
-  content: ''; width: 32px; height: 1px;
-  background: var(--moss);
-}
-.tab-title {
-  font-family: var(--serif);
-  font-weight: 350; font-size: clamp(44px, 6vw, 76px);
-  line-height: 1.02; letter-spacing: -0.03em;
-  color: var(--ink); margin-bottom: 24px;
-}
-.tab-title em { font-style: italic; color: var(--moss); font-weight: 300; }
-.tab-lede {
-  font-family: var(--serif);
-  font-weight: 350; font-size: clamp(19px, 1.6vw, 23px);
-  line-height: 1.55; color: var(--ink-2);
-  max-width: 720px;
-}
-
-.subhead {
-  font-family: var(--serif);
-  font-weight: 350;
-  font-size: clamp(28px, 3.5vw, 44px);
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 12px;
-  line-height: 1.1;
-}
-.subhead em { font-style: italic; color: var(--moss); font-weight: 300; }
-.subhead-lede {
-  font-family: var(--serif);
-  font-weight: 350;
-  font-size: 18px;
-  color: var(--ink-2);
-  line-height: 1.55;
-  max-width: 680px;
-  margin-bottom: 32px;
-}
-
-.divider {
-  height: 1px;
-  background: var(--rule-strong);
-  margin: 72px 0;
-}
-.divider-section { margin-bottom: 36px; }
-
-.section-label {
-  font-family: var(--sans); font-size: 12px; font-weight: 600;
-  letter-spacing: 1.8px; text-transform: uppercase;
-  color: var(--moss); margin-bottom: 22px;
-  display: flex; align-items: center; gap: 12px;
-}
-.section-label::before {
-  content: ''; width: 32px; height: 1px; background: var(--moss);
-}
-.section-label-row {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-  flex-wrap: wrap; gap: 16px;
-}
-.section-label-row .section-label { margin-bottom: 0; }
-.section-label-row .view-all {
-  font-family: var(--sans); font-size: 13px; font-weight: 500;
-  color: var(--ink-2); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px;
-  transition: color 0.2s;
-}
-.section-label-row .view-all:hover { color: var(--moss); }
-.section-label-row .view-all .arrow { transition: transform 0.2s; }
-.section-label-row .view-all:hover .arrow { transform: translateX(3px); }
-
-/* ========== HOME ========== */
-.home-headline {
-  font-family: var(--serif);
-  font-weight: 350; font-size: clamp(56px, 9vw, 124px);
-  line-height: 0.95; letter-spacing: -0.04em;
-  color: var(--ink); margin-bottom: 36px;
-}
-.home-headline em {
-  font-style: italic; font-weight: 300;
-  color: var(--moss); display: block;
-}
-.home-intro {
-  font-family: var(--serif);
-  font-weight: 350; font-size: clamp(20px, 1.85vw, 25px);
-  line-height: 1.55; color: var(--ink-2);
-  max-width: 660px; margin-bottom: 56px;
-}
-.home-intro em {
-  font-style: italic; color: var(--ink);
-  border-bottom: 1px solid var(--moss); padding-bottom: 1px;
-}
-
-.home-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 80px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
 .btn {
-  font-family: var(--sans); font-size: 15px; font-weight: 600;
-  padding: 16px 28px; border-radius: 999px;
-  text-decoration: none; cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: inline-flex; align-items: center; gap: 10px;
-  border: 1px solid transparent; letter-spacing: 0.1px;
+  font-family: var(--body); font-size: 15px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 22px; border-radius: 8px;
+  border: 1px solid var(--ink); cursor: pointer;
+  transition: all 0.22s ease;
 }
-.btn.primary {
-  background: var(--ink); color: var(--bg);
-}
-.btn.primary:hover {
-  background: var(--moss); transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(123, 192, 150, 0.22);
-}
-.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn.ghost:hover { background: var(--ink); color: var(--bg); }
-.btn .arrow { transition: transform 0.3s; font-size: 16px; }
-.btn:hover .arrow { transform: translateX(4px); }
+.btn .arr { transition: transform 0.22s ease; }
+.btn:hover .arr { transform: translate(2px, -2px); }
+.btn.solid { background: var(--ink); color: var(--bg); }
+.btn.solid:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.line { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn.line:hover { border-color: var(--ink); }
 
-.highlights {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 18px; margin-top: 16px;
+.hero-meta {
+  margin-top: 46px; padding-top: 26px;
+  border-top: 1px solid var(--line);
+  display: flex; gap: 36px 56px; flex-wrap: wrap;
 }
-@media (max-width: 900px) { .highlights { grid-template-columns: 1fr; } }
-.highlight-card {
-  padding: 32px 28px;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  transition: all 0.3s; position: relative;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.highlight-card:hover {
-  border-color: var(--moss);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
-.highlight-card .hl-num {
-  font-family: var(--serif);
-  font-weight: 300; font-style: italic;
-  font-size: 64px; line-height: 1;
-  color: var(--moss); margin-bottom: 14px;
-  letter-spacing: -0.03em;
-}
-.highlight-card .hl-text {
-  font-size: 15px; line-height: 1.55;
-  color: var(--ink-2);
-}
+.hero-meta div { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); }
+.hero-meta .v { font-size: 15px; color: var(--ink); }
 
-/* PILLARS */
-.pillars {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-@media (max-width: 900px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 540px) { .pillars { grid-template-columns: 1fr; } }
-.pillar {
-  padding: 28px 24px;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.pillar:hover {
-  border-color: var(--moss);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
-.pillar .p-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
-  color: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-weight: 600;
-  font-style: italic; font-size: 18px;
-  margin-bottom: 16px;
-}
-.pillar h4 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: 20px; color: var(--ink);
-  margin-bottom: 10px; letter-spacing: -0.01em;
-}
-.pillar p {
-  font-size: 15px; color: var(--ink-2); line-height: 1.6;
-}
-
-/* FEATURED PROJECTS — new home preview grid */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-@media (max-width: 980px) { .featured-grid { grid-template-columns: 1fr; } }
-
-.featured-card {
-  display: flex; flex-direction: column;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 28px 26px 24px;
-  transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  position: relative;
-  overflow: hidden;
-  min-height: 280px;
-}
-.featured-card:hover {
-  border-color: var(--moss);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-}
-.featured-card .fc-num {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 300; font-size: 13px;
-  color: var(--moss); letter-spacing: 0.3px;
-  margin-bottom: 8px;
-}
-.featured-card .fc-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(123, 192, 150, 0.1);
-  color: var(--moss);
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 1.2px; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 999px;
-  margin-bottom: 12px;
-  align-self: flex-start;
-}
-.featured-card .fc-badge::before {
-  content: ''; width: 5px; height: 5px;
-  background: var(--moss); border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-.featured-card h3 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: 22px; color: var(--ink);
-  line-height: 1.15; letter-spacing: -0.01em;
-  margin-bottom: 10px;
-}
-.featured-card h3 em { font-style: italic; color: var(--moss); font-weight: 300; }
-.featured-card .fc-stat {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 300; color: var(--moss);
-  font-size: 32px; line-height: 1;
-  margin-bottom: 12px; letter-spacing: -0.02em;
-}
-.featured-card .fc-desc {
-  font-size: 14px; color: var(--ink-2);
-  line-height: 1.55; margin-bottom: 18px;
-  flex: 1;
-}
-.featured-card .fc-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-bottom: 16px;
-}
-.featured-card .fc-tags span {
-  font-size: 11px; font-weight: 500;
-  padding: 4px 10px;
-  background: var(--bg-2);
-  color: var(--ink-2);
-  border-radius: 999px;
-  letter-spacing: 0.2px;
-}
-.featured-card .fc-links {
-  display: flex; gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
-  margin-top: auto;
-}
-
-/* FEATURED CARD VISUAL BAND — system glyphs */
-.fc-visual {
-  margin: -28px -26px 18px -26px;
-  padding: 14px 18px 12px;
-  height: 96px;
-  background: linear-gradient(135deg, rgba(123, 192, 150, 0.06) 0%, transparent 70%);
-  border-bottom: 1px solid var(--rule);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.fc-visual::after {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(123, 192, 150, 0.08), transparent 40%),
-    repeating-linear-gradient(0deg, transparent 0, transparent 11px, rgba(240, 232, 214, 0.018) 11px, rgba(240, 232, 214, 0.018) 12px);
-  pointer-events: none;
-}
-.fc-visual svg {
-  width: 100%; height: 100%;
-  max-width: 280px; position: relative; z-index: 1;
-}
-.fc-visual .gx-line { stroke: var(--ink-faint); stroke-width: 1.2; fill: none; }
-.fc-visual .gx-line-accent { stroke: var(--moss); stroke-width: 1.4; fill: none; }
-.fc-visual .gx-node { stroke: var(--ink-mute); fill: var(--bg-3); stroke-width: 1; }
-.fc-visual .gx-node-accent { stroke: var(--moss); fill: rgba(123, 192, 150, 0.12); stroke-width: 1.3; }
-.fc-visual .gx-arrow { fill: var(--moss); }
-.fc-visual .gx-label {
-  font-family: var(--sans); font-size: 7px; font-weight: 600;
-  fill: var(--ink-mute); letter-spacing: 0.5px;
-}
-.fc-visual .gx-label-accent {
-  font-family: var(--serif); font-size: 8px; font-style: italic;
-  fill: var(--moss);
-}
-
-/* FEATURED card — promote the Capstone (CCWS) */
-.featured-card.featured-primary {
-  border-color: rgba(123, 192, 150, 0.30);
-  background:
-    linear-gradient(180deg, rgba(123, 192, 150, 0.04) 0%, var(--paper-white) 38%);
-}
-.featured-card.featured-primary .fc-visual {
-  background: linear-gradient(135deg, rgba(123, 192, 150, 0.12) 0%, rgba(123, 192, 150, 0.02) 80%);
-}
-
-/* PROJECT LINK BUTTONS */
-.proj-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 14px;
-  background: var(--bg-2);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 12px; font-weight: 600;
-  text-decoration: none;
-  border-radius: 999px;
-  border: 1px solid var(--rule);
-  letter-spacing: 0.2px;
-  transition: all 0.2s;
-}
-.proj-link.live {
-  background: var(--moss); color: var(--bg);
-  border-color: var(--moss);
-}
-.proj-link.live:hover {
-  background: var(--moss-deep); border-color: var(--moss-deep);
-}
-.proj-link:hover {
-  border-color: var(--moss); color: var(--moss);
-}
-.proj-link .arrow { font-size: 13px; transition: transform 0.2s; }
-.proj-link:hover .arrow { transform: translate(2px, -2px); }
-.proj-link svg {
-  width: 13px; height: 13px;
-  flex-shrink: 0;
-}
-
-/* ========== ABOUT ========== */
-.about-text {
-  font-family: var(--serif);
-  font-size: clamp(20px, 1.9vw, 26px);
-  line-height: 1.6; color: var(--ink);
-  font-weight: 350; max-width: 780px;
-}
-.about-text p { margin-bottom: 28px; }
-.about-text p:last-child { margin-bottom: 0; }
-.about-text p:first-letter {
-  font-family: var(--serif); font-size: 1.6em;
-  font-weight: 300; color: var(--moss); font-style: italic;
-}
-.about-text em { font-style: italic; color: var(--moss); }
-.about-text strong { font-weight: 500; color: var(--ink); }
-
-.about-meta {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 24px 40px; margin-top: 32px;
-  padding: 28px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.am-row { display: flex; flex-direction: column; gap: 4px; }
-.am-label {
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--moss);
-}
-.am-val {
-  font-family: var(--serif); font-weight: 400;
-  font-size: 18px; color: var(--ink);
-}
-
-/* EDUCATION */
-.edu-list { display: flex; flex-direction: column; gap: 16px; }
-.edu-card {
-  display: flex; gap: 24px;
-  padding: 28px;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  transition: all 0.3s;
-  align-items: center;
-  max-width: 760px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.edu-card:hover {
-  border-color: var(--moss);
-  transform: translateX(4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-.edu-badge {
-  flex-shrink: 0; width: 76px; height: 76px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-weight: 600;
-  letter-spacing: -0.02em; color: #fff;
-  position: relative; overflow: hidden;
-}
-.edu-badge.bcit {
-  background: linear-gradient(135deg, #003A7B 0%, #0B5BA8 100%);
-  box-shadow: 0 8px 20px rgba(0, 58, 123, 0.35);
-}
-.edu-badge.wildcat {
-  background: linear-gradient(135deg, #1A1A1A 0%, #B8323C 100%);
-  box-shadow: 0 8px 20px rgba(184, 50, 60, 0.35);
-}
-.edu-badge::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18), transparent 60%);
-  pointer-events: none;
-}
-.edu-badge .badge-mark { position: relative; z-index: 1; font-size: 22px; }
-.edu-badge.wildcat .badge-mark { color: #F4D78A; font-size: 20px; }
-
-.edu-info { flex: 1; min-width: 0; }
-.edu-school {
-  font-family: var(--serif); font-weight: 400;
-  font-size: 23px; color: var(--ink);
-  line-height: 1.2; margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-.edu-program {
-  font-size: 15px; color: var(--ink-2);
-  line-height: 1.5; margin-bottom: 10px;
-}
-.edu-period {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 400; font-size: 15px; color: var(--moss);
-}
-
-/* COURSEWORK — curated with takeaways */
-.courses-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-@media (max-width: 900px) { .courses-grid { grid-template-columns: 1fr; } }
-
-.course-year {
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 36px 32px;
-  position: relative;
-  transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.course-year:hover {
-  border-color: var(--rule-strong);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-.course-year.featured {
-  background: linear-gradient(180deg, var(--paper-white) 0%, var(--bg-2) 100%);
-  border-color: var(--moss);
-  box-shadow: 0 8px 32px rgba(123, 192, 150, 0.10);
-}
-
-.course-year-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--moss);
-  padding: 6px 12px;
-  border: 1px solid rgba(123, 192, 150, 0.25);
-  border-radius: 999px;
-  margin-bottom: 20px;
-  background: rgba(123, 192, 150, 0.05);
-}
-.course-year-eyebrow::before {
-  content: ''; width: 6px; height: 6px;
-  border-radius: 50%; background: var(--moss);
-}
-
-.course-year h3 {
-  font-family: var(--serif); font-weight: 350;
-  font-size: 30px; color: var(--ink);
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.course-year h3 em { font-style: italic; color: var(--moss); font-weight: 300; }
-.course-year-period {
-  font-family: var(--serif); font-style: italic;
-  font-size: 15px; color: var(--ink-mute);
-  margin-bottom: 16px;
-}
-.course-year-desc {
-  font-size: 15px;
-  color: var(--ink-2);
-  line-height: 1.6;
-  margin-bottom: 28px;
-}
-
-.course-list { display: flex; flex-direction: column; gap: 4px; }
-.course-item {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--rule);
-}
-.course-item:last-child { border-bottom: none; }
-.course-item-head {
-  display: flex; align-items: baseline; gap: 12px;
-  margin-bottom: 4px;
-}
-.course-code {
-  font-family: var(--serif); font-style: italic;
-  font-size: 12px; font-weight: 500;
-  color: var(--moss);
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  text-transform: uppercase;
-}
-.course-name {
-  font-size: 16px; font-weight: 600;
-  color: var(--ink); line-height: 1.3;
-  flex: 1;
-}
-.course-takeaway {
-  font-size: 14px;
-  color: var(--ink-2);
-  line-height: 1.5;
-}
-
-.capstone-callout {
-  margin-top: 24px;
-  padding: 18px 20px;
-  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--bg);
-  line-height: 1.5;
-  position: relative;
-  overflow: hidden;
-}
-.capstone-callout::before {
-  content: '';
-  position: absolute;
-  top: -50%; right: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 50%);
-  pointer-events: none;
-}
-.capstone-callout strong {
-  color: #1F3A2F; font-style: italic;
-  font-family: var(--serif); font-weight: 600; font-size: 15px;
-  display: block; margin-bottom: 4px;
-}
-
-/* FOCUS AREAS */
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-@media (max-width: 720px) { .focus-grid { grid-template-columns: 1fr; } }
-
-.focus-card {
-  padding: 32px 28px;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  transition: all 0.3s;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.focus-card:hover {
-  border-color: var(--moss);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
-
-.focus-head { display: flex; align-items: center; gap: 14px; }
-.focus-icon {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
-  color: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(123, 192, 150, 0.2);
-}
-.focus-icon svg { width: 20px; height: 20px; }
-.focus-card h4 {
-  font-family: var(--serif); font-weight: 400;
-  font-style: italic; font-size: 23px;
-  color: var(--ink); letter-spacing: -0.01em;
+/* ============ SECTION SHELL ============ */
+.section { padding: clamp(64px, 11vh, 120px) 0; border-top: 1px solid var(--line); }
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; margin-bottom: 52px;
+}
+.section-head .label {
+  font-family: var(--mono); font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3);
+}
+.section-head .label b { color: var(--accent); font-weight: 500; }
+.section-head h2 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.02em;
   line-height: 1.1;
 }
-.focus-card p {
-  font-size: 15px; color: var(--ink-2);
-  line-height: 1.55;
-}
-.focus-courses {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: auto; padding-top: 4px;
-}
-.focus-courses span {
-  font-family: var(--serif); font-style: italic;
-  font-size: 12px; font-weight: 500;
-  color: var(--moss);
-  padding: 4px 10px;
-  border: 1px solid rgba(123, 192, 150, 0.25);
-  background: rgba(123, 192, 150, 0.04);
-  border-radius: 999px;
-  letter-spacing: 0.2px;
-}
+.section-head .note { font-size: 15px; color: var(--ink-2); max-width: 36ch; }
 
-/* SKILLS */
-.skills-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-@media (max-width: 720px) { .skills-grid { grid-template-columns: 1fr; } }
-
-.skill-card {
-  padding: 28px 26px;
-  background: var(--paper-white);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  transition: all 0.3s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
-.skill-card:hover {
-  border-color: var(--moss);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
-.skill-card-head {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 18px; padding-bottom: 16px;
-  border-bottom: 1px solid var(--rule);
-}
-.skill-icon {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
-  color: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-weight: 600;
-  font-style: italic; font-size: 18px;
-  flex-shrink: 0;
-}
-.skill-card h3 {
-  font-family: var(--serif); font-weight: 400;
-  font-style: italic; font-size: 25px;
-  color: var(--ink); letter-spacing: -0.01em; line-height: 1.1;
-}
-.skill-card ul {
-  list-style: none; display: flex;
-  flex-direction: column; gap: 10px;
-}
-.skill-card li {
-  font-size: 15px; font-weight: 400;
-  color: var(--ink-2);
-  display: flex; align-items: flex-start; gap: 12px;
-  line-height: 1.5;
-}
-.skill-card li::before {
-  content: ''; display: inline-block;
-  width: 5px; height: 5px;
-  border-radius: 50%; background: var(--moss);
-  margin-top: 9px; flex-shrink: 0;
-}
-.skill-card li strong { font-weight: 600; color: var(--ink); }
-
-/* ========== WORK ========== */
+/* ============ WORK ============ */
 .work-list { display: flex; flex-direction: column; }
-.project {
-  display: grid; grid-template-columns: 1fr 280px;
-  gap: 48px; padding: 48px 0;
-  border-top: 1px solid var(--rule);
-  align-items: start;
-  transition: padding 0.3s;
-}
-.project:first-child { border-top: none; padding-top: 16px; }
-.project:last-child { border-bottom: 1px solid var(--rule); }
-.project:hover { padding-left: 12px; padding-right: 12px; }
-@media (max-width: 900px) {
-  .project { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
-  .project:hover { padding-left: 0; padding-right: 0; }
-}
-.project-num {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 300; font-size: 15px;
-  color: var(--moss); margin-bottom: 10px;
-  display: block; letter-spacing: 0.3px;
-}
-.project h3 {
-  font-family: var(--serif); font-weight: 350;
-  font-size: clamp(28px, 2.7vw, 38px);
-  line-height: 1.1; color: var(--ink);
-  margin-bottom: 10px; letter-spacing: -0.02em;
-}
-.project h3 em { font-style: italic; color: var(--moss); font-weight: 300; }
-.project-context {
-  font-size: 13px; color: var(--ink-mute);
-  margin-bottom: 22px; letter-spacing: 0.3px;
-}
-.project-desc {
-  font-family: var(--serif); font-weight: 350;
-  font-size: 18px; line-height: 1.65;
-  color: var(--ink-2); margin-bottom: 22px;
-  max-width: 580px;
-}
-.project-desc strong {
-  font-weight: 500; color: var(--moss); font-style: italic;
-}
-.project-tags {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 24px;
-}
-.project-tag {
-  font-size: 12px; font-weight: 500;
-  padding: 6px 13px;
-  background: var(--bg-2);
-  color: var(--ink-2);
-  border-radius: 999px;
-  border: 1px solid var(--rule);
-  letter-spacing: 0.3px;
-}
-.project-links { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.project-meta {
-  background: var(--paper-white);
-  padding: 22px 24px;
+.work-item {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 28px; align-items: start;
+  padding: 30px 16px; margin: 0 -16px;
+  border-top: 1px solid var(--line);
   border-radius: 12px;
-  border: 1px solid var(--rule);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: background 0.25s ease;
 }
-.project-meta .meta-row {
-  padding: 11px 0;
-  border-bottom: 1px solid var(--rule);
-  display: flex; justify-content: space-between;
-  font-size: 13px;
+.work-item:last-child { border-bottom: 1px solid var(--line); }
+.work-item:hover { background: var(--accent-soft); }
+.work-idx { font-family: var(--mono); font-size: 13px; color: var(--ink-3); padding-top: 6px; }
+.work-body { min-width: 0; }
+.work-title {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(21px, 2.5vw, 28px); letter-spacing: -0.015em;
+  line-height: 1.15; margin-bottom: 8px; transition: color 0.2s;
 }
-.project-meta .meta-row:first-child { padding-top: 0; }
-.project-meta .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
-.project-meta .meta-label { color: var(--ink-mute); font-weight: 400; }
-.project-meta .meta-val { color: var(--ink); font-weight: 600; text-align: right; }
-.project-meta .meta-val.accent {
-  color: var(--moss); font-style: italic;
-  font-family: var(--serif); font-size: 15px; font-weight: 400;
+.work-item:hover .work-title { color: var(--accent); }
+.work-desc { font-size: 15.5px; color: var(--ink-2); line-height: 1.6; max-width: 62ch; margin-bottom: 16px; }
+.work-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.work-tags span {
+  font-family: var(--mono); font-size: 12px; color: var(--ink-2);
+  border: 1px solid var(--line-strong); padding: 4px 10px; border-radius: 6px;
+}
+.work-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; padding-top: 4px; }
+.work-link {
+  font-family: var(--mono); font-size: 13px; color: var(--ink);
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s;
+}
+.work-link:hover { color: var(--accent); border-color: var(--accent); }
+.work-link.muted { color: var(--ink-3); }
+.work-link.muted:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .work-item { grid-template-columns: 1fr; gap: 14px; padding: 26px 14px; margin: 0 -14px; }
+  .work-idx { padding-top: 0; }
+  .work-links { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 18px; }
 }
 
-.exp-list { display: flex; flex-direction: column; margin-top: 8px; }
-.exp-item {
-  display: grid; grid-template-columns: 160px 1fr;
-  gap: 32px; padding: 28px 0;
-  border-top: 1px solid var(--rule);
-}
-.exp-item:last-child { border-bottom: 1px solid var(--rule); }
-@media (max-width: 720px) { .exp-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; } }
-.exp-period {
-  font-family: var(--serif); font-style: italic;
-  font-weight: 300; font-size: 17px; color: var(--moss);
-}
-.exp-role {
-  font-family: var(--serif); font-size: 23px; font-weight: 400;
-  color: var(--ink); margin-bottom: 4px;
-}
-.exp-role .org { font-style: italic; color: var(--moss); font-weight: 300; }
-.exp-org {
-  font-size: 13px; color: var(--ink-mute);
-  margin-bottom: 10px; letter-spacing: 0.3px;
-}
-.exp-detail {
-  font-family: var(--serif); font-weight: 350;
-  font-size: 17px; color: var(--ink-2);
-  line-height: 1.6; max-width: 600px;
-}
+/* ============ SERVICES ============ */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+@media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
+.svc { background: var(--bg); padding: 32px 30px; transition: background 0.25s ease; }
+.svc:hover { background: var(--bg-soft); }
+.svc .num { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.08em; }
+.svc h3 { font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -0.01em; margin: 14px 0 10px; }
+.svc p { font-size: 15px; color: var(--ink-2); line-height: 1.6; margin-bottom: 16px; }
+.svc .st { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
 
-/* CONTACT */
-.contact-card {
-  background: linear-gradient(135deg, #1C1A14 0%, #0F0E0B 100%);
-  color: var(--ink); border-radius: 16px;
-  padding: 64px 56px; margin-top: 8px;
-  position: relative; overflow: hidden;
-  border: 1px solid var(--rule-strong);
+/* ============ ABOUT ============ */
+.about-grid { display: grid; grid-template-columns: 200px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+@media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+.about-photo {
+  width: 160px; height: 160px; border-radius: 14px; object-fit: cover;
+  border: 1px solid var(--line-strong); background: var(--bg-soft);
 }
-.contact-card::before {
-  content: ''; position: absolute;
-  top: -100px; right: -100px;
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(123, 192, 150, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-.contact-card h2 {
-  font-family: var(--serif); font-weight: 350;
-  font-size: clamp(36px, 5vw, 60px);
-  line-height: 1.1; letter-spacing: -0.02em;
-  margin-bottom: 24px; position: relative;
-}
-.contact-card h2 em {
-  font-style: italic; color: var(--moss); display: block;
-  font-weight: 300;
-}
-.contact-card p {
-  font-family: var(--serif); font-weight: 350;
-  font-size: 19px; line-height: 1.6;
-  color: rgba(240, 232, 214, 0.72); max-width: 560px;
-  margin-bottom: 40px; position: relative;
-}
-.contact-email {
-  display: inline-block;
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(20px, 2.4vw, 28px);
-  color: var(--ink); text-decoration: none;
-  border-bottom: 1.5px solid var(--moss);
-  padding: 0 6px 8px 6px;
-  margin-bottom: 40px;
-  transition: color 0.3s; position: relative;
-}
-.contact-email:hover { color: var(--moss); }
-.contact-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 12px; max-width: 480px; position: relative;
-}
-@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
-.contact-link {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 16px 22px;
-  background: rgba(240, 232, 214, 0.04);
-  color: var(--ink); text-decoration: none;
-  border-radius: 999px;
-  font-size: 14px; font-weight: 600;
-  border: 1px solid rgba(240, 232, 214, 0.10);
-  transition: all 0.3s; letter-spacing: 0.1px;
-}
-.contact-link:hover {
-  background: var(--moss); border-color: var(--moss);
-  color: var(--bg);
-}
-.contact-link .arrow { font-size: 14px; opacity: 0.6; transition: all 0.3s; }
-.contact-link:hover .arrow { opacity: 1; transform: translateX(3px); }
+.about-text p { color: var(--ink-2); margin-bottom: 18px; max-width: 64ch; }
+.about-text p strong { color: var(--ink); font-weight: 600; }
+.about-facts { display: flex; flex-wrap: wrap; gap: 22px 40px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.about-facts div { display: flex; flex-direction: column; gap: 3px; }
+.about-facts .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); }
+.about-facts .v { font-size: 15px; color: var(--ink); }
 
-@media (max-width: 980px) {
-  .sb-photo-wrap { align-self: center; }
-  .sb-name { text-align: center; }
-  .sb-title { text-align: center; margin: 0 auto; }
-  .sb-meta { align-items: center; }
-  .sb-meta-row { justify-content: center; }
-  .sb-nav {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
-  }
-  .sb-nav a {
-    flex-direction: column; text-align: center;
-    padding: 10px 6px; font-size: 13px; gap: 4px;
-  }
-  .sb-nav a .nav-num { width: auto; }
-  .sb-foot { align-items: center; }
-  .sb-socials { justify-content: center; }
+/* ============ CONTACT ============ */
+.contact h2 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(30px, 5vw, 56px); letter-spacing: -0.025em;
+  line-height: 1.08; margin-bottom: 22px; max-width: 18ch;
 }
+.contact h2 .em { color: var(--accent); }
+.contact p { color: var(--ink-2); max-width: 52ch; margin-bottom: 34px; }
+.contact-mail {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(20px, 3vw, 30px); letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--line-strong); padding-bottom: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-mail:hover { color: var(--accent); border-color: var(--accent); }
+.contact-row { display: flex; flex-wrap: wrap; gap: 14px 24px; margin-top: 40px; }
+.contact-row a {
+  font-family: var(--mono); font-size: 13px; color: var(--ink-2);
+  display: inline-flex; align-items: center; gap: 7px; transition: color 0.2s;
+}
+.contact-row a:hover { color: var(--accent); }
+
+/* ============ FOOTER ============ */
+.footer {
+  border-top: 1px solid var(--line); padding: 34px 0 48px;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.footer span { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<div class="app">
-
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="sidebar">
-    <div class="sb-photo-wrap">
-      <div class="sb-photo">
-        <img src="profile.jpg" alt="Nilan Beigi">
-      </div>
-      <span class="sb-status">Open to roles</span>
-    </div>
-
-    <div>
-      <h1 class="sb-name">Nilan<em>Beigi.</em></h1>
-      <p class="sb-title">AI analyst &amp; full-stack builder, turning data into systems that ship.</p>
-    </div>
-
-    <div class="sb-meta">
-      <div class="sb-meta-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Burnaby, BC · Canada</span>
-      </div>
-      <div class="sb-meta-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span>Open to AI / BA / Data Analyst roles</span>
-      </div>
-      <div class="sb-meta-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span>English &amp; Persian (Farsi)</span>
-      </div>
-    </div>
-
-    <nav class="sb-nav">
-      <a href="#home" data-tab="home" class="active"><span class="nav-num">i.</span> Home</a>
-      <a href="#about" data-tab="about"><span class="nav-num">ii.</span> About</a>
-      <a href="#work" data-tab="work"><span class="nav-num">iii.</span> Work</a>
-      <a href="#contact" data-tab="contact"><span class="nav-num">iv.</span> Contact</a>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="dot"></span> Nilan Beigi</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services" class="hide-sm">Services</a>
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#contact">Contact</a>
+      <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener" class="cta">Résumé ↗</a>
     </nav>
+  </div>
+</header>
 
-    <div class="sb-foot">
-      <div class="sb-socials">
-        <a href="https://linkedin.com/in/nilan-beigi" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">GitHub</a>
-        <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow reveal">Nilan Beigi · Vancouver, BC</div>
+      <h1 class="reveal">I build websites, dashboards, and <span class="em">AI tools</span> that businesses actually use.</h1>
+      <p class="hero-lede reveal">Full-stack developer and BCIT Business IT graduate, with an AI Management focus. I take messy operational data and turn it into clean web apps, dashboards, and small AI tools — so far for a 10-location grocery chain, a nonprofit, and a few course clients.</p>
+      <div class="hero-actions reveal">
+        <a href="#work" class="btn solid">View work <span class="arr">↗</span></a>
+        <a href="mailto:nilan.beigi.beigi@gmail.com" class="btn line">Email me</a>
       </div>
-      <div>Designed &amp; built by Nilan Beigi · 2026</div>
+      <div class="hero-meta reveal">
+        <div><span class="k">Role</span><span class="v">Full-stack · Data &amp; AI</span></div>
+        <div><span class="k">Open to</span><span class="v">Analyst roles &amp; freelance</span></div>
+        <div><span class="k">Languages</span><span class="v">English &amp; Persian (Farsi)</span></div>
+      </div>
     </div>
-  </aside>
+  </section>
 
-  <!-- ============ MAIN CONTENT ============ -->
-  <main class="main">
-
-    <!-- ===== HOME ===== -->
-    <section class="tab-content active" id="tab-home">
-      <h2 class="home-headline">Hello, I'm Nilan.<em>I build AI that does the work.</em></h2>
-      <p class="home-intro">
-        BCIT graduate — <em>Business IT Management diploma, AI specialization</em>. I take messy operational data and turn it into systems people actually use: adaptive AI that makes faster decisions, dashboards that change a decision, and end-to-end web platforms that run a business.
-      </p>
-      <div class="home-cta">
-        <a href="#work" class="btn primary" data-tab="work">View selected work <span class="arrow">→</span></a>
-        <a href="Nilan_Beigi_Resume.pdf" target="_blank" class="btn ghost">Download résumé <span class="arrow">↓</span></a>
-      </div>
-
-      <div class="section-label">Highlights</div>
-      <div class="highlights">
-        <div class="highlight-card">
-          <div class="hl-num">~85%</div>
-          <div class="hl-text">Drop in ticket reassignments during simulated test runs of my reinforcement-learning routing agent.</div>
-        </div>
-        <div class="highlight-card">
-          <div class="hl-num">32</div>
-          <div class="hl-text">Relational tables in the production-ready full-stack grocery platform I architected.</div>
-        </div>
-        <div class="highlight-card">
-          <div class="hl-num">~30%</div>
-          <div class="hl-text">Measured search &amp; UX improvement on Homigo, tested against the baseline build.</div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="section-label">How I work</div>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="p-icon">i.</div>
-          <h4>Problem first</h4>
-          <p>I look at the workflow before the code. The right system starts from understanding what's actually broken.</p>
-        </div>
-        <div class="pillar">
-          <div class="p-icon">ii.</div>
-          <h4>System thinking</h4>
-          <p>I optimize for the whole, not the part. Tools, data, and people all sit inside the same loop.</p>
-        </div>
-        <div class="pillar">
-          <div class="p-icon">iii.</div>
-          <h4>Data-driven</h4>
-          <p>Decisions ride on numbers, not opinions. KPIs, models, and dashboards make the path obvious.</p>
-        </div>
-        <div class="pillar">
-          <div class="p-icon">iv.</div>
-          <h4>Ship the version that works</h4>
-          <p>Demos and theory are not deliverables. The version that runs in production is the only one that counts.</p>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- FEATURED PROJECTS preview (NEW) -->
-      <div class="section-label-row">
-        <div class="section-label">Selected projects</div>
-        <a href="#work" data-tab="work" class="view-all">View all <span class="arrow">→</span></a>
-      </div>
-
-      <div class="featured-grid">
-
-        <!-- 1. Capstone — FEATURED -->
-        <div class="featured-card featured-primary">
-          <div class="fc-visual" aria-hidden="true">
-            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <!-- User -->
-              <circle cx="18" cy="44" r="10" class="gx-node-accent"/>
-              <path d="M14 41 a4 4 0 0 1 8 0 M11 49 a7 5 0 0 1 14 0" class="gx-line-accent" stroke-linecap="round"/>
-              <text x="18" y="72" text-anchor="middle" class="gx-label">SENIOR</text>
-              <!-- Arrow 1 -->
-              <line x1="32" y1="44" x2="56" y2="44" class="gx-line"/>
-              <polygon points="60,44 54,41 54,47" class="gx-arrow"/>
-              <!-- Voice/Search pill -->
-              <rect x="63" y="34" width="60" height="20" rx="10" class="gx-node"/>
-              <circle cx="73" cy="44" r="2.5" class="gx-arrow"/>
-              <text x="100" y="47" text-anchor="middle" class="gx-label">VOICE / TEXT</text>
-              <!-- Arrow 2 -->
-              <line x1="125" y1="44" x2="149" y2="44" class="gx-line-accent"/>
-              <polygon points="153,44 147,41 147,47" class="gx-arrow"/>
-              <!-- AI Match hex -->
-              <polygon points="170,30 192,30 200,44 192,58 170,58 162,44" class="gx-node-accent"/>
-              <text x="181" y="47" text-anchor="middle" class="gx-label-accent">AI MATCH</text>
-              <!-- Arrow 3 -->
-              <line x1="202" y1="44" x2="226" y2="44" class="gx-line"/>
-              <polygon points="230,44 224,41 224,47" class="gx-arrow"/>
-              <!-- 3 service result rows -->
-              <rect x="233" y="26" width="42" height="10" rx="2" class="gx-node"/>
-              <rect x="233" y="39" width="42" height="10" rx="2" class="gx-node"/>
-              <rect x="233" y="52" width="42" height="10" rx="2" class="gx-node"/>
-              <line x1="237" y1="31" x2="262" y2="31" class="gx-line"/>
-              <line x1="237" y1="44" x2="262" y2="44" class="gx-line"/>
-              <line x1="237" y1="57" x2="262" y2="57" class="gx-line"/>
-              <text x="254" y="74" text-anchor="middle" class="gx-label">SERVICES</text>
-            </svg>
-          </div>
-          <span class="fc-num">i. Capstone · Featured</span>
-          <span class="fc-badge">Shipped</span>
-          <h3>Senior Services <em>Directory</em></h3>
-          <p class="fc-desc">A Streamlit-based directory connecting Greater Victoria seniors and caregivers to community services — with AI intent-matching and voice search. Built with a real nonprofit client (CCWS) and faculty advisor.</p>
-          <div class="fc-tags">
-            <span>Streamlit</span><span>LLM</span><span>Voice</span>
-          </div>
-          <div class="fc-links">
-            <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Source <span class="arrow">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 2. AI Ticket Routing -->
-        <div class="featured-card">
-          <div class="fc-visual" aria-hidden="true">
-            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <!-- Ticket stack -->
-              <rect x="14" y="38" width="38" height="20" rx="2" class="gx-node"/>
-              <rect x="11" y="34" width="38" height="20" rx="2" class="gx-node"/>
-              <rect x="8" y="30" width="38" height="20" rx="2" class="gx-node-accent"/>
-              <line x1="14" y1="36" x2="40" y2="36" class="gx-line"/>
-              <line x1="14" y1="40" x2="36" y2="40" class="gx-line"/>
-              <line x1="14" y1="44" x2="38" y2="44" class="gx-line"/>
-              <text x="27" y="72" text-anchor="middle" class="gx-label">TICKETS</text>
-              <!-- Arrow to RL agent -->
-              <line x1="50" y1="40" x2="92" y2="44" class="gx-line"/>
-              <polygon points="96,44 90,41 90,47" class="gx-arrow"/>
-              <!-- RL Agent hex -->
-              <polygon points="115,28 145,28 158,44 145,60 115,60 102,44" class="gx-node-accent"/>
-              <text x="130" y="42" text-anchor="middle" class="gx-label-accent">RL AGENT</text>
-              <text x="130" y="52" text-anchor="middle" class="gx-label" style="font-size:6px">policy.learn()</text>
-              <!-- Fanout lines to 3 operators -->
-              <line x1="160" y1="44" x2="220" y2="20" class="gx-line"/>
-              <line x1="160" y1="44" x2="220" y2="44" class="gx-line-accent"/>
-              <line x1="160" y1="44" x2="220" y2="68" class="gx-line"/>
-              <!-- 3 operators -->
-              <circle cx="232" cy="20" r="8" class="gx-node"/>
-              <text x="232" y="23" text-anchor="middle" class="gx-label" style="font-size:6px">OP1</text>
-              <circle cx="232" cy="44" r="9" class="gx-node-accent"/>
-              <text x="232" y="47" text-anchor="middle" class="gx-label-accent" style="font-size:7px">OP2</text>
-              <circle cx="232" cy="68" r="8" class="gx-node"/>
-              <text x="232" y="71" text-anchor="middle" class="gx-label" style="font-size:6px">OP3</text>
-              <!-- Reward arrow back -->
-              <path d="M 246 44 Q 270 44 270 26 Q 270 8 200 8" class="gx-line-accent" stroke-dasharray="2 2" stroke-linecap="round"/>
-              <polygon points="200,8 207,5 207,11" class="gx-arrow" transform="rotate(180 203.5 8)"/>
-              <text x="260" y="82" text-anchor="end" class="gx-label">REWARD</text>
-            </svg>
-          </div>
-          <span class="fc-num">ii. ML system</span>
-          <div class="fc-stat">~85%</div>
-          <h3>AI Ticket <em>Routing</em></h3>
-          <p class="fc-desc">An adaptive RL agent that assigns tickets to the right operator in real time. In simulated test runs, reassignment rates dropped by ~85% versus the random-baseline policy.</p>
-          <div class="fc-tags">
-            <span>RL</span><span>Python</span><span>Dashboard</span>
-          </div>
-          <div class="fc-links">
-            <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Source <span class="arrow">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 3. Grocery Platform -->
-        <div class="featured-card">
-          <div class="fc-visual" aria-hidden="true">
-            <svg viewBox="0 0 280 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <!-- 3 role chips on top -->
-              <rect x="14" y="6" width="56" height="16" rx="8" class="gx-node"/>
-              <text x="42" y="17" text-anchor="middle" class="gx-label">CUSTOMER</text>
-              <rect x="80" y="6" width="50" height="16" rx="8" class="gx-node-accent"/>
-              <text x="105" y="17" text-anchor="middle" class="gx-label-accent" style="font-size:7px">STAFF</text>
-              <rect x="140" y="6" width="60" height="16" rx="8" class="gx-node"/>
-              <text x="170" y="17" text-anchor="middle" class="gx-label">MANAGER</text>
-              <!-- Lines down to App -->
-              <line x1="42" y1="22" x2="80" y2="38" class="gx-line"/>
-              <line x1="105" y1="22" x2="105" y2="38" class="gx-line-accent"/>
-              <line x1="170" y1="22" x2="130" y2="38" class="gx-line"/>
-              <!-- App layer (Next.js) -->
-              <rect x="60" y="38" width="90" height="18" rx="3" class="gx-node-accent"/>
-              <text x="105" y="50" text-anchor="middle" class="gx-label-accent">NEXT.JS APP</text>
-              <!-- AI Chatbot bubble to side -->
-              <rect x="160" y="38" width="44" height="18" rx="9" class="gx-node"/>
-              <circle cx="170" cy="47" r="1.5" class="gx-arrow"/>
-              <circle cx="175" cy="47" r="1.5" class="gx-arrow"/>
-              <circle cx="180" cy="47" r="1.5" class="gx-arrow"/>
-              <text x="195" y="50" text-anchor="middle" class="gx-label" style="font-size:6px">EN/FA</text>
-              <line x1="150" y1="47" x2="160" y2="47" class="gx-line"/>
-              <!-- Line down to DB -->
-              <line x1="105" y1="56" x2="105" y2="66" class="gx-line"/>
-              <polygon points="105,70 102,64 108,64" class="gx-arrow"/>
-              <!-- DB cylinder with 32 -->
-              <ellipse cx="105" cy="72" rx="40" ry="4" class="gx-node-accent"/>
-              <path d="M 65 72 L 65 84 Q 65 88 105 88 Q 145 88 145 84 L 145 72" class="gx-node-accent"/>
-              <ellipse cx="105" cy="72" rx="40" ry="4" fill="none" stroke="var(--moss)" stroke-width="1"/>
-              <text x="105" y="83" text-anchor="middle" class="gx-label-accent" style="font-size:11px">32 tables</text>
-              <!-- Right side label -->
-              <text x="260" y="82" text-anchor="end" class="gx-label">RELATIONAL DB</text>
-            </svg>
-          </div>
-          <span class="fc-num">iii. Full-stack</span>
-          <div class="fc-stat">32 tables</div>
-          <h3>Grocery <em>Operations Platform</em></h3>
-          <p class="fc-desc">End-to-end ordering platform for a real grocery operation: Next.js front-end, 32-table relational DB, role-based dashboards, bilingual EN/FA AI chatbot. Architected for SaaS expansion.</p>
-          <div class="fc-tags">
-            <span>Next.js</span><span>SQL</span><span>EN/FA</span>
-          </div>
-          <div class="fc-links">
-            <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Source <span class="arrow">↗</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section class="tab-content" id="tab-about">
-      <div class="tab-header">
-        <span class="tab-eyebrow">About</span>
-        <h1 class="tab-title">A short <em>introduction</em>.</h1>
-        <p class="tab-lede">A builder who came to Vancouver from Tehran and rebuilt — language, network, system. Now I rebuild workflows for a living.</p>
-      </div>
-
-      <div class="about-text">
-        <p>I came to Vancouver from Tehran five years ago and rebuilt — language, network, system. That habit of rebuilding became how I work: I don't just <em>complete</em> tasks; I look at them, ask whether they should exist, and quietly redesign the workflow underneath.</p>
-        <p>For thirteen years I played piano and guitar; for longer than that, I trained as an athlete. Both teach the same thing: <strong>structured execution paired with creative thinking</strong>. It's the muscle I bring to every system I build.</p>
-        <p>What I care about is AI that does work, dashboards that change a decision, and web platforms that actually run a business. Not demos. Not theory. The version that ships.</p>
-      </div>
-
-      <div class="about-meta">
-        <div class="am-row"><span class="am-label">From</span><span class="am-val">Tehran, Iran</span></div>
-        <div class="am-row"><span class="am-label">Based in</span><span class="am-val">Vancouver, Canada</span></div>
-        <div class="am-row"><span class="am-label">Languages</span><span class="am-val">English &amp; Persian (Farsi)</span></div>
-        <div class="am-row"><span class="am-label">Background</span><span class="am-val">Athlete · Pianist of 13 years</span></div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="divider-section">
-        <span class="tab-eyebrow">Education</span>
-        <h2 class="subhead">Where I <em>studied</em>.</h2>
-        <p class="subhead-lede">Two-year BCIT diploma, Artificial Intelligence Management option — competitive-entry track selected by first-year GPA.</p>
-      </div>
-
-      <div class="edu-list">
-        <div class="edu-card">
-          <div class="edu-badge bcit"><span class="badge-mark">BCIT</span></div>
-          <div class="edu-info">
-            <div class="edu-school">British Columbia Institute of Technology</div>
-            <div class="edu-program">Diploma · Business Information Technology Management — AI Management Option (115 credits)</div>
-            <div class="edu-period">Sep 2024 – May 2026</div>
-          </div>
-        </div>
-
-        <div class="edu-card">
-          <div class="edu-badge wildcat"><span class="badge-mark">BCS</span></div>
-          <div class="edu-info">
-            <div class="edu-school">Burnaby Central Secondary School</div>
-            <div class="edu-program">High school diploma · Home of the Wildcats · Burnaby, BC</div>
-            <div class="edu-period">Graduate</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="divider-section">
-        <span class="tab-eyebrow">Coursework</span>
-        <h2 class="subhead">Two years of <em>curriculum</em>.</h2>
-        <p class="subhead-lede">The most relevant courses across business, technology, and AI/ML — with the takeaway each one left behind.</p>
-      </div>
-
-      <div class="courses-grid">
-        <div class="course-year">
-          <span class="course-year-eyebrow">Year 1 · Foundation</span>
-          <h3>Business &amp; <em>tech core</em></h3>
-          <div class="course-year-period">September 2024 – April 2025</div>
-          <p class="course-year-desc">A common foundation across all BITMAN options — programming, data, statistics, project management, accounting.</p>
-
-          <div class="course-list">
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 2000</span>
-                <span class="course-name">Applied Data Analytics</span>
-              </div>
-              <p class="course-takeaway">Building real dashboards in Excel from messy multi-sheet data.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 2065</span>
-                <span class="course-name">Business Systems Programming</span>
-              </div>
-              <p class="course-takeaway">Programming foundations — syntax to system design.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">OPMT 1130</span>
-                <span class="course-name">Business Statistics</span>
-              </div>
-              <p class="course-takeaway">Hypothesis testing, regression, distributions — the language behind every model.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">OPMT 1174</span>
-                <span class="course-name">Project Management</span>
-              </div>
-              <p class="course-takeaway">PMI framework: scope, schedule, stakeholders, risk.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">FMGT 2152</span>
-                <span class="course-name">Accounting for Management</span>
-              </div>
-              <p class="course-takeaway">Reading the financial statements behind any business decision.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 1000</span>
-                <span class="course-name">Business Information Systems</span>
-              </div>
-              <p class="course-takeaway">How IT infrastructure, data, and process actually fit together.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-year featured">
-          <span class="course-year-eyebrow">Year 2 · AI Specialization</span>
-          <h3>AI &amp; <em>strategy</em></h3>
-          <div class="course-year-period">September 2025 – May 2026</div>
-          <p class="course-year-desc">The Artificial Intelligence Management track: deep learning, business intelligence, cloud, and consulting.</p>
-
-          <div class="course-list">
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 3001 / 4001</span>
-                <span class="course-name">AI Management 1 &amp; 2</span>
-              </div>
-              <p class="course-takeaway">Neural nets, deep learning, supervised &amp; reinforcement learning — applied to business.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 4005</span>
-                <span class="course-name">Applied AI Management Topics</span>
-              </div>
-              <p class="course-takeaway">Practical Python ML projects: healthcare, banking, autonomous systems.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 3205</span>
-                <span class="course-name">Business Intelligence</span>
-              </div>
-              <p class="course-takeaway">Big data &amp; BI tools — turning raw rows into decisions.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BSYS 3000 / 4000</span>
-                <span class="course-name">Cloud Business Development</span>
-              </div>
-              <p class="course-takeaway">Building &amp; deploying full-stack web apps to AWS &amp; Azure.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">OPMT 3301</span>
-                <span class="course-name">Quantitative Methods</span>
-              </div>
-              <p class="course-takeaway">Linear programming, simulation, forecasting — operations research for managers.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">BUSA 4850</span>
-                <span class="course-name">Consulting Skills &amp; Problem Solving</span>
-              </div>
-              <p class="course-takeaway">Frameworks for unstructured business problems &amp; client communication.</p>
-            </div>
-            <div class="course-item">
-              <div class="course-item-head">
-                <span class="course-code">OPMT 4170</span>
-                <span class="course-name">Applied Project Management</span>
-              </div>
-              <p class="course-takeaway">PMBOK + CAPM exam preparation.</p>
-            </div>
-          </div>
-
-          <div class="capstone-callout">
-            <strong>BSYS 4905 — Directed Studies (Capstone)</strong>
-            10-week consulting project for a real client organization. Led the Senior Services Directory build as part of a 4-person team.
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="divider-section">
-        <span class="tab-eyebrow">Focus areas</span>
-        <h2 class="subhead">Where it <em>connects</em>.</h2>
-        <p class="subhead-lede">Four threads that run through every project I work on — and the courses that taught them.</p>
-      </div>
-
-      <div class="focus-grid">
-        <div class="focus-card">
-          <div class="focus-head">
-            <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <h4>AI / ML management</h4>
-          </div>
-          <p>Translating business problems into ML systems — choosing the right model, integrating LLMs, and building adaptive agents that improve with use.</p>
-          <div class="focus-courses">
-            <span>BSYS 3001</span><span>BSYS 4001</span><span>BSYS 4005</span>
-          </div>
-        </div>
-
-        <div class="focus-card">
-          <div class="focus-head">
-            <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="20" x2="21" y2="20"/><line x1="6" y1="20" x2="6" y2="13"/><line x1="11" y1="20" x2="11" y2="9"/><line x1="16" y1="20" x2="16" y2="6"/></svg></div>
-            <h4>Business intelligence &amp; analytics</h4>
-          </div>
-          <p>Modeling multi-table datasets, writing DAX measures, designing dashboards that turn raw rows into decisions.</p>
-          <div class="focus-courses">
-            <span>BSYS 3205</span><span>BSYS 2000</span><span>OPMT 1130</span><span>OPMT 3301</span>
-          </div>
-        </div>
-
-        <div class="focus-card">
-          <div class="focus-head">
-            <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-            <h4>Cloud &amp; full-stack development</h4>
-          </div>
-          <p>End-to-end web platforms: front-end interfaces, API design, relational schemas, deployment to AWS / Azure.</p>
-          <div class="focus-courses">
-            <span>BSYS 3000</span><span>BSYS 4000</span><span>BSYS 2065</span>
-          </div>
-        </div>
-
-        <div class="focus-card">
-          <div class="focus-head">
-            <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></div>
-            <h4>Strategy, consulting &amp; PM</h4>
-          </div>
-          <p>Translating client conversations into structured requirements, mapping the workflow before the code, and managing projects from initiation through closure.</p>
-          <div class="focus-courses">
-            <span>BUSA 4850</span><span>BUSA 4800</span><span>OPMT 4170</span><span>BSYS 4905</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="divider-section">
-        <span class="tab-eyebrow">Skills</span>
-        <h2 class="subhead">The <em>toolkit</em>.</h2>
-        <p class="subhead-lede">Sharpened across capstone work, course projects, and a real grocery operation I'm digitizing on the side.</p>
-      </div>
-
-      <div class="skills-grid">
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">i.</div>
-            <h3>AI &amp; ML systems</h3>
-          </div>
-          <ul>
-            <li><strong>Reinforcement learning</strong> — adaptive agents that improve with use</li>
-            <li><strong>LLM integration</strong> — production AI features, not demos</li>
-            <li><strong>Intent matching</strong> — natural language search &amp; voice</li>
-            <li><strong>Prompt engineering</strong> — reliable, cost-aware design</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">ii.</div>
-            <h3>Data &amp; analytics</h3>
-          </div>
-          <ul>
-            <li><strong>Power BI &amp; DAX</strong> — multi-table models, custom measures</li>
-            <li><strong>SQL</strong> — relational queries, joins, optimization</li>
-            <li><strong>Excel (advanced)</strong> — formulas, pivots, scenarios</li>
-            <li><strong>KPI design</strong> — turning numbers into decisions</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">iii.</div>
-            <h3>Full-stack development</h3>
-          </div>
-          <ul>
-            <li><strong>Next.js &amp; JavaScript</strong> — modern front-end &amp; routing</li>
-            <li><strong>Python</strong> — data, ML, automation</li>
-            <li><strong>ASP.NET Core</strong> — API design, role-based access</li>
-            <li><strong>SQL databases</strong> — schemas of 30+ tables in production</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">iv.</div>
-            <h3>Business analysis</h3>
-          </div>
-          <ul>
-            <li><strong>Requirements gathering</strong> — conversations into specs</li>
-            <li><strong>Process mapping</strong> — diagram the workflow first</li>
-            <li><strong>Stakeholder communication</strong> — exec-level plain language</li>
-            <li><strong>Workflow optimization</strong> — find the bottleneck, fix it</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">v.</div>
-            <h3>Cloud &amp; automation</h3>
-          </div>
-          <ul>
-            <li><strong>Microsoft Azure</strong> — fundamentals certified</li>
-            <li><strong>n8n</strong> — multi-step workflow automation</li>
-            <li><strong>GitHub</strong> — version control, deployments</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-card-head">
-            <div class="skill-icon">vi.</div>
-            <h3>Recently certified</h3>
-          </div>
-          <ul>
-            <li><strong>MS 365 Copilot Prompting Essentials</strong> — Mar 2026</li>
-            <li><strong>Google AI for Business Applications</strong> — Mar 2026</li>
-            <li><strong>BCIT BIT Management (AI)</strong> — Diploma, 2026</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== WORK ===== -->
-    <section class="tab-content" id="tab-work">
-      <div class="tab-header">
-        <span class="tab-eyebrow">Selected work</span>
-        <h1 class="tab-title">Things I've <em>shipped</em>.</h1>
-        <p class="tab-lede">Five projects across reinforcement learning, full-stack development, business intelligence, and stakeholder-driven design.</p>
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>01</b> &nbsp;/&nbsp; Selected work</div></div>
+        <p class="note">Real clients and real operational contexts, not demo projects.</p>
       </div>
 
       <div class="work-list">
 
-        <article class="project">
-          <div>
-            <span class="project-num">i. Capstone</span>
-            <h3>Senior Services Directory <em>— a capstone built for real users</em></h3>
-            <div class="project-context">BCIT Capstone (BSYS-4905) · 4-person team, lead developer · 2025–2026</div>
-            <p class="project-desc">A Streamlit-based directory connecting seniors and caregivers to community services. Designed AI intent-matching and voice search so users can find what they need in plain language — no rigid menus, no jargon. Reported into a real nonprofit client and faculty advisor through weekly stakeholder reviews; <strong>translated client feedback into structured data redesigns</strong> and prioritized release scope.</p>
-            <div class="project-tags">
-              <span class="project-tag">Streamlit</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">LLM intent</span>
-              <span class="project-tag">Voice search</span>
-              <span class="project-tag">Stakeholder management</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Source <span class="arrow">↗</span>
-              </a>
-            </div>
+        <article class="work-item reveal">
+          <div class="work-idx">01</div>
+          <div class="work-body">
+            <h3 class="work-title">Senior Services Directory</h3>
+            <p class="work-desc">A Streamlit directory connecting Greater Victoria seniors and caregivers to community services, with AI intent-matching and voice search so people can find help in plain language. Built for a real nonprofit client (CCWS) as a BCIT capstone.</p>
+            <div class="work-tags"><span>Streamlit</span><span>Python</span><span>LLM</span><span>Voice</span></div>
           </div>
-          <div class="project-meta">
-            <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">Capstone</span></div>
-            <div class="meta-row"><span class="meta-label">Role</span><span class="meta-val accent">Lead developer</span></div>
-            <div class="meta-row"><span class="meta-label">Team</span><span class="meta-val">4 students</span></div>
-            <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">Python · Streamlit</span></div>
+          <div class="work-links">
+            <a class="work-link" href="https://apex-ccws.streamlit.app" target="_blank" rel="noopener">Live ↗</a>
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
-        <article class="project">
-          <div>
-            <span class="project-num">ii. ML system</span>
-            <h3>AI Ticket Routing <em>— reinforcement learning for triage</em></h3>
-            <div class="project-context">BCIT course project · Reinforcement learning · Jan – Mar 2026</div>
-            <p class="project-desc">An adaptive RL agent that assigns incoming tickets to the right operator in real time, modeled on SOC and ITSM workflows. <strong>In simulated test runs, reassignment rates dropped by ~85% versus a random-baseline routing policy.</strong> Includes a real-time dashboard tracking model learning curves, agent-level performance, and routing accuracy as the system improves over time.</p>
-            <div class="project-tags">
-              <span class="project-tag">Reinforcement learning</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Adaptive systems</span>
-              <span class="project-tag">Dashboards</span>
-              <span class="project-tag">SOC / ITSM</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Source <span class="arrow">↗</span>
-              </a>
-            </div>
+        <article class="work-item reveal">
+          <div class="work-idx">02</div>
+          <div class="work-body">
+            <h3 class="work-title">Grocery Operations Platform</h3>
+            <p class="work-desc">An end-to-end ordering platform for the grocery chain where I work as Assistant Manager — so I knew the workflows and edge cases before writing any code. Next.js front-end, a 32-table relational database, role-based dashboards for customers, staff, and managers, and a bilingual EN/FA AI chatbot.</p>
+            <div class="work-tags"><span>Next.js</span><span>SQL · 32 tables</span><span>LLM</span><span>EN/FA</span></div>
           </div>
-          <div class="project-meta">
-            <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">ML system</span></div>
-            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">~85% in test</span></div>
-            <div class="meta-row"><span class="meta-label">Method</span><span class="meta-val">RL agent</span></div>
-            <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">Python · ML</span></div>
+          <div class="work-links">
+            <a class="work-link" href="https://nilanbeigibeigi.github.io/food" target="_blank" rel="noopener">Live ↗</a>
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
-        <article class="project">
-          <div>
-            <span class="project-num">iii. Independent</span>
-            <h3>Grocery Operations Platform <em>— full-stack for a real business</em></h3>
-            <div class="project-context">Independent · Full-stack · Production-ready · SaaS-ready architecture</div>
-            <p class="project-desc">Designed and built a complete digital ordering platform for the family-owned grocery operation where I also work as Assistant Manager — meaning I knew the workflows, edge cases, and staff pain points before writing a line of code. A Next.js front-end backed by a 32-table relational database, with a loyalty-points engine, role-based dashboards for customer, staff, and manager flows, and a bilingual (English / Persian) AI chatbot for customer assistance. The longer-term vision: <strong>a SaaS template for other ethnic grocery operations</strong> facing the same digital-transformation gap.</p>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">SQL · 32 tables</span>
-              <span class="project-tag">Role-based access</span>
-              <span class="project-tag">LLM chatbot</span>
-              <span class="project-tag">EN / FA</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Source <span class="arrow">↗</span>
-              </a>
-            </div>
+        <article class="work-item reveal">
+          <div class="work-idx">03</div>
+          <div class="work-body">
+            <h3 class="work-title">AI Ticket Routing</h3>
+            <p class="work-desc">A reinforcement-learning agent that routes incoming support tickets to the right operator in real time, modeled on SOC and ITSM workflows. In simulated runs, reassignment rates dropped about 85% against a random-baseline policy, tracked on a live learning-curve dashboard.</p>
+            <div class="work-tags"><span>Reinforcement learning</span><span>Python</span><span>Dashboards</span></div>
           </div>
-          <div class="project-meta">
-            <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">Full-stack SaaS</span></div>
-            <div class="meta-row"><span class="meta-label">Database</span><span class="meta-val accent">32 tables</span></div>
-            <div class="meta-row"><span class="meta-label">Roles</span><span class="meta-val">Customer / Staff / Mgr</span></div>
-            <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">Next.js · SQL</span></div>
+          <div class="work-links">
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
-        <article class="project">
-          <div>
-            <span class="project-num">iv. Full-stack web</span>
-            <h3>Homigo Housing Platform <em>— full-stack search at scale</em></h3>
-            <div class="project-context">BCIT · ASP.NET Core · Sep – Dec 2025</div>
-            <p class="project-desc">A housing platform with structured search, listing management, and role-based access for renters and property managers. <strong>Tested against the baseline build, search and UX improved by ~30%</strong> through query optimization and UX iteration. Engineered for concurrent user sessions and dynamic listing updates.</p>
-            <div class="project-tags">
-              <span class="project-tag">ASP.NET Core</span>
-              <span class="project-tag">SQL</span>
-              <span class="project-tag">Search</span>
-              <span class="project-tag">Role-based access</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Source <span class="arrow">↗</span>
-              </a>
-            </div>
+        <article class="work-item reveal">
+          <div class="work-idx">04</div>
+          <div class="work-body">
+            <h3 class="work-title">Homigo — Student Housing</h3>
+            <p class="work-desc">A housing platform with structured search, listing management, and role-based access for renters and property managers. Built in ASP.NET Core with Entity Framework and Azure SQL, deployed to Azure, as a four-person BCIT capstone.</p>
+            <div class="work-tags"><span>ASP.NET Core</span><span>SQL</span><span>Azure</span></div>
           </div>
-          <div class="project-meta">
-            <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">Full-stack web</span></div>
-            <div class="meta-row"><span class="meta-label">Impact</span><span class="meta-val accent">~30% in test</span></div>
-            <div class="meta-row"><span class="meta-label">Architecture</span><span class="meta-val">Scalable</span></div>
-            <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-val">.NET · SQL</span></div>
+          <div class="work-links">
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
-        <article class="project">
-          <div>
-            <span class="project-num">v. Dashboard</span>
-            <h3>BI Dashboard <em>— turning rows into decisions</em></h3>
-            <div class="project-context">BCIT · Power BI &amp; DAX · Sep – Dec 2025</div>
-            <p class="project-desc">A Power BI dashboard built to surface operational KPIs for non-technical decision-makers. Custom data models and DAX measures pull insight from multi-table datasets and translate raw rows into <strong>clear, decision-ready visuals</strong>.</p>
-            <div class="project-tags">
-              <span class="project-tag">Power BI</span>
-              <span class="project-tag">DAX</span>
-              <span class="project-tag">Data modeling</span>
-              <span class="project-tag">KPI design</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="proj-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                Source <span class="arrow">↗</span>
-              </a>
-            </div>
+        <article class="work-item reveal">
+          <div class="work-idx">05</div>
+          <div class="work-body">
+            <h3 class="work-title">BI Dashboard</h3>
+            <p class="work-desc">A Power BI dashboard that surfaces operational KPIs for non-technical decision-makers. Custom data models and DAX measures pull from multi-table datasets and turn raw rows into clear, decision-ready visuals.</p>
+            <div class="work-tags"><span>Power BI</span><span>DAX</span><span>Data modeling</span></div>
           </div>
-          <div class="project-meta">
-            <div class="meta-row"><span class="meta-label">Type</span><span class="meta-val">BI dashboard</span></div>
-            <div class="meta-row"><span class="meta-label">Audience</span><span class="meta-val">Non-technical</span></div>
-            <div class="meta-row"><span class="meta-label">Method</span><span class="meta-val">DAX · models</span></div>
-            <div class="meta-row"><span class="meta-label">Tool</span><span class="meta-val">Power BI</span></div>
+          <div class="work-links">
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
       </div>
+    </div>
+  </section>
 
-      <div class="divider"></div>
-
-      <div class="divider-section">
-        <span class="tab-eyebrow">Experience</span>
-        <h2 class="subhead">Where I've <em>worked</em>.</h2>
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>02</b> &nbsp;/&nbsp; Services</div></div>
+        <p class="note">Open to freelance and contract work — front-end, back-end, and the data layer in between.</p>
       </div>
 
-      <div class="exp-list">
-        <div class="exp-item">
-          <div class="exp-period">2022 → Present</div>
-          <div>
-            <div class="exp-role">Assistant Manager <span class="org">· Persia Foods</span></div>
-            <div class="exp-org">Full-time · Greater Vancouver</div>
-            <div class="exp-detail">Daily operations across a high-volume retail environment: scheduling, inventory cycles, customer-facing workflows, and sales reporting that informs inventory decisions. Built the company's full-stack digital ordering platform end-to-end alongside the operational role.</div>
-          </div>
+      <div class="svc-grid reveal">
+        <div class="svc">
+          <span class="num">01 — Web</span>
+          <h3>Websites &amp; web apps</h3>
+          <p>Built front to back: a fast marketing site, or a full platform with logins, role-based dashboards, and a real database behind it.</p>
+          <span class="st">Next.js · ASP.NET Core · SQL</span>
         </div>
-        <div class="exp-item">
-          <div class="exp-period">Oct → Dec 2022</div>
-          <div>
-            <div class="exp-role">Content Coordinator <span class="org">· Dynamic-sat</span></div>
-            <div class="exp-org">Part-time · Montreal, QC</div>
-            <div class="exp-detail">Multi-platform content production (Instagram, YouTube, Facebook), engagement analytics, and AI-assisted workflow streamlining.</div>
+        <div class="svc">
+          <span class="num">02 — Data</span>
+          <h3>Dashboards &amp; reporting</h3>
+          <p>Your spreadsheets and systems pulled into one screen people can read. Dashboards that surface the numbers a decision depends on.</p>
+          <span class="st">Power BI · SQL · Excel</span>
+        </div>
+        <div class="svc">
+          <span class="num">03 — AI</span>
+          <h3>AI tools &amp; chatbots</h3>
+          <p>Practical AI wired into how you already work: a support chatbot (incl. bilingual EN/FA), smart search, or document Q&amp;A.</p>
+          <span class="st">LLM integration · Python · Prompting</span>
+        </div>
+        <div class="svc">
+          <span class="num">04 — Automation</span>
+          <h3>Workflow automation</h3>
+          <p>The repetitive tasks that eat your week — orders, reports, reminders — wired to run on their own.</p>
+          <span class="st">n8n · Python · APIs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>03</b> &nbsp;/&nbsp; About</div></div>
+      </div>
+
+      <div class="about-grid reveal">
+        <img class="about-photo" src="profile.jpg" alt="Nilan Beigi">
+        <div class="about-text">
+          <p>I came to Vancouver from Tehran five years ago and rebuilt from scratch — the language, the network, the way I work. That habit of rebuilding is how I approach systems now: I look at how the work actually happens, then quietly redesign the workflow underneath it.</p>
+          <p>For thirteen years I played piano and guitar, and for longer than that I trained as an athlete. Both teach the same thing — <strong>structured execution paired with creative thinking</strong>. What I care about is software that does real work: a web app that runs a business, a dashboard that changes a decision, an AI tool that saves someone an afternoon. Not demos.</p>
+          <div class="about-facts">
+            <div><span class="k">Based in</span><span class="v">Vancouver, Canada</span></div>
+            <div><span class="k">From</span><span class="v">Tehran, Iran</span></div>
+            <div><span class="k">Education</span><span class="v">BCIT — Business IT (AI)</span></div>
+            <div><span class="k">Currently</span><span class="v">Assistant Manager, Persia Foods</span></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section class="tab-content" id="tab-contact">
-      <div class="tab-header">
-        <span class="tab-eyebrow">Get in touch</span>
-        <h1 class="tab-title">Let's <em>talk</em>.</h1>
-        <p class="tab-lede">I'm looking for AI Analyst, Business Analyst, or Data Analyst roles where technical depth meets ROI-driven thinking.</p>
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>04</b> &nbsp;/&nbsp; Contact</div></div>
       </div>
-
-      <div class="contact-card">
-        <h2>Building something <em>worth shipping?</em></h2>
-        <p>If your team needs someone who can analyze the data, design the system, and ship the build, I'd love to hear from you. The fastest way to reach me is email — I usually respond within a day.</p>
-        <a href="mailto:nilan.beigi.beigi@gmail.com" class="contact-email">nilan.beigi.beigi@gmail.com</a>
-
-        <div class="contact-grid">
-          <a href="https://linkedin.com/in/nilan-beigi" target="_blank" rel="noopener" class="contact-link">LinkedIn <span class="arrow">↗</span></a>
-          <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener" class="contact-link">GitHub <span class="arrow">↗</span></a>
-          <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener" class="contact-link">Résumé (PDF) <span class="arrow">↓</span></a>
-          <a href="tel:+12369997585" class="contact-link">+1 236 999 7585 <span class="arrow">↗</span></a>
-        </div>
+      <h2 class="reveal">Have a project or a role <span class="em">in mind?</span></h2>
+      <p class="reveal">If your team needs someone who can analyze the data, design the system, and ship the build, I'd like to hear about it. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <a class="contact-mail reveal" href="mailto:nilan.beigi.beigi@gmail.com">nilan.beigi.beigi@gmail.com</a>
+      <div class="contact-row reveal">
+        <a href="https://linkedin.com/in/nilan-beigi" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+        <a href="tel:+12369997585">+1 236 999 7585</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-</div>
+  <footer class="footer wrap">
+    <span>© 2026 Nilan Beigi — Vancouver, BC</span>
+    <span>Designed &amp; built by hand</span>
+  </footer>
+
+</main>
 
 <script>
-  const navLinks = document.querySelectorAll('[data-tab]');
-  const tabs = document.querySelectorAll('.tab-content');
-  const sidebarLinks = document.querySelectorAll('.sb-nav a');
+  // nav border on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-  function setTab(tabId) {
-    tabs.forEach(t => t.classList.toggle('active', t.id === 'tab-' + tabId));
-    sidebarLinks.forEach(a => a.classList.toggle('active', a.dataset.tab === tabId));
-    if (location.hash !== '#' + tabId) history.replaceState(null, '', '#' + tabId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // scroll reveal
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(el => io.observe(el));
   }
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const tab = link.dataset.tab;
-      if (tab) {
-        e.preventDefault();
-        setTab(tab);
+  // active nav link
+  const navMap = {};
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        Object.values(navMap).forEach(a => a && a.classList.remove('active'));
+        const a = navMap[e.target.id]; if (a) a.classList.add('active');
       }
     });
-  });
-
-  const initialTab = (location.hash || '#home').replace('#', '');
-  if (['home','about','work','contact'].includes(initialTab)) setTab(initialTab);
-
-  window.addEventListener('hashchange', () => {
-    const t = location.hash.replace('#', '');
-    if (['home','about','work','contact'].includes(t)) setTab(t);
-  });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['work', 'services', 'about', 'contact'].forEach(id => { const s = document.getElementById(id); if (s) spy.observe(s); });
 </script>
 
 </body>
