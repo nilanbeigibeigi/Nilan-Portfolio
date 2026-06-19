@@ -24,6 +24,7 @@
   --line-strong: #D6D5CC;
   --accent: #9A6B1F;
   --accent-soft: rgba(154, 107, 31, 0.09);
+  --tint: #FAF4EB;
 
   --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -89,7 +90,23 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============ HERO ============ */
-.hero { padding: clamp(70px, 13vh, 150px) 0 clamp(60px, 10vh, 110px); }
+.hero {
+  padding: clamp(64px, 11vh, 130px) 0 clamp(56px, 9vh, 100px);
+  background: radial-gradient(820px 480px at 82% -12%, rgba(154, 107, 31, 0.08), transparent 62%);
+}
+.section--tint { background: var(--tint); }
+.hero-grid { display: grid; grid-template-columns: 1fr minmax(240px, 330px); gap: clamp(32px, 6vw, 72px); align-items: center; }
+.hero-photo { justify-self: end; width: 100%; }
+.hero-photo img {
+  width: 100%; max-width: 330px; aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: center top;
+  border-radius: 18px; border: 1px solid var(--line-strong); display: block;
+}
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 26px; }
+  .hero-photo { order: -1; justify-self: start; }
+  .hero-photo img { max-width: 156px; aspect-ratio: 1 / 1; border-radius: 14px; }
+}
 .eyebrow {
   font-family: var(--mono); font-size: 13px;
   text-transform: uppercase; letter-spacing: 0.16em;
@@ -102,9 +119,9 @@ a { color: inherit; text-decoration: none; }
 }
 .hero h1 {
   font-family: var(--display); font-weight: 500;
-  font-size: clamp(38px, 6.4vw, 78px);
-  line-height: 1.04; letter-spacing: -0.03em;
-  max-width: 16ch; margin-bottom: 30px;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.05; letter-spacing: -0.03em;
+  max-width: 18ch; margin-bottom: 30px;
 }
 .hero h1 .em { color: var(--accent); }
 .hero-lede {
@@ -167,7 +184,7 @@ a { color: inherit; text-decoration: none; }
   transition: background 0.25s ease;
 }
 .work-item:last-child { border-bottom: 1px solid var(--line); }
-.work-item:hover { background: var(--accent-soft); }
+.work-item:hover { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
 .work-idx { font-family: var(--mono); font-size: 13px; color: var(--ink-3); padding-top: 6px; }
 .work-body { min-width: 0; }
 .work-title {
@@ -209,8 +226,7 @@ a { color: inherit; text-decoration: none; }
 .svc .st { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
 
 /* ============ ABOUT ============ */
-.about-grid { display: grid; grid-template-columns: 200px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
-@media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+.about-grid { display: block; }
 .about-photo {
   width: 160px; height: 160px; border-radius: 14px; object-fit: cover;
   border: 1px solid var(--line-strong); background: var(--bg-soft);
@@ -269,8 +285,8 @@ a { color: inherit; text-decoration: none; }
   <div class="nav-inner">
     <a href="#top" class="brand"><span class="dot"></span> Nilan Beigi</a>
     <nav class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#services" class="hide-sm">Services</a>
+      <a href="#services">Services</a>
+      <a href="#work" class="hide-sm">Work</a>
       <a href="#about" class="hide-sm">About</a>
       <a href="#contact">Contact</a>
       <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener" class="cta">Résumé ↗</a>
@@ -282,18 +298,60 @@ a { color: inherit; text-decoration: none; }
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow reveal">Nilan Beigi · Vancouver, BC</div>
-      <h1 class="reveal">I build websites, dashboards, and <span class="em">AI tools</span> that businesses actually use.</h1>
-      <p class="hero-lede reveal">Full-stack developer and BCIT Business IT graduate, with an AI Management focus. I take messy operational data and turn it into clean web apps, dashboards, and small AI tools — so far for a 10-location grocery chain, a nonprofit, and a few course clients.</p>
-      <div class="hero-actions reveal">
-        <a href="#work" class="btn solid">View work <span class="arr">↗</span></a>
-        <a href="mailto:nilan.beigi.beigi@gmail.com" class="btn line">Email me</a>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow reveal">Nilan Beigi · Vancouver, BC</div>
+        <h1 class="reveal">I build websites, dashboards, and <span class="em">AI tools</span> that businesses actually use.</h1>
+        <p class="hero-lede reveal">Full-stack developer and BCIT Business IT graduate, with an AI Management focus. I take messy operational data and turn it into clean web apps, dashboards, and small AI tools — so far for a 10-location grocery chain, a nonprofit, and a few course clients.</p>
+        <div class="hero-actions reveal">
+          <a href="#work" class="btn solid">View work <span class="arr">↗</span></a>
+          <a href="mailto:nilan.beigi.beigi@gmail.com" class="btn line">Email me</a>
+        </div>
+        <div class="hero-meta reveal">
+          <div><span class="k">Role</span><span class="v">Full-stack · Data &amp; AI</span></div>
+          <div><span class="k">Open to</span><span class="v">Analyst roles &amp; freelance</span></div>
+          <div><span class="k">Languages</span><span class="v">English &amp; Persian (Farsi)</span></div>
+        </div>
       </div>
-      <div class="hero-meta reveal">
-        <div><span class="k">Role</span><span class="v">Full-stack · Data &amp; AI</span></div>
-        <div><span class="k">Open to</span><span class="v">Analyst roles &amp; freelance</span></div>
-        <div><span class="k">Languages</span><span class="v">English &amp; Persian (Farsi)</span></div>
+      <div class="hero-photo reveal">
+        <img src="profile.jpg" alt="Nilan Beigi">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section section--tint" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>01</b> &nbsp;/&nbsp; Services</div></div>
+        <p class="note">Open to freelance and contract work — front-end, back-end, and the data layer in between.</p>
+      </div>
+
+      <div class="svc-grid reveal">
+        <div class="svc">
+          <span class="num">01 — Web</span>
+          <h3>Websites &amp; web apps</h3>
+          <p>Built front to back: a fast marketing site, or a full platform with logins, role-based dashboards, and a real database behind it.</p>
+          <span class="st">Next.js · ASP.NET Core · SQL</span>
+        </div>
+        <div class="svc">
+          <span class="num">02 — Data</span>
+          <h3>Dashboards &amp; reporting</h3>
+          <p>Your spreadsheets and systems pulled into one screen people can read. Dashboards that surface the numbers a decision depends on.</p>
+          <span class="st">Power BI · SQL · Excel</span>
+        </div>
+        <div class="svc">
+          <span class="num">03 — AI</span>
+          <h3>AI tools &amp; chatbots</h3>
+          <p>Practical AI wired into how you already work: a support chatbot (incl. bilingual EN/FA), smart search, or document Q&amp;A.</p>
+          <span class="st">LLM integration · Python · Prompting</span>
+        </div>
+        <div class="svc">
+          <span class="num">04 — Automation</span>
+          <h3>Workflow automation</h3>
+          <p>The repetitive tasks that eat your week — orders, reports, reminders — wired to run on their own.</p>
+          <span class="st">n8n · Python · APIs</span>
+        </div>
       </div>
     </div>
   </section>
@@ -302,7 +360,7 @@ a { color: inherit; text-decoration: none; }
   <section class="section" id="work">
     <div class="wrap">
       <div class="section-head reveal">
-        <div><div class="label"><b>01</b> &nbsp;/&nbsp; Selected work</div></div>
+        <div><div class="label"><b>02</b> &nbsp;/&nbsp; Selected work</div></div>
         <p class="note">Real clients and real operational contexts, not demo projects.</p>
       </div>
 
@@ -374,52 +432,14 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div><div class="label"><b>02</b> &nbsp;/&nbsp; Services</div></div>
-        <p class="note">Open to freelance and contract work — front-end, back-end, and the data layer in between.</p>
-      </div>
-
-      <div class="svc-grid reveal">
-        <div class="svc">
-          <span class="num">01 — Web</span>
-          <h3>Websites &amp; web apps</h3>
-          <p>Built front to back: a fast marketing site, or a full platform with logins, role-based dashboards, and a real database behind it.</p>
-          <span class="st">Next.js · ASP.NET Core · SQL</span>
-        </div>
-        <div class="svc">
-          <span class="num">02 — Data</span>
-          <h3>Dashboards &amp; reporting</h3>
-          <p>Your spreadsheets and systems pulled into one screen people can read. Dashboards that surface the numbers a decision depends on.</p>
-          <span class="st">Power BI · SQL · Excel</span>
-        </div>
-        <div class="svc">
-          <span class="num">03 — AI</span>
-          <h3>AI tools &amp; chatbots</h3>
-          <p>Practical AI wired into how you already work: a support chatbot (incl. bilingual EN/FA), smart search, or document Q&amp;A.</p>
-          <span class="st">LLM integration · Python · Prompting</span>
-        </div>
-        <div class="svc">
-          <span class="num">04 — Automation</span>
-          <h3>Workflow automation</h3>
-          <p>The repetitive tasks that eat your week — orders, reports, reminders — wired to run on their own.</p>
-          <span class="st">n8n · Python · APIs</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ ABOUT ============ -->
-  <section class="section" id="about">
+  <section class="section section--tint" id="about">
     <div class="wrap">
       <div class="section-head reveal">
         <div><div class="label"><b>03</b> &nbsp;/&nbsp; About</div></div>
       </div>
 
       <div class="about-grid reveal">
-        <img class="about-photo" src="profile.jpg" alt="Nilan Beigi">
         <div class="about-text">
           <p>I came to Vancouver from Tehran five years ago and rebuilt from scratch — the language, the network, the way I work. That habit of rebuilding is how I approach systems now: I look at how the work actually happens, then quietly redesign the workflow underneath it.</p>
           <p>For thirteen years I played piano and guitar, and for longer than that I trained as an athlete. Both teach the same thing — <strong>structured execution paired with creative thinking</strong>. What I care about is software that does real work: a web app that runs a business, a dashboard that changes a decision, an AI tool that saves someone an afternoon. Not demos.</p>
