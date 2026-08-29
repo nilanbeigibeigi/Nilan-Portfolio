@@ -3,32 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nilan Beigi — Full-stack developer & data/AI</title>
-<meta name="description" content="Nilan Beigi — full-stack developer and BCIT Business IT grad in Vancouver. I build web apps, data dashboards, and AI tools for businesses.">
-<meta name="theme-color" content="#FFFFFF">
-<meta property="og:title" content="Nilan Beigi — Full-stack developer & data/AI">
-<meta property="og:description" content="I build web apps, data dashboards, and AI tools for businesses. Based in Vancouver, BC.">
+<title>Nilan Beigi — Full-stack developer, data & AI</title>
+<meta name="description" content="Nilan Beigi — full-stack developer and BCIT Business IT (AI) grad in Vancouver. I build web apps, dashboards, and AI tools businesses actually use. Open to developer, analyst, and IT support roles — remote or on-site, full or part-time.">
+<meta name="theme-color" content="#8B4FE8">
+<meta property="og:title" content="Nilan Beigi — Full-stack developer, data & AI">
+<meta property="og:description" content="I build web apps, data dashboards, and AI tools businesses actually use. Based in Vancouver, BC — open to work.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #FFFFFF;
-  --bg-soft: #F5F5F2;
-  --ink: #18181B;
-  --ink-2: #52525B;
-  --ink-3: #8C8C92;
-  --line: #E5E4DD;
-  --line-strong: #D6D5CC;
-  --accent: #9A6B1F;
-  --accent-soft: rgba(154, 107, 31, 0.09);
-  --tint: #FAF4EB;
+  --bg: #FDFCFF;
+  --bg-soft: #F5F1FB;
+  --ink: #201A2E;
+  --ink-2: #5B5470;
+  --ink-3: #928AA6;
+  --line: #ECE5F4;
+  --line-strong: #DBD1EA;
+  --accent: #8B4FE8;
+  --accent-2: #E85D9A;
+  --accent-soft: rgba(139, 79, 232, 0.09);
+  --tint: #F7F1FC;
+  --ok: #1F9E6B;
 
   --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --script: 'Caveat', cursive;
 
   --maxw: 1080px;
   --pad: clamp(20px, 5vw, 48px);
@@ -50,7 +53,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection { background: var(--accent); color: var(--bg); }
+::selection { background: var(--accent); color: #fff; }
 
 a { color: inherit; text-decoration: none; }
 
@@ -76,79 +79,109 @@ a { color: inherit; text-decoration: none; }
   font-size: 16px; letter-spacing: -0.01em;
   display: inline-flex; align-items: center; gap: 9px;
 }
-.brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-.nav-links { display: flex; align-items: center; gap: 28px; }
+.brand .dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+.nav-links { display: flex; align-items: center; gap: 24px; }
 .nav-links a {
   font-family: var(--mono); font-size: 13px; color: var(--ink-2);
   letter-spacing: 0.02em; transition: color 0.2s; position: relative;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-links a.cta { color: var(--accent); }
-@media (max-width: 640px) {
-  .nav-links { gap: 18px; }
+@media (max-width: 860px) {
+  .nav-links { gap: 15px; }
   .nav-links a.hide-sm { display: none; }
 }
 
+/* ============ AVAILABILITY BADGE ============ */
+.avail {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--mono); font-size: 12.5px; color: var(--ink-2);
+  background: var(--bg); border: 1px solid var(--line-strong);
+  padding: 7px 14px; border-radius: 30px; margin-bottom: 26px;
+}
+.avail .live { position: relative; width: 8px; height: 8px; }
+.avail .live::before, .avail .live::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--ok);
+}
+.avail .live::after { animation: ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .avail .live::after { animation: none; } }
+
 /* ============ HERO ============ */
 .hero {
-  padding: clamp(64px, 11vh, 130px) 0 clamp(56px, 9vh, 100px);
-  background: radial-gradient(820px 480px at 82% -12%, rgba(154, 107, 31, 0.08), transparent 62%);
+  padding: clamp(56px, 10vh, 120px) 0 clamp(52px, 9vh, 96px);
+  background:
+    radial-gradient(680px 420px at 84% -14%, rgba(232, 93, 154, 0.10), transparent 60%),
+    radial-gradient(760px 460px at 12% -8%, rgba(139, 79, 232, 0.10), transparent 62%);
 }
 .section--tint { background: var(--tint); }
 .hero-grid { display: grid; grid-template-columns: 1fr minmax(240px, 330px); gap: clamp(32px, 6vw, 72px); align-items: center; }
-.hero-photo { justify-self: end; width: 100%; }
+.hero-photo { justify-self: end; width: 100%; position: relative; }
 .hero-photo img {
   width: 100%; max-width: 330px; aspect-ratio: 4 / 5;
   object-fit: cover; object-position: center top;
   border-radius: 18px; border: 1px solid var(--line-strong); display: block;
+  position: relative; z-index: 1;
+}
+.hero-photo::after {
+  content: ''; position: absolute; inset: auto -12px -12px auto;
+  width: 62%; height: 62%; border-radius: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  opacity: 0.16; z-index: 0;
 }
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; gap: 26px; }
   .hero-photo { order: -1; justify-self: start; }
   .hero-photo img { max-width: 156px; aspect-ratio: 1 / 1; border-radius: 14px; }
+  .hero-photo::after { display: none; }
 }
 .eyebrow {
   font-family: var(--mono); font-size: 13px;
   text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--ink-3); margin-bottom: 28px;
+  color: var(--ink-3); margin-bottom: 22px;
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
 .eyebrow::before {
-  content: ''; width: 24px; height: 1px; background: var(--accent);
-  display: inline-block;
+  content: ''; width: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  display: inline-block; border-radius: 2px;
 }
 .hero h1 {
   font-family: var(--display); font-weight: 500;
   font-size: clamp(34px, 5vw, 60px);
   line-height: 1.05; letter-spacing: -0.03em;
-  max-width: 18ch; margin-bottom: 30px;
+  max-width: 18ch; margin-bottom: 26px;
 }
-.hero h1 .em { color: var(--accent); }
+.hero h1 .em {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .hero-lede {
   font-size: clamp(17px, 1.6vw, 20px);
   color: var(--ink-2); line-height: 1.6;
-  max-width: 60ch; margin-bottom: 40px;
+  max-width: 60ch; margin-bottom: 34px;
 }
+.hero-lede strong { color: var(--ink); font-weight: 600; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
 .btn {
   font-family: var(--body); font-size: 15px; font-weight: 500;
   display: inline-flex; align-items: center; gap: 9px;
-  padding: 13px 22px; border-radius: 8px;
+  padding: 13px 22px; border-radius: 9px;
   border: 1px solid var(--ink); cursor: pointer;
   transition: all 0.22s ease;
 }
 .btn .arr { transition: transform 0.22s ease; }
 .btn:hover .arr { transform: translate(2px, -2px); }
-.btn.solid { background: var(--ink); color: var(--bg); }
-.btn.solid:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.solid { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #fff; border-color: transparent; }
+.btn.solid:hover { filter: brightness(1.06); box-shadow: 0 8px 22px rgba(139, 79, 232, 0.28); }
 .btn.line { background: transparent; color: var(--ink); border-color: var(--line-strong); }
-.btn.line:hover { border-color: var(--ink); }
+.btn.line:hover { border-color: var(--accent); color: var(--accent); }
 
 .hero-meta {
-  margin-top: 46px; padding-top: 26px;
+  margin-top: 44px; padding-top: 26px;
   border-top: 1px solid var(--line);
-  display: flex; gap: 36px 56px; flex-wrap: wrap;
+  display: flex; gap: 30px 52px; flex-wrap: wrap;
 }
 .hero-meta div { display: flex; flex-direction: column; gap: 4px; }
 .hero-meta .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); }
@@ -170,7 +203,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.02em;
   line-height: 1.1;
 }
-.section-head .note { font-size: 15px; color: var(--ink-2); max-width: 36ch; }
+.section-head .note { font-size: 15px; color: var(--ink-2); max-width: 40ch; }
 
 /* ============ WORK ============ */
 .work-list { display: flex; flex-direction: column; }
@@ -216,27 +249,75 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============ SERVICES ============ */
-.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-@media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
-.svc { background: var(--bg); padding: 32px 30px; transition: background 0.25s ease; }
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+@media (max-width: 820px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr; } }
+.svc { background: var(--bg); padding: 30px 28px; transition: background 0.25s ease; }
 .svc:hover { background: var(--bg-soft); }
 .svc .num { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.08em; }
-.svc h3 { font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -0.01em; margin: 14px 0 10px; }
-.svc p { font-size: 15px; color: var(--ink-2); line-height: 1.6; margin-bottom: 16px; }
+.svc h3 { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; margin: 14px 0 10px; }
+.svc p { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin-bottom: 16px; }
 .svc .st { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
 
-/* ============ ABOUT ============ */
-.about-grid { display: block; }
-.about-photo {
-  width: 160px; height: 160px; border-radius: 14px; object-fit: cover;
-  border: 1px solid var(--line-strong); background: var(--bg-soft);
+/* ============ SKILLS ============ */
+.skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 700px) { .skill-grid { grid-template-columns: 1fr; } }
+.skill-card { border: 1px solid var(--line); border-radius: 14px; padding: 26px 26px; background: var(--bg); transition: border-color 0.25s, box-shadow 0.25s; }
+.skill-card:hover { border-color: var(--line-strong); box-shadow: 0 10px 30px rgba(139, 79, 232, 0.07); }
+.skill-card h3 { font-family: var(--display); font-weight: 500; font-size: 18px; margin-bottom: 4px; }
+.skill-card .cap { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+.skill-card .kicker { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span {
+  font-family: var(--mono); font-size: 12px; color: var(--ink);
+  background: var(--tint); border: 1px solid var(--line);
+  padding: 5px 11px; border-radius: 20px;
 }
-.about-text p { color: var(--ink-2); margin-bottom: 18px; max-width: 64ch; }
+
+/* ============ EDUCATION ============ */
+.edu-head { border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; margin-bottom: 26px; background: linear-gradient(120deg, var(--tint), var(--bg)); }
+.edu-head h3 { font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -0.01em; }
+.edu-head .meta { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+.edu-head p { font-size: 15px; color: var(--ink-2); margin-top: 12px; max-width: 66ch; }
+.course-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+@media (max-width: 700px) { .course-grid { grid-template-columns: 1fr; } }
+.course-group { border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.course-group h4 { font-family: var(--display); font-weight: 500; font-size: 16px; margin-bottom: 12px; color: var(--ink); }
+.course-group h4 .b { color: var(--accent); }
+.course-group ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.course-group li { font-size: 14px; color: var(--ink-2); display: flex; gap: 9px; align-items: baseline; }
+.course-group li .code { font-family: var(--mono); font-size: 11.5px; color: var(--accent); flex-shrink: 0; min-width: 74px; }
+
+.cert-strip { margin-top: 24px; border: 1px dashed var(--line-strong); border-radius: 12px; padding: 22px 24px; background: var(--bg); }
+.cert-strip .cap { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; display: block; }
+.cert-row { display: flex; flex-wrap: wrap; gap: 12px 14px; }
+.cert { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: var(--tint); }
+.cert b { font-weight: 600; }
+.cert .sub { color: var(--ink-3); font-family: var(--mono); font-size: 11.5px; }
+
+/* ============ ABOUT ============ */
+.about-lead { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); max-width: 24ch; margin-bottom: 30px; }
+.about-lead .em { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 5vw, 60px); align-items: start; }
+@media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; } }
+.about-text p { color: var(--ink-2); margin-bottom: 18px; max-width: 62ch; }
 .about-text p strong { color: var(--ink); font-weight: 600; }
-.about-facts { display: flex; flex-wrap: wrap; gap: 22px 40px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
-.about-facts div { display: flex; flex-direction: column; gap: 3px; }
+.signature { font-family: var(--script); font-size: 34px; color: var(--accent); line-height: 1; margin-top: 6px; }
+.about-facts { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.about-facts div { display: flex; flex-direction: column; gap: 3px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.about-facts div:last-child { border-bottom: none; }
 .about-facts .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); }
 .about-facts .v { font-size: 15px; color: var(--ink); }
+
+/* ============ BEYOND / CREATIVE ============ */
+.beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 820px) { .beyond-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .beyond-grid { grid-template-columns: 1fr; } }
+.beyond-card { border: 1px solid var(--line); border-radius: 14px; padding: 24px 24px; background: var(--bg); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+.beyond-card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: 0 12px 30px rgba(232, 93, 154, 0.09); }
+.beyond-card .ico { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 20px; background: linear-gradient(135deg, var(--accent-soft), rgba(232,93,154,0.10)); margin-bottom: 14px; }
+.beyond-card h3 { font-family: var(--display); font-weight: 500; font-size: 18px; margin-bottom: 8px; }
+.beyond-card p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
 /* ============ CONTACT ============ */
 .contact h2 {
@@ -244,8 +325,13 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(30px, 5vw, 56px); letter-spacing: -0.025em;
   line-height: 1.08; margin-bottom: 22px; max-width: 18ch;
 }
-.contact h2 .em { color: var(--accent); }
-.contact p { color: var(--ink-2); max-width: 52ch; margin-bottom: 34px; }
+.contact h2 .em {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.contact p { color: var(--ink-2); max-width: 56ch; margin-bottom: 22px; }
+.contact-avail { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+.contact-avail span { font-family: var(--mono); font-size: 12px; color: var(--ink-2); border: 1px solid var(--line-strong); border-radius: 20px; padding: 6px 13px; }
 .contact-mail {
   font-family: var(--display); font-weight: 500;
   font-size: clamp(20px, 3vw, 30px); letter-spacing: -0.01em;
@@ -287,6 +373,8 @@ a { color: inherit; text-decoration: none; }
     <nav class="nav-links">
       <a href="#services">Services</a>
       <a href="#work" class="hide-sm">Work</a>
+      <a href="#skills" class="hide-sm">Skills</a>
+      <a href="#education" class="hide-sm">Education</a>
       <a href="#about" class="hide-sm">About</a>
       <a href="#contact">Contact</a>
       <a href="Nilan_Beigi_Resume.pdf" target="_blank" rel="noopener" class="cta">Résumé ↗</a>
@@ -300,17 +388,19 @@ a { color: inherit; text-decoration: none; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-text">
+        <div class="avail reveal"><span class="live"></span> Available for work — Vancouver &amp; remote</div>
         <div class="eyebrow reveal">Nilan Beigi · Vancouver, BC</div>
-        <h1 class="reveal">I build websites, dashboards, and <span class="em">AI tools</span> that businesses actually use.</h1>
-        <p class="hero-lede reveal">Full-stack developer and BCIT Business IT graduate, with an AI Management focus. I take messy operational data and turn it into clean web apps, dashboards, and small AI tools — so far for a grocery chain, a nonprofit, and a few course clients.</p>
+        <h1 class="reveal">I turn messy data into <span class="em">AI tools</span> and dashboards that businesses actually use.</h1>
+        <p class="hero-lede reveal">I'm a BCIT Business IT (AI Management) grad in Vancouver working at the intersection of <strong>data, AI, and full-stack development</strong>. I take real-world operational data and turn it into dashboards, AI tools, and automations teams actually rely on — so far for a grocery chain, a nonprofit, and course clients. I don't build demos; I build the thing that saves someone an afternoon.</p>
         <div class="hero-actions reveal">
           <a href="#work" class="btn solid">View work <span class="arr">↗</span></a>
           <a href="mailto:nilan.beigi.beigi@gmail.com" class="btn line">Email me</a>
         </div>
         <div class="hero-meta reveal">
-          <div><span class="k">Role</span><span class="v">Full-stack · Data &amp; AI</span></div>
-          <div><span class="k">Open to</span><span class="v">Analyst roles &amp; freelance</span></div>
-          <div><span class="k">Languages</span><span class="v">English &amp; Persian (Farsi)</span></div>
+          <div><span class="k">Role</span><span class="v">Data &amp; AI · Full-stack</span></div>
+          <div><span class="k">Open to</span><span class="v">Developer, analyst &amp; IT support</span></div>
+          <div><span class="k">Availability</span><span class="v">Full or part-time · remote or on-site</span></div>
+          <div><span class="k">Languages</span><span class="v">English · Persian (Farsi) · French (basics)</span></div>
         </div>
       </div>
       <div class="hero-photo reveal">
@@ -323,34 +413,46 @@ a { color: inherit; text-decoration: none; }
   <section class="section section--tint" id="services">
     <div class="wrap">
       <div class="section-head reveal">
-        <div><div class="label"><b>01</b> &nbsp;/&nbsp; Services</div></div>
-        <p class="note">Open to freelance and contract work — front-end, back-end, and the data layer in between.</p>
+        <div><div class="label"><b>01</b> &nbsp;/&nbsp; What I do</div></div>
+        <p class="note">Front-end, back-end, the data layer in between — and the systems and content around it.</p>
       </div>
 
       <div class="svc-grid reveal">
         <div class="svc">
-          <span class="num">01 — Web</span>
-          <h3>Websites &amp; web apps</h3>
-          <p>Built front to back: a fast marketing site, or a full platform with logins, role-based dashboards, and a real database behind it.</p>
-          <span class="st">Next.js · ASP.NET Core · SQL</span>
-        </div>
-        <div class="svc">
-          <span class="num">02 — Data</span>
-          <h3>Dashboards &amp; reporting</h3>
-          <p>Your spreadsheets and systems pulled into one screen people can read. Dashboards that surface the numbers a decision depends on.</p>
-          <span class="st">Power BI · SQL · Excel</span>
-        </div>
-        <div class="svc">
-          <span class="num">03 — AI</span>
+          <span class="num">01 — AI</span>
           <h3>AI tools &amp; chatbots</h3>
-          <p>Practical AI wired into how you already work: a support chatbot (incl. bilingual EN/FA), smart search, or document Q&amp;A.</p>
+          <p>Practical AI wired into how you already work: a support chatbot (incl. bilingual EN/FA), smart search, document Q&amp;A, and decision tools.</p>
           <span class="st">LLM integration · Python · Prompting</span>
         </div>
         <div class="svc">
-          <span class="num">04 — Automation</span>
-          <h3>Workflow automation</h3>
-          <p>The repetitive tasks that eat your week — orders, reports, reminders — wired to run on their own.</p>
-          <span class="st">n8n · Python · APIs</span>
+          <span class="num">02 — Data</span>
+          <h3>Data, dashboards &amp; analytics</h3>
+          <p>From cleaning messy data to the finished picture — datasets, models, and dashboards that surface the numbers a decision depends on.</p>
+          <span class="st">Power BI · SQL · Excel · Access</span>
+        </div>
+        <div class="svc">
+          <span class="num">03 — Automation</span>
+          <h3>Automation &amp; content</h3>
+          <p>Repetitive work wired to run on its own — orders, reports, publishing — plus social media content and full YouTube-automation pipelines.</p>
+          <span class="st">n8n · APIs · Social &amp; video</span>
+        </div>
+        <div class="svc">
+          <span class="num">04 — Consulting</span>
+          <h3>Business &amp; tech consulting</h3>
+          <p>Advising on where AI, data, and automation actually fit — assessing workflows, choosing the right tools, and mapping a practical path. Beyond surface-level fixes.</p>
+          <span class="st">Strategy · AI &amp; data · Process</span>
+        </div>
+        <div class="svc">
+          <span class="num">05 — Dev</span>
+          <h3>Full-stack development</h3>
+          <p>When it needs building: a full platform with logins, role-based dashboards, a real database, and clean back-end logic behind it.</p>
+          <span class="st">Next.js · ASP.NET Core · SQL</span>
+        </div>
+        <div class="svc">
+          <span class="num">06 — Support</span>
+          <h3>IT support &amp; CRM</h3>
+          <p>Troubleshooting, configuration, and clear documentation — resolving issues within SLAs, plus tailoring Salesforce and CRM workflows to how the business runs.</p>
+          <span class="st">Ticketing · ITSM · Salesforce</span>
         </div>
       </div>
     </div>
@@ -428,6 +530,166 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
 
+        <article class="work-item reveal">
+          <div class="work-idx">06</div>
+          <div class="work-body">
+            <h3 class="work-title">Data Cleaning &amp; Reporting</h3>
+            <p class="work-desc">A run of coursework and client projects that take raw, messy data and turn it into clean, analysis-ready datasets and reports — building data models, queries, and KPIs across Excel, Access, SQL, and Power BI so the numbers can actually be trusted.</p>
+            <div class="work-tags"><span>Excel</span><span>Access</span><span>SQL</span><span>Power BI</span></div>
+          </div>
+          <div class="work-links">
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--tint" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>03</b> &nbsp;/&nbsp; Skills</div></div>
+        <p class="note">A full-stack toolkit across development, data, AI, content, and the business side.</p>
+      </div>
+
+      <div class="skill-grid reveal">
+        <div class="skill-card">
+          <span class="cap">Programming &amp; Web</span>
+          <h3>Build the product</h3>
+          <p class="kicker">Front-end and back-end, from a landing page to a full platform with a database.</p>
+          <div class="chips">
+            <span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Next.js</span><span>ASP.NET Core</span><span>Entity Framework</span><span>Flask</span><span>Streamlit</span><span>REST APIs</span><span>Back-end &amp; databases</span><span>UI/UX basics</span><span>Python game projects</span><span>Git &amp; GitHub</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="cap">Data &amp; Analytics</span>
+          <h3>Make data useful</h3>
+          <p class="kicker">Turning raw, multi-table data into clear, decision-ready insight.</p>
+          <div class="chips">
+            <span>SQL</span><span>Power BI</span><span>DAX</span><span>Excel (Advanced)</span><span>Microsoft Access</span><span>Data modeling</span><span>KPI reporting</span><span>Data cleaning</span><span>Requirements gathering</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="cap">AI &amp; Machine Learning</span>
+          <h3>Apply AI practically</h3>
+          <p class="kicker">Wiring modern AI into real workflows, not demos.</p>
+          <div class="chips">
+            <span>LLM integration</span><span>Prompt engineering</span><span>Machine learning fundamentals</span><span>Reinforcement learning</span><span>Chatbots (EN/FA)</span><span>Adaptive systems</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="cap">Automation &amp; Content</span>
+          <h3>Ship, automate &amp; create</h3>
+          <p class="kicker">Removing repetitive work and creating content that reaches people.</p>
+          <div class="chips">
+            <span>Microsoft Azure (Fundamentals)</span><span>n8n</span><span>Workflow automation</span><span>YouTube automation</span><span>Social media content</span><span>AI content creation</span><span>API integration</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="cap">Business &amp; CRM</span>
+          <h3>Understand the business</h3>
+          <p class="kicker">The commercial and operational context around the tech.</p>
+          <div class="chips">
+            <span>Salesforce</span><span>Business &amp; tech consulting</span><span>Financial reconciliation</span><span>Billing &amp; invoicing</span><span>Cost tracking</span><span>Process mapping</span><span>Project management</span><span>Dashboard design</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <span class="cap">Ways of working</span>
+          <h3>How I show up</h3>
+          <p class="kicker">The traits behind the tools — from sport, music, and moving countries.</p>
+          <div class="chips">
+            <span>Clear communication</span><span>Stakeholder collaboration</span><span>Ownership</span><span>Adaptability</span><span>Attention to detail</span><span>Composure under pressure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>04</b> &nbsp;/&nbsp; Education</div></div>
+        <p class="note">A business-and-technology diploma with a dedicated AI Management specialization — on a computing foundation that started years earlier.</p>
+      </div>
+
+      <div class="edu-head reveal">
+        <h3>Business Information Technology Management — AI Management Option</h3>
+        <div class="meta">British Columbia Institute of Technology (BCIT), Burnaby · Diploma · 115 credits</div>
+        <p>A program that pairs software, data, and AI with the business side — finance, marketing, operations, and management — so I can build technology and understand why it matters commercially. A selection of the coursework:</p>
+      </div>
+
+      <div class="course-grid reveal">
+        <div class="course-group">
+          <h4><span class="b">AI</span> &amp; Applied AI</h4>
+          <ul>
+            <li><span class="code">BSYS 3001</span> Artificial Intelligence Management 1</li>
+            <li><span class="code">BSYS 4001</span> Artificial Intelligence Management 2</li>
+            <li><span class="code">BSYS 4005</span> Applied AI Management Topics</li>
+            <li><span class="code">BSYS 4905</span> Directed Studies (AI capstone)</li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <h4><span class="b">Programming</span> &amp; Systems</h4>
+          <ul>
+            <li><span class="code">BSYS 2065</span> Business Systems Programming</li>
+            <li><span class="code">BSYS 1000</span> Business Information Systems</li>
+            <li><span class="code">BSYS 3355</span> Management Information Systems</li>
+            <li><span class="code">BSYS 3000</span> Cloud Business Development 1</li>
+            <li><span class="code">BSYS 4000</span> Cloud Business Development 2</li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <h4><span class="b">Data</span> &amp; Analytics</h4>
+          <ul>
+            <li><span class="code">BSYS 2000</span> Applied Data Analytics in Excel</li>
+            <li><span class="code">BSYS 3205</span> Business Intelligence 1</li>
+            <li><span class="code">OPMT 3301</span> Quantitative Methods for Business</li>
+            <li><span class="code">OPMT 1130</span> Business Statistics</li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <h4><span class="b">Finance</span> &amp; Accounting</h4>
+          <ul>
+            <li><span class="code">FMGT 4530</span> Enterprise Finance</li>
+            <li><span class="code">FMGT 3221</span> Management Accounting Administration</li>
+            <li><span class="code">FMGT 2152</span> Accounting for Management</li>
+            <li><span class="code">ECON 2100</span> Microeconomics</li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <h4><span class="b">Marketing</span> &amp; Business</h4>
+          <ul>
+            <li><span class="code">MKTG 1102</span> Essentials of Marketing</li>
+            <li><span class="code">BUSA 4850</span> Consulting Skills &amp; Problem Solving</li>
+            <li><span class="code">BUSA 4800</span> Management Policy</li>
+            <li><span class="code">BUSA 2150</span> Organizational Development</li>
+          </ul>
+        </div>
+        <div class="course-group">
+          <h4><span class="b">Project</span> &amp; Communication</h4>
+          <ul>
+            <li><span class="code">OPMT 4170</span> Applied Project Management</li>
+            <li><span class="code">OPMT 1174</span> Project Management</li>
+            <li><span class="code">COMM 1100 / 2200</span> Business Communication 1 &amp; 2</li>
+            <li><span class="code">BLAW 3600</span> Computers and the Law</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cert-strip reveal">
+        <span class="cap">Certifications &amp; foundation</span>
+        <div class="cert-row">
+          <div class="cert">🤖 <span><b>Microsoft 365 Copilot Prompting Essentials</b> <span class="sub">Microsoft</span></span></div>
+          <div class="cert">✨ <span><b>Google AI for Business Applications</b> <span class="sub">Google</span></span></div>
+          <div class="cert">🎨 <span><b>UI/UX basics</b> <span class="sub">course · Iran</span></span></div>
+          <div class="cert">🖥️ <span><b>ICDL</b> <span class="sub">Int'l Computer Driving Licence</span></span></div>
+          <div class="cert">🧩 <span><b>E-Kids</b> <span class="sub">computing program, Iran</span></span></div>
+          <div class="cert">🎓 <span><b>Computer studies</b> <span class="sub">high school · Iran &amp; Canada</span></span></div>
+          <div class="cert">🍰 <span><b>FoodSafe · Cooking &amp; baking</b> <span class="sub">certified</span></span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -436,32 +698,96 @@ a { color: inherit; text-decoration: none; }
   <section class="section section--tint" id="about">
     <div class="wrap">
       <div class="section-head reveal">
-        <div><div class="label"><b>03</b> &nbsp;/&nbsp; About</div></div>
+        <div><div class="label"><b>05</b> &nbsp;/&nbsp; About</div></div>
       </div>
+
+      <p class="about-lead reveal">I'm not the loudest person in the room — I'm the one who notices what's <span class="em">slow</span> and quietly fixes it.</p>
 
       <div class="about-grid reveal">
         <div class="about-text">
-          <p>I came to Vancouver from Tehran five years ago and rebuilt from scratch — the language, the network, the way I work. That habit of rebuilding is how I approach systems now: I look at how the work actually happens, then quietly redesign the workflow underneath it.</p>
-          <p>For thirteen years I played piano and guitar, and for longer than that I trained as an athlete. Both teach the same thing — structured execution paired with creative thinking. What I care about is software that does real work: a web app that runs a business, a dashboard that changes a decision, an AI tool that saves someone an afternoon. Not demos.</p>
-          <div class="about-facts">
-            <div><span class="k">Based in</span><span class="v">Vancouver, Canada</span></div>
-            <div><span class="k">From</span><span class="v">Tehran, Iran</span></div>
-            <div><span class="k">Education</span><span class="v">BCIT — Business IT (AI)</span></div>
-            <div><span class="k">Currently</span><span class="v">Assistant Manager, Persia Foods</span></div>
-          </div>
+          <p>I grew up in Tehran, where I spent about thirteen years at the piano and guitar, trained as a runner and in archery, and showed work in group painting exhibitions. I've also been around computers since I was a kid — ICDL and E-Kids in Iran, computing classes in high school on both sides of the world — so technology never felt foreign to me. It felt like home.</p>
+          <p>Five years ago I moved to Vancouver and rebuilt everything from zero: the language, the friends, the way I work. That habit of rebuilding is exactly how I approach systems now. I look at how the work actually happens, then redesign the workflow underneath it — usually without anyone noticing until it's just faster.</p>
+          <p>These days I focus on <strong>data and AI</strong> — dashboards that change a decision, AI tools and automations that save real hours, and content that makes AI easier to understand — and I can build the full app around them when it's needed. I taught myself most of it by shipping, all the way back to the small games I wrote in Python in high school here in Canada. Discipline from sport and music, creativity from art and film — that mix is the whole point of how I work.</p>
+          <p><strong>What's next:</strong> land a role that puts my BCIT training to work, then grow into <strong>cybersecurity</strong> — and, further out, explore where AI meets <strong>neuroscience</strong>. I'd rather be genuinely excellent in one field than spread thin across everything.</p>
+          <div class="signature">Nilan</div>
+        </div>
+        <div class="about-facts">
+          <div><span class="k">Based in</span><span class="v">Vancouver, Canada</span></div>
+          <div><span class="k">From</span><span class="v">Tehran, Iran</span></div>
+          <div><span class="k">Education</span><span class="v">BCIT — Business IT (AI)</span></div>
+          <div><span class="k">Open to</span><span class="v">Vancouver, Canada &amp; international · relocation OK</span></div>
+          <div><span class="k">Availability</span><span class="v">Full or part-time · remote or on-site</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEYOND CODE ============ -->
+  <section class="section" id="beyond">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="label"><b>06</b> &nbsp;/&nbsp; Beyond code</div></div>
+        <p class="note">The creative and athletic side that makes me a better builder — a rare mix of technical, artistic, and disciplined.</p>
+      </div>
+
+      <div class="beyond-grid reveal">
+        <div class="beyond-card">
+          <div class="ico">🎹</div>
+          <h3>Classical music</h3>
+          <p>Around thirteen years of piano and guitar, including a few public concerts back in Iran. Practice taught me patience, rhythm, and the attention to detail that shows up in clean code.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">🎨</div>
+          <h3>Painting &amp; art</h3>
+          <p>I paint, and back in Tehran I took part in group exhibitions. Composition and color are the same instinct I bring to designing an interface.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">🏃‍♀️</div>
+          <h3>Athletics — running &amp; archery</h3>
+          <p>Trained as a runner and in archery. Both are about steady focus under pressure and repeating the fundamentals until they're automatic.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">💃</div>
+          <h3>Dance</h3>
+          <p>Ongoing dance classes — discipline, stage presence, and comfort performing under pressure, which translates straight into presenting work and demos.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">▶️</div>
+          <h3>AI YouTube channel</h3>
+          <p>I create content that makes AI approachable — turning what I learn and build into short, useful videos, and running the whole publishing workflow.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">🎬</div>
+          <h3>Short cinematic films</h3>
+          <p>Writing, shooting, and editing short cinematic pieces. Storytelling and visual craft that sharpen how I design and present products.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">🎮</div>
+          <h3>Python games</h3>
+          <p>I started coding by building small games in Python in high school here in Canada — still the fastest way I know to learn: make something that runs, then make it better.</p>
+        </div>
+        <div class="beyond-card">
+          <div class="ico">🍰</div>
+          <h3>Cooking &amp; baking</h3>
+          <p>FoodSafe-certified, with a cooking &amp; baking certificate. It's my reset button — and, like everything else, I like getting the details right.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="section contact" id="contact">
+  <section class="section section--tint contact" id="contact">
     <div class="wrap">
       <div class="section-head reveal">
-        <div><div class="label"><b>04</b> &nbsp;/&nbsp; Contact</div></div>
+        <div><div class="label"><b>07</b> &nbsp;/&nbsp; Contact</div></div>
       </div>
       <h2 class="reveal">Have a project or a role <span class="em">in mind?</span></h2>
-      <p class="reveal">If your team needs someone who can analyze the data, design the system, and ship the build, I'd like to hear about it. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <p class="reveal">I'm open to developer, data/AI, analyst, and IT support roles, plus freelance work. If your team needs someone who can analyze the data, design the system, and ship the build, I'd like to hear about it. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <div class="contact-avail reveal">
+        <span>📍 Vancouver, BC · open to relocation</span>
+        <span>🌐 On-site or remote</span>
+        <span>⏱️ Full-time or part-time</span>
+      </div>
       <a class="contact-mail reveal" href="mailto:nilan.beigi.beigi@gmail.com">nilan.beigi.beigi@gmail.com</a>
       <div class="contact-row reveal">
         <a href="https://linkedin.com/in/nilan-beigi" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -487,35 +813,39 @@ a { color: inherit; text-decoration: none; }
 <script>
   // nav border on scroll
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  const onScroll = () => { nav.classList.toggle('scrolled', window.scrollY > 8); };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // scroll reveal
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = document.querySelectorAll('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) {
-    items.forEach(el => el.classList.add('in'));
-  } else {
+  // reveal on view
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach(el => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
   }
 
   // active nav link
-  const navMap = {};
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        Object.values(navMap).forEach(a => a && a.classList.remove('active'));
-        const a = navMap[e.target.id]; if (a) a.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  ['work', 'services', 'about', 'contact'].forEach(id => { const s = document.getElementById(id); if (s) spy.observe(s); });
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = navLinks
+    .map((a) => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach((s) => spy.observe(s));
+  }
 </script>
-
 </body>
 </html>
