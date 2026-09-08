@@ -117,7 +117,9 @@ a { color: inherit; text-decoration: none; }
 }
 .nav.scrolled { border-color: var(--line); }
 .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 15px var(--pad); display: flex; align-items: center; justify-content: space-between; }
-.brand { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 9px; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+.nav-burger { display: none; width: 38px; height: 34px; border-radius: 9px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; font-size: 16px; line-height: 1; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-burger:hover { border-color: var(--glass-brd-hi); }
 .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent-2); }
 .nav-right { display: flex; align-items: center; gap: 22px; }
 .nav-links { display: flex; align-items: center; gap: 22px; }
@@ -133,7 +135,21 @@ a { color: inherit; text-decoration: none; }
 .theme-toggle .moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .moon { display: block; }
-@media (max-width: 880px) { .nav-links { gap: 14px; } .nav-links a.hide-sm { display: none; } }
+@media (max-width: 880px) {
+  .nav-inner { position: relative; }
+  .nav-burger { display: inline-flex; }
+  .nav-links {
+    position: absolute; top: calc(100% + 10px); left: var(--pad); right: var(--pad);
+    flex-direction: column; align-items: stretch; gap: 2px;
+    background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 14px;
+    padding: 10px; box-shadow: var(--card-shadow); display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 13px 14px; border-radius: 8px; font-size: 15px; }
+  .nav-links a.hide-sm { display: block; }
+  .nav-links a:hover, .nav-links a.active { background: var(--surface); color: var(--ink); }
+  .nav-links a.cta { color: var(--accent); }
+}
 
 /* ============ AVAILABILITY BADGE ============ */
 .avail {
@@ -311,6 +327,8 @@ a { color: inherit; text-decoration: none; }
 .contact h2 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 5vw, 58px); letter-spacing: -0.025em; line-height: 1.06; margin-bottom: 22px; max-width: 18ch; }
 .contact h2 .em { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .contact p { color: var(--ink-2); max-width: 56ch; margin-bottom: 22px; }
+.roles { margin-bottom: 30px; }
+.roles-k { display: block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
 .contact-avail { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
 .contact-avail span { font-family: var(--mono); font-size: 12px; color: var(--ink-2); border: 1px solid var(--glass-brd); border-radius: 20px; padding: 6px 13px; background: var(--surface); }
 .contact-mail { font-family: var(--display); font-weight: 500; font-size: clamp(20px, 3vw, 31px); letter-spacing: -0.01em; border-bottom: 2px solid var(--line-strong); padding-bottom: 4px; transition: border-color 0.2s, color 0.2s; }
@@ -362,6 +380,7 @@ a { color: inherit; text-decoration: none; }
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme">
         <span class="moon">☾</span><span class="sun">☀</span>
       </button>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </div>
 </header>
@@ -384,7 +403,7 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="hero-meta reveal">
           <div><span class="k">Role</span><span class="v">Data &amp; AI · Full-stack</span></div>
-          <div><span class="k">Open to</span><span class="v">Developer, analyst &amp; IT support</span></div>
+          <div><span class="k">Open to</span><span class="v">Analyst, finance, dev &amp; support roles</span></div>
           <div><span class="k">Availability</span><span class="v">Full or part-time · remote or on-site</span></div>
           <div><span class="k">Languages</span><span class="v">English · Persian (Farsi) · French (basics)</span></div>
         </div>
@@ -401,7 +420,7 @@ a { color: inherit; text-decoration: none; }
     <div class="wrap hl-grid reveal">
       <div class="hl"><span class="hl-k">Education</span><span class="hl-v">BCIT — Business IT, AI Management</span></div>
       <div class="hl"><span class="hl-k">Shipped for</span><span class="hl-v">Grocery chain · nonprofit · course clients</span></div>
-      <div class="hl"><span class="hl-k">Core focus</span><span class="hl-v">Data · AI · Full-stack · IT support</span></div>
+      <div class="hl"><span class="hl-k">Core focus</span><span class="hl-v">Data · AI · Finance · Full-stack · Support</span></div>
       <div class="hl"><span class="hl-k">Certified</span><span class="hl-v">Microsoft · Google · ICDL · Azure Fundamentals</span></div>
     </div>
   </section>
@@ -573,10 +592,16 @@ a { color: inherit; text-decoration: none; }
           <div class="chips"><span>Microsoft Azure (Fundamentals)</span><span>n8n</span><span>Workflow automation</span><span>YouTube automation</span><span>Social media content</span><span>AI content creation</span><span>API integration</span></div>
         </div>
         <div class="skill-card card">
+          <span class="cap">Finance &amp; Accounting</span>
+          <h3>Read the numbers</h3>
+          <p class="kicker">A working foundation from my BCIT finance &amp; accounting courses.</p>
+          <div class="chips"><span>Financial analysis</span><span>Financial reporting</span><span>Management accounting</span><span>Budgeting &amp; forecasting</span><span>Cost &amp; variance tracking</span><span>Financial modelling (Excel)</span><span>Financial reconciliation</span><span>Billing &amp; invoicing</span></div>
+        </div>
+        <div class="skill-card card">
           <span class="cap">Business &amp; CRM</span>
           <h3>Understand the business</h3>
           <p class="kicker">The commercial and operational context around the tech.</p>
-          <div class="chips"><span>Salesforce</span><span>Business &amp; tech consulting</span><span>Financial reconciliation</span><span>Billing &amp; invoicing</span><span>Cost tracking</span><span>Process mapping</span><span>Project management</span><span>Dashboard design</span></div>
+          <div class="chips"><span>Salesforce</span><span>Business &amp; tech consulting</span><span>Process mapping</span><span>Project management</span><span>Stakeholder communication</span><span>Dashboard design</span></div>
         </div>
         <div class="skill-card card">
           <span class="cap">Ways of working</span>
@@ -763,7 +788,13 @@ a { color: inherit; text-decoration: none; }
         <div class="label"><span class="n">07</span> Contact</div>
       </div>
       <h2 class="reveal">Have a project or a role <span class="em">in mind?</span></h2>
-      <p class="reveal">I'm open to developer, data/AI, analyst, and IT support roles, plus freelance work. If your team needs someone who can analyze the data, design the system, and ship the build, I'd like to hear about it. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <p class="reveal">I'm early in my career and eager to learn — open to entry and junior roles across data, finance, tech, and support, plus freelance work. If your team needs someone reliable who can pick things up fast, analyze the numbers, and get the work done, I'd like to hear about it. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <div class="roles reveal">
+        <span class="roles-k">Roles I'm open to</span>
+        <div class="chips">
+          <span>Financial Analyst</span><span>Data Analyst</span><span>Business Analyst</span><span>Reporting / BI Analyst</span><span>Operations / Admin Support</span><span>IT Support</span><span>Junior Developer</span><span>Automation / Data Assistant</span>
+        </div>
+      </div>
       <div class="contact-avail reveal">
         <span>📍 Vancouver, BC · open to relocation</span>
         <span>🌐 On-site or remote</span>
@@ -826,6 +857,16 @@ a { color: inherit; text-decoration: none; }
     revealEls.forEach((el) => io.observe(el));
   } else { revealEls.forEach((el) => el.classList.add('in')); }
 
+  // ===== mobile menu =====
+  const burger = document.getElementById('navBurger');
+  const navMenu = document.querySelector('.nav-links');
+  function closeMenu() { if (navMenu) navMenu.classList.remove('open'); if (burger) { burger.textContent = '☰'; burger.setAttribute('aria-expanded', 'false'); } }
+  if (burger) burger.addEventListener('click', function () {
+    const open = navMenu.classList.toggle('open');
+    burger.textContent = open ? '✕' : '☰';
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
   // ===== tabbed pages =====
   const navLinks = Array.from(document.querySelectorAll('.nav-links a[data-page]'));
   const pages = Array.from(document.querySelectorAll('.page'));
@@ -844,6 +885,7 @@ a { color: inherit; text-decoration: none; }
     if (!a) return;
     const name = a.getAttribute('href').slice(1);
     if (pages.some((p) => p.dataset.page === name)) { e.preventDefault(); showPage(name, true); }
+    if (a.closest('.nav-links')) closeMenu();
   });
   window.addEventListener('popstate', function () { showPage((location.hash || '#home').slice(1), false); });
   showPage((location.hash || '#home').slice(1), false);
