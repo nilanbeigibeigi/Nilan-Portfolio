@@ -229,7 +229,9 @@ a { color: inherit; text-decoration: none; }
 .section-head .note { font-size: 15px; color: var(--ink-2); max-width: 40ch; }
 
 /* ============ WORK ============ */
-.work-list { display: flex; flex-direction: column; gap: 0; }
+.work-list { display: flex; flex-direction: column; gap: 0; counter-reset: work; }
+.work-item { counter-increment: work; }
+.work-idx::before { content: counter(work, decimal-leading-zero); }
 .work-item {
   display: grid; grid-template-columns: 54px 1fr auto; gap: 28px; align-items: start;
   padding: 30px 20px; margin: 0 -20px; border-radius: 16px; position: relative;
@@ -499,7 +501,7 @@ a { color: inherit; text-decoration: none; }
       </div>
       <div class="work-list">
         <article class="work-item reveal">
-          <div class="work-idx">01</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Setayesh Salon — Luxury Nail Studio</h3>
             <p class="work-desc">A premium, motion-rich marketing site for a Coquitlam luxury nail studio. Elegant brand design, smooth transitions throughout, and an interactive drag-to-reveal before/after slider that shows each transformation — built to feel high-end and turn visitors into bookings.</p>
@@ -512,7 +514,7 @@ a { color: inherit; text-decoration: none; }
         </article>
 
         <article class="work-item reveal">
-          <div class="work-idx">02</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">NINA Hair Studio — Booking &amp; Reminders</h3>
             <p class="work-desc">A hair-salon website built around a fast appointment-booking flow: service selection, a live-availability date/time picker, client details, and automatic text-reminder scheduling — "reserve your chair in 30 seconds." Clean boutique branding across services, gallery, and visit sections.</p>
@@ -525,7 +527,7 @@ a { color: inherit; text-decoration: none; }
         </article>
 
         <article class="work-item reveal">
-          <div class="work-idx">03</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Redline Motors — Luxury Auto Dealership</h3>
             <p class="work-desc">A full dealership website for a luxury &amp; exotic car showroom: filterable inventory (by type, make, and price), detailed vehicle listings, a service-center booking form, a gear &amp; accessories store with add-to-cart, and financing / trade-in flows. Bold, dark, product-focused design.</p>
@@ -538,7 +540,32 @@ a { color: inherit; text-decoration: none; }
         </article>
 
         <article class="work-item reveal">
-          <div class="work-idx">04</div>
+          <div class="work-idx"></div>
+          <div class="work-body">
+            <h3 class="work-title">AI Chatbot — In-Browser Demo</h3>
+            <p class="work-desc">A sample AI chat assistant with a clean conversational UI — message bubbles, a typing flow, and scripted, rule-based replies. Built in Next.js and TypeScript and running entirely in the browser, with no external API or keys required, so it loads instantly and costs nothing to host.</p>
+            <div class="work-tags"><span>Next.js</span><span>TypeScript</span><span>Chatbot UI</span><span>No API · client-side</span></div>
+          </div>
+          <div class="work-links">
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi/ai-chatbot" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </article>
+
+        <article class="work-item reveal">
+          <div class="work-idx"></div>
+          <div class="work-body">
+            <h3 class="work-title">Crescendo — Music Platform</h3>
+            <p class="work-desc">A feature-rich music app in one place: genre and artist streaming previews, an in-browser AI studio that generates a track from a chosen genre, mood, and tempo, a music school with class booking, an events / ticketing section, and an instrument marketplace with a cart — plus student and staff dashboards.</p>
+            <div class="work-tags"><span>Web app</span><span>AI music (in-browser)</span><span>Booking &amp; e-commerce</span><span>Dashboards</span></div>
+          </div>
+          <div class="work-links">
+            <a class="work-link" href="https://nilanbeigibeigi.github.io/crescendo/" target="_blank" rel="noopener">Live ↗</a>
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi/crescendo" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </article>
+
+        <article class="work-item reveal">
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Senior Services Directory</h3>
             <p class="work-desc">A Streamlit directory connecting Greater Victoria seniors and caregivers to community services, with AI intent-matching and voice search so people can find help in plain language. Built for a real nonprofit client (CCWS) as a BCIT capstone.</p>
@@ -550,7 +577,7 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
         <article class="work-item reveal">
-          <div class="work-idx">05</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Grocery Operations Platform</h3>
             <p class="work-desc">An end-to-end ordering platform for the grocery chain where I work as Assistant Manager — so I knew the workflows and edge cases before writing any code. Next.js front-end, a relational database, role-based dashboards for customers, staff, and managers, a loyalty-points engine, and a bilingual EN/FA AI chatbot.</p>
@@ -562,7 +589,7 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
         <article class="work-item reveal">
-          <div class="work-idx">06</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">AI Ticket Routing</h3>
             <p class="work-desc">A reinforcement-learning agent that assigns incoming support tickets to the right operator automatically. It learns from past routing decisions and improves over time, with a live dashboard that tracks how it's learning.</p>
@@ -573,7 +600,7 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
         <article class="work-item reveal">
-          <div class="work-idx">07</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Homigo — Student Housing</h3>
             <p class="work-desc">A housing platform with structured search, listing management, and role-based access for renters and property managers. Built in ASP.NET Core with Entity Framework and Azure SQL, deployed to Azure, as a four-person BCIT team project.</p>
@@ -584,7 +611,7 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
         <article class="work-item reveal">
-          <div class="work-idx">08</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">BI Dashboard</h3>
             <p class="work-desc">A Power BI dashboard that surfaces operational KPIs for non-technical decision-makers. Custom data models and DAX measures pull from multi-table datasets and turn raw rows into clear, decision-ready visuals.</p>
@@ -595,7 +622,7 @@ a { color: inherit; text-decoration: none; }
           </div>
         </article>
         <article class="work-item reveal">
-          <div class="work-idx">09</div>
+          <div class="work-idx"></div>
           <div class="work-body">
             <h3 class="work-title">Data Cleaning &amp; Reporting</h3>
             <p class="work-desc">A run of coursework and client projects that take raw, messy data and turn it into clean, analysis-ready datasets and reports — building data models, queries, and KPIs across Excel, Access, SQL, and Power BI so the numbers can actually be trusted.</p>
