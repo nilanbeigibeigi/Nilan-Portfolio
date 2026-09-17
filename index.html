@@ -540,6 +540,7 @@ a { color: inherit; text-decoration: none; }
         <button class="filter-btn" data-filter="web" type="button">Web</button>
         <button class="filter-btn" data-filter="ai" type="button">AI</button>
         <button class="filter-btn" data-filter="data" type="button">Data</button>
+        <button class="filter-btn" data-filter="security" type="button">Security</button>
       </div>
       <div class="work-list">
         <article class="work-item reveal">
@@ -590,6 +591,19 @@ a { color: inherit; text-decoration: none; }
           </div>
           <div class="work-links">
             <a class="work-link muted" href="https://github.com/nilanbeigibeigi/ai-chatbot" target="_blank" rel="noopener">Source ↗</a>
+          </div>
+        </article>
+
+        <article class="work-item reveal">
+          <div class="work-idx"></div>
+          <div class="work-body">
+            <h3 class="work-title">SecureGuard — Security Dashboard</h3>
+            <p class="work-desc">An educational cybersecurity suite that runs entirely in the browser: a live threat-monitoring dashboard (threats blocked, active alerts, monitored endpoints, incident feed, and an attack-type breakdown), a phishing checker that scores suspicious messages against 20+ scam signals, and a password lab showing entropy and estimated crack-time. All analysis is local — no data leaves the page.</p>
+            <div class="work-tags"><span>Security dashboard</span><span>Threat monitoring</span><span>Phishing &amp; password tools</span><span>Client-side</span></div>
+          </div>
+          <div class="work-links">
+            <a class="work-link" href="https://nilanbeigibeigi.github.io/secureguard/" target="_blank" rel="noopener">Live ↗</a>
+            <a class="work-link muted" href="https://github.com/nilanbeigibeigi/secureguard" target="_blank" rel="noopener">Source ↗</a>
           </div>
         </article>
 
@@ -1015,7 +1029,7 @@ a { color: inherit; text-decoration: none; }
   (function () {
     const items = Array.from(document.querySelectorAll('.work-item'));
     if (!items.length) return;
-    const map = { 'Setayesh': 'web', 'NINA': 'web', 'Redline': 'web', 'AI Chatbot': 'ai', 'Crescendo': 'web', 'Senior Services': 'ai', 'Grocery': 'web', 'AI Ticket': 'ai', 'Homigo': 'web', 'BI Dashboard': 'data', 'Data Cleaning': 'data' };
+    const map = { 'Setayesh': 'web', 'NINA': 'web', 'Redline': 'web', 'AI Chatbot': 'ai', 'SecureGuard': 'security', 'Crescendo': 'web', 'Senior Services': 'ai', 'Grocery': 'web', 'AI Ticket': 'ai', 'Homigo': 'web', 'BI Dashboard': 'data', 'Data Cleaning': 'data' };
     items.forEach((it) => {
       const t = (it.querySelector('.work-title') || {}).textContent || '';
       let cat = 'web';
