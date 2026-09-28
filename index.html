@@ -419,6 +419,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
         <button class="on" data-f="all">All</button>
         <button data-f="ai">AI &amp; ML</button>
         <button data-f="data">Data</button>
+        <button data-f="fin">Finance</button>
         <button data-f="web">Web</button>
         <button data-f="sec">Security</button>
       </div>
@@ -486,6 +487,21 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
         </dl>
       </article>
 
+      <article class="card feat rv" data-cat="ai data fin">
+        <div>
+          <div class="card-top"><span class="kind">AI finance · Text-to-SQL · Document AI</span><span class="yr">Sep 2026</span></div>
+          <h3>FinPilot — AI Finance Operations</h3>
+          <p class="desc">One finance system for a small business: a profit dashboard, plain-English questions answered with AI-written SQL, invoice PDFs read by AI and verified by rules, and a 3-month cash-flow forecast with what-if scenarios. Built on synthetic data.</p>
+          <ul class="tags"><li>Python</li><li>SQLite</li><li>pandas</li><li>Text-to-SQL</li><li>Ollama (Qwen 2.5)</li><li>Streamlit</li></ul>
+          <div class="links"><a href="https://github.com/nilanbeigibeigi/finpilot" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>Small businesses track money in spreadsheets: losses are noticed late, invoice errors slip through, and cash surprises hurt.</dd></div>
+          <div><dt>What I did</dt><dd>Built sandboxed text-to-SQL with self-correction, AI invoice extraction with 7 rule-based checks and human approval, and a seasonal cash-flow forecast.</dd></div>
+          <div class="res"><dt>Result</dt><dd>Finds loss months from a plain-English question, and the invoice checks catch 5/5 planted problems (wrong tax, duplicates, unknown vendor) with 0 false alarms.</dd></div>
+        </dl>
+      </article>
+
       <article class="card feat rv" data-cat="web data ai">
         <div>
           <div class="card-top"><span class="kind">Full-stack · Retail operations</span><span class="yr">2025</span></div>
@@ -531,14 +547,14 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
         <div class="links"><a href="https://nilanbeigibeigi.github.io/athena-agent/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/nilanbeigibeigi/athena-agent" target="_blank" rel="noopener">Code ↗</a></div>
       </article>
 
-      <article class="card rv" data-cat="ai data">
+      <article class="card rv" data-cat="ai data fin">
         <div class="card-top"><span class="kind">Machine learning · Finance</span><span class="yr">2026</span></div>
         <h3>Credit Risk &amp; Loan Approval</h3>
         <p class="desc">Logistic-regression model that trains in the browser on a lending dataset and predicts approval with a probability, risk score, and top factors — plus accuracy, precision, recall, and a confusion matrix.</p>
         <ul class="tags"><li>Logistic regression</li><li>Risk scoring</li><li>Client-side ML</li></ul>
       </article>
 
-      <article class="card rv" data-cat="ai data">
+      <article class="card rv" data-cat="ai data fin">
         <div class="card-top"><span class="kind">Forecasting · ML</span><span class="yr">2026</span></div>
         <h3>Sales Revenue Forecaster</h3>
         <p class="desc">Learns trend and seasonality from monthly revenue and projects the next months with a confidence band, reporting R², MAPE, and error. Paste your own numbers or use the sample data.</p>
@@ -660,9 +676,9 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <div class="skill-grid">
       <div class="skill rv"><h3><span>💻</span>Programming</h3><p>Front-end, back-end, and scripting.</p><div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">SQL</span><span class="chip">C#</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">DAX</span></div></div>
       <div class="skill rv"><h3><span>📊</span>Data &amp; Analytics</h3><p>From messy rows to decision-ready visuals.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Excel (Advanced)</span><span class="chip">MS Access</span><span class="chip">Data modeling</span><span class="chip">Data cleaning</span><span class="chip">KPI reporting</span><span class="chip">Dashboard design</span></div></div>
-      <div class="skill rv"><h3><span>🧠</span>AI &amp; Machine Learning</h3><p>Applied AI in real workflows.</p><div class="chips"><span class="chip">Machine learning</span><span class="chip">scikit-learn</span><span class="chip">Reinforcement learning</span><span class="chip">Adaptive systems</span><span class="chip">LLM APIs</span><span class="chip">MCP servers</span><span class="chip">RAG</span><span class="chip">LLM evaluation</span><span class="chip">AI agents &amp; tool calling</span><span class="chip">Prompt engineering</span><span class="chip">Chatbots (EN/FA)</span></div></div>
+      <div class="skill rv"><h3><span>🧠</span>AI &amp; Machine Learning</h3><p>Applied AI in real workflows.</p><div class="chips"><span class="chip">Machine learning</span><span class="chip">scikit-learn</span><span class="chip">Reinforcement learning</span><span class="chip">Adaptive systems</span><span class="chip">LLM APIs</span><span class="chip">MCP servers</span><span class="chip">RAG</span><span class="chip">LLM evaluation</span><span class="chip">AI agents &amp; tool calling</span><span class="chip">Text-to-SQL</span><span class="chip">Document AI</span><span class="chip">Prompt engineering</span><span class="chip">Chatbots (EN/FA)</span></div></div>
       <div class="skill rv"><h3><span>☁️</span>Development &amp; Cloud</h3><p>Shipping full apps end to end.</p><div class="chips"><span class="chip">Next.js</span><span class="chip">ASP.NET Core</span><span class="chip">Entity Framework</span><span class="chip">Streamlit</span><span class="chip">Prisma</span><span class="chip">PostgreSQL (Supabase)</span><span class="chip">Azure</span><span class="chip">Git / GitHub</span><span class="chip">n8n</span></div></div>
-      <div class="skill rv"><h3><span>📈</span>Business &amp; Finance</h3><p>The context around the tech.</p><div class="chips"><span class="chip">Requirements gathering</span><span class="chip">Process mapping</span><span class="chip">Workflow optimization</span><span class="chip">Stakeholder communication</span><span class="chip">Sales reporting</span><span class="chip">Billing &amp; invoicing</span><span class="chip">Cost tracking</span><span class="chip">Financial reconciliation</span><span class="chip">Decision support systems</span></div></div>
+      <div class="skill rv"><h3><span>📈</span>Business &amp; Finance</h3><p>The context around the tech.</p><div class="chips"><span class="chip">Requirements gathering</span><span class="chip">Process mapping</span><span class="chip">Workflow optimization</span><span class="chip">Stakeholder communication</span><span class="chip">Sales reporting</span><span class="chip">Billing &amp; invoicing</span><span class="chip">Cost tracking</span><span class="chip">Financial reconciliation</span><span class="chip">Cash-flow forecasting</span><span class="chip">Invoice auditing</span><span class="chip">Profitability analysis</span><span class="chip">Decision support systems</span></div></div>
       <div class="skill rv"><h3><span>🤝</span>Customer &amp; Operations</h3><p>3.5 years leading a busy retail floor.</p><div class="chips"><span class="chip">Customer service &amp; support</span><span class="chip">Team leadership</span><span class="chip">Scheduling</span><span class="chip">Inventory management</span><span class="chip">POS systems</span><span class="chip">Microsoft 365</span><span class="chip">Canva</span></div></div>
     </div>
   </div>
