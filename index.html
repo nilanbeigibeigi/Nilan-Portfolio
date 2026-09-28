@@ -169,6 +169,8 @@ h2{font-size:clamp(30px,3.8vw,46px);letter-spacing:-.03em;line-height:1.08;font-
 .proj.hide,.proj.is-feat{display:none}
 #projList.filtering .proj.is-feat:not(.hide){display:grid}
 @media (max-width:760px){.proj{grid-template-columns:1fr;gap:10px}.proj-feat .proj{padding:18px}}
+.filters button .n{opacity:.6;font-size:12.5px;margin-inline-start:2px}
+.proj-intro{color:var(--muted);font-size:16.5px;max-width:70ch;margin:-6px 0 26px}
 
 /* EXPERIENCE */
 .timeline{display:grid;gap:16px}
@@ -442,21 +444,22 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <div class="sec-head rv">
       <div><div class="eyebrow">02 — Selected work</div><h2>Projects &amp; <span class="serif">case studies</span></h2></div>
       <div class="filters" role="group" aria-label="Filter projects">
-        <button class="on" data-f="all">All</button>
-        <button data-f="ai">AI &amp; ML</button>
-        <button data-f="data">Data</button>
-        <button data-f="fin">Finance</button>
-        <button data-f="build">Construction</button>
-        <button data-f="crm">CRM</button>
-        <button data-f="web">Web</button>
-        <button data-f="sec">Security</button>
+        <button class="on" data-f="all">All <span class="n">20</span></button>
+        <button data-f="ai">AI &amp; ML <span class="n">5</span></button>
+        <button data-f="data">Data <span class="n">2</span></button>
+        <button data-f="fin">Finance <span class="n">3</span></button>
+        <button data-f="crm">CRM <span class="n">2</span></button>
+        <button data-f="build">Construction <span class="n">1</span></button>
+        <button data-f="web">Web <span class="n">6</span></button>
+        <button data-f="sec">Security <span class="n">1</span></button>
       </div>
     </div>
 
 <div class="proj-block">
+      <p class="proj-intro">I build AI systems for real business problems: agents, RAG, MCP and automation, plus the data, finance and web work around them.</p>
       <h3 class="proj-sub" id="featHead">Featured <span>6 projects that show how I build, test and ship AI systems</span></h3>
       <div class="proj-feat" id="projFeat">
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI agent</span><span class="yr">2026</span></div>
     <h3>ShiftMate</h3>
@@ -468,7 +471,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Tool calling · RAG · Ollama</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">RAG</span><span class="yr">2026</span></div>
     <h3>PolicyPilot</h3>
@@ -480,7 +483,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · RAG · Embeddings · Evaluation</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data fin">
+<article class="proj" data-cat="fin">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI finance</span><span class="yr">2026</span></div>
     <h3>FinPilot</h3>
@@ -492,7 +495,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Text-to-SQL · SQLite · Document AI</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">MCP server</span><span class="yr">2026</span></div>
     <h3>Job Tracker MCP</h3>
@@ -504,7 +507,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · MCP · Claude · pytest</p>
   </div>
 </article>
-<article class="proj" data-cat="web data ai crm">
+<article class="proj" data-cat="crm">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Full-stack</span><span class="yr">2025</span></div>
     <h3>Persia Foods Platform</h3>
@@ -516,7 +519,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Next.js · PostgreSQL · Prisma · LLM API</p>
   </div>
 </article>
-<article class="proj" data-cat="ai web">
+<article class="proj" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI · real client</span><span class="yr">2026</span></div>
     <h3>CCWS Senior Services Directory</h3>
@@ -531,7 +534,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
       </div>
       <h3 class="proj-sub" id="moreHead">More projects <span id="moreNote">Data, web, security and earlier work</span></h3>
       <div class="proj-list" id="projList">
-<article class="proj is-feat" data-cat="ai data">
+<article class="proj is-feat" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI agent</span><span class="yr">2026</span></div>
     <h3>ShiftMate</h3>
@@ -543,7 +546,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Tool calling · RAG · Ollama</p>
   </div>
 </article>
-<article class="proj is-feat" data-cat="ai data">
+<article class="proj is-feat" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">RAG</span><span class="yr">2026</span></div>
     <h3>PolicyPilot</h3>
@@ -555,7 +558,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · RAG · Embeddings · Evaluation</p>
   </div>
 </article>
-<article class="proj is-feat" data-cat="ai data fin">
+<article class="proj is-feat" data-cat="fin">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI finance</span><span class="yr">2026</span></div>
     <h3>FinPilot</h3>
@@ -567,7 +570,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Text-to-SQL · SQLite · Document AI</p>
   </div>
 </article>
-<article class="proj is-feat" data-cat="ai data">
+<article class="proj is-feat" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">MCP server</span><span class="yr">2026</span></div>
     <h3>Job Tracker MCP</h3>
@@ -579,7 +582,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · MCP · Claude · pytest</p>
   </div>
 </article>
-<article class="proj is-feat" data-cat="web data ai crm">
+<article class="proj is-feat" data-cat="crm">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Full-stack</span><span class="yr">2025</span></div>
     <h3>Persia Foods Platform</h3>
@@ -591,7 +594,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Next.js · PostgreSQL · Prisma · LLM API</p>
   </div>
 </article>
-<article class="proj is-feat" data-cat="ai web">
+<article class="proj is-feat" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI · real client</span><span class="yr">2026</span></div>
     <h3>CCWS Senior Services Directory</h3>
@@ -603,7 +606,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Streamlit · Llama 3.2 · Voice search</p>
   </div>
 </article>
-<article class="proj" data-cat="ai web build">
+<article class="proj" data-cat="build">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Construction</span><span class="yr">2026</span></div>
     <h3>SiteDesk</h3>
@@ -615,7 +618,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">FastAPI · HTMX · SQLite · Ollama</p>
   </div>
 </article>
-<article class="proj" data-cat="ai web data crm">
+<article class="proj" data-cat="crm">
   <div class="p-left">
     <div class="p-meta"><span class="kind">CRM</span><span class="yr">2026</span></div>
     <h3>LeadDesk</h3>
@@ -627,7 +630,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">FastAPI · HTMX · SQLite · Ollama</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="ai">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Reinforcement learning</span><span class="yr">2026</span></div>
     <h3>AI Ticket Routing</h3>
@@ -639,7 +642,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Python · Reinforcement learning</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="data">
   <div class="p-left">
     <div class="p-meta"><span class="kind">AI data analyst</span><span class="yr">2026</span></div>
     <h3>Athena</h3>
@@ -651,7 +654,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">JavaScript · LLM (Groq) · Charts</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data fin">
+<article class="proj" data-cat="fin">
   <div class="p-left">
     <div class="p-meta"><span class="kind">ML · Finance</span><span class="yr">2026</span></div>
     <h3>Credit Risk &amp; Loan Approval</h3>
@@ -663,7 +666,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Logistic regression · Risk scoring</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data fin">
+<article class="proj" data-cat="fin">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Forecasting</span><span class="yr">2026</span></div>
     <h3>Sales Revenue Forecaster</h3>
@@ -675,7 +678,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Regression · Seasonality · Charts</p>
   </div>
 </article>
-<article class="proj" data-cat="ai data">
+<article class="proj" data-cat="data">
   <div class="p-left">
     <div class="p-meta"><span class="kind">ML · BCIT</span><span class="yr">2025</span></div>
     <h3>YVR Ground Transportation Demand</h3>
@@ -747,7 +750,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Front-end · Cart · Filters</p>
   </div>
 </article>
-<article class="proj" data-cat="web ai">
+<article class="proj" data-cat="web">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Web app · Audio</span><span class="yr">2026</span></div>
     <h3>Crescendo <span class="badge-concept">concept</span></h3>
@@ -759,7 +762,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     <p class="stack">Web Audio · E-commerce</p>
   </div>
 </article>
-<article class="proj" data-cat="web ai">
+<article class="proj" data-cat="web">
   <div class="p-left">
     <div class="p-meta"><span class="kind">Chat UI</span><span class="yr">2026</span></div>
     <h3>AI Chatbot</h3>
@@ -983,7 +986,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     feat.hidden=!all; featHead.hidden=!all;
     list.classList.toggle('filtering',!all);
     rows.forEach(function(r){var show=all||r.dataset.cat.split(' ').indexOf(f)>-1; r.classList.toggle('hide',!show); if(show&&(!all||!r.classList.contains('is-feat')))n++;});
-    moreHead.firstChild.nodeValue=all?'More projects ':b.textContent+' ';
+    moreHead.firstChild.nodeValue=all?'More projects ':b.firstChild.nodeValue;
     moreNote.textContent=all?'Data, web, security and earlier work':n+(n===1?' project':' projects');
   })});
   // reveal
