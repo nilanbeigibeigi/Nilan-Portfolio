@@ -4,33 +4,35 @@
 <meta charset="utf-8">
 <script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nilan Beigi — AI, Data &amp; Full-Stack Developer · Vancouver</title>
-<meta name="description" content="Nilan Beigi builds AI tools, dashboards, and web apps for Vancouver businesses. BCIT Business IT (AI) graduate — open to analyst, developer, and support roles.">
-<meta property="og:title" content="Nilan Beigi — AI, Data & Full-Stack Developer">
+<title>Nilan Beigi — AI &amp; Data Analyst · Vancouver</title>
+<meta name="description" content="Nilan Beigi turns business data into reports, dashboards and AI tools. BCIT Business IT (AI) graduate in Vancouver, open to AI, data and business analyst roles.">
+<meta property="og:title" content="Nilan Beigi — AI & Data Analyst">
 <meta property="og:description" content="AI tools, dashboards, and web apps that businesses actually use. Vancouver, BC.">
 <meta property="og:image" content="profile.jpg">
-<meta name="theme-color" content="#0A0C16">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%235B6CFF'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'>NB</text></svg>">
+<meta name="theme-color" content="#1F3BD1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232747C9'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'>NB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A0C16; --bg2:#0E1122; --surface:#121631; --surface2:#171C3D;
-  --line:rgba(160,170,255,.12); --line-strong:rgba(160,170,255,.24);
-  --ink:#ECEEFB; --muted:#A3A9CC; --faint:#6F76A0;
-  --accent:#7B8BFF; --accent-2:#2EE6D6; --accent-ink:#0A0C16;
-  --glow:rgba(91,108,255,.35);
-  --radius:18px; --maxw:1160px;
-  --shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 20px 40px -24px rgba(0,0,0,.6);
+  --bg:#F4F6F5; --bg2:#ECF0EE; --surface:#FFFFFF; --surface2:#F1F4F3;
+  --line:#DCE2DF; --line-strong:#BFC9C4;
+  --ink:#12201B; --muted:#4D5C56; --faint:#7B8883;
+  --accent:#2747C9; --accent-2:#0E7A5C; --accent-ink:#FFFFFF;
+  --good-bg:#DDF2E3; --good-ink:#0B6236;
+  --glow:transparent;
+  --radius:10px; --maxw:1120px;
+  --shadow:none;
+  --display:"Bricolage Grotesque",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
 }
-:root[data-theme="light"]{
-  --bg:#F6F7FC; --bg2:#EEF0FA; --surface:#FFFFFF; --surface2:#F3F4FC;
-  --line:rgba(30,40,120,.10); --line-strong:rgba(30,40,120,.2);
-  --ink:#0E1233; --muted:#4A5078; --faint:#7F85A8;
-  --accent:#3346D3; --accent-2:#0E9F95; --accent-ink:#FFFFFF;
-  --glow:rgba(51,70,211,.18);
-  --shadow:0 1px 2px rgba(20,30,90,.05), 0 18px 36px -24px rgba(20,30,90,.25);
+:root[data-theme="dark"]{
+  --bg:#0E1513; --bg2:#121B18; --surface:#16211E; --surface2:#1C2925;
+  --line:rgba(200,230,215,.11); --line-strong:rgba(200,230,215,.22);
+  --ink:#E5ECE9; --muted:#A3B2AC; --faint:#74837D;
+  --accent:#93A6FF; --accent-2:#58D2A6; --accent-ink:#0E1513;
+  --good-bg:rgba(88,210,166,.14); --good-ink:#7FE3BE;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-padding-top:84px}
@@ -299,6 +301,109 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
   .photo-tag{left:10px}
   .photo-card{max-width:260px}
 }
+
+/* ===== Nov 2026 theme: "results sheet" ===== */
+body{font-family:"Instrument Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:16.5px;line-height:1.6}
+h1,h2,h3,.logo,.tile b,.pager b,.about .big,.contact-card h2{font-family:var(--display);font-optical-sizing:auto}
+.mono,.kind,.yr,.tools,.stack,.when,.cgc code,.par dt{font-family:var(--mono)}
+.serif{font-family:inherit;font-style:normal;font-weight:inherit;font-size:inherit}
+.grad{background:none;color:inherit;-webkit-background-clip:initial;background-clip:initial}
+.eyebrow,.tile .tn{display:none}
+h2{margin-top:0;font-weight:600;letter-spacing:-.025em}
+.kind,.par dt,.sub-h,.cg h4,.fact .k,.stack-strip .lbl,.pager small{text-transform:none;letter-spacing:0}
+.sub-h{font-family:var(--display);font-size:18px;color:var(--ink);font-weight:600}
+
+/* calm surfaces: borders, no glow */
+.hero::before,.hero::after,.svc::after{display:none}
+.svc,.card,.proj-feat .proj,.job,.skill,.edu-main,.cgc,.cert,.bx,.tile,.pager a,.step{border-radius:var(--radius);box-shadow:none}
+.svc:hover,.card:hover,.tile:hover{transform:none;box-shadow:none;border-color:var(--accent)}
+.btn{border-radius:8px;font-weight:600}
+.btn:hover{transform:none}
+.btn.primary{box-shadow:none}
+.chip{border-radius:5px;background:var(--surface)}
+.pill{border-radius:6px;background:var(--surface)}
+.logo-mark{background:var(--accent);border-radius:8px}
+.contact-card{background:var(--surface);border-radius:14px}
+.svc-cta{background:var(--surface2)}
+.job .co a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.job li a{text-decoration:underline;text-underline-offset:3px}
+header.nav.scrolled{background:color-mix(in srgb,var(--bg) 88%,transparent)}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* hero */
+.hero{padding:132px 0 64px;min-height:auto}
+.hero-grid{grid-template-columns:1fr 260px;gap:56px;align-items:end}
+h1{font-size:clamp(36px,4.9vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:600;margin:20px 0 18px;max-width:18ch}
+.lead{max-width:60ch;font-size:clamp(16px,1.5vw,18px)}
+.photo-card{padding:0;background:none;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.photo-card img{border-radius:0;aspect-ratio:4/5}
+
+/* the one bold element: a spreadsheet of tested results */
+.sheet{margin-top:52px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);overflow:hidden}
+.sheet figcaption{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--surface2)}
+.sheet .file{font-family:var(--mono);font-size:13px;color:var(--accent-2);font-weight:500}
+.sheet .cap{font-family:var(--display);font-weight:600;font-size:17px}
+.sheet-scroll{overflow-x:auto}
+.sheet table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.sheet th{font-weight:500;font-size:13px;color:var(--faint);text-align:left;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.sheet td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+.sheet tr:last-child td{border-bottom:0}
+.sheet td b{display:block;color:var(--ink);font-weight:600}
+.sheet td span{font-size:13.5px;color:var(--faint)}
+.sheet .rn{width:44px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--faint);background:var(--bg2);border-right:1px solid var(--line)}
+.sheet td.good{background:var(--good-bg);color:var(--good-ink);font-family:var(--mono);font-weight:500;font-size:14px;white-space:nowrap}
+.sheet tbody tr{animation:rowIn .5s ease both}
+.sheet tbody tr:nth-child(2){animation-delay:.12s}.sheet tbody tr:nth-child(3){animation-delay:.24s}
+.sheet tbody tr:nth-child(4){animation-delay:.36s}.sheet tbody tr:nth-child(5){animation-delay:.48s}
+@keyframes rowIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.facts{margin-top:20px;border-radius:10px}
+.fact .k{font-size:13px;color:var(--faint)}
+.explore{margin-top:28px}
+
+/* one motion moment only */
+.rv{opacity:1;transform:none;transition:none}
+.js .page.show{animation:none}
+@media (prefers-reduced-motion:reduce){.sheet tbody tr{animation:none}}
+@media (max-width:1000px){.hero-grid{grid-template-columns:1fr;align-items:start}.photo-card{max-width:220px}h1{max-width:20ch}}
+@media (max-width:680px){.photo-card{max-width:150px}.hero{padding:104px 0 44px}.sheet{margin-top:36px}.sheet td,.sheet th{padding:10px 12px}}
+
+/* ===== bold pass: cobalt hero band ===== */
+:root{--hero:#1F3BD1;--hero-ink:#F4F6F5;--hero-muted:#C9D2FF;--mark:#FFD84D}
+:root[data-theme="dark"]{--hero:#18268A;--hero-ink:#EEF1FF;--hero-muted:#AFB9F2;--mark:#FFD84D}
+header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
+.hero{background:linear-gradient(var(--hero) 0,var(--hero) calc(100% - 330px),var(--bg) calc(100% - 330px));color:var(--hero-ink);padding:124px 0 64px}
+.hero h1{font-size:clamp(42px,7vw,92px);line-height:.96;letter-spacing:-.04em;font-weight:700;max-width:13ch;margin:22px 0 22px;color:#fff}
+.hero .lead{color:var(--hero-muted)}
+.hero .lead b{color:#fff;font-weight:600}
+.hero .pill{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.hero .btn{color:#fff;border-color:rgba(255,255,255,.4);background:transparent}
+.hero .btn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero .btn.primary{background:var(--mark);color:#14201B;border-color:var(--mark)}
+.hero .btn.primary:hover{background:#FFE47D}
+.hero .photo-card{border:4px solid #fff;border-radius:14px;transform:rotate(2deg);box-shadow:0 30px 60px -30px rgba(5,15,60,.6)}
+.hero-grid{grid-template-columns:1fr 280px;align-items:center}
+.sheet{color:var(--ink);box-shadow:0 40px 80px -40px rgba(10,25,90,.45);border-color:var(--line-strong)}
+.fx{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--line);font-size:13.5px;background:var(--surface)}
+.fx-cell{font-family:var(--mono);color:var(--faint);padding:8px 14px;border-right:1px solid var(--line);min-width:58px;text-align:center}
+.fx-i{font-style:italic;font-family:Georgia,serif;color:var(--faint);padding:8px 12px;border-right:1px solid var(--line)}
+.fx code{font-family:var(--mono);color:var(--accent);padding:8px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet tbody tr{cursor:default;outline:none}
+.sheet tbody tr.sel td.good{box-shadow:inset 0 0 0 2px var(--good-ink)}
+.sheet tbody tr.sel .rn{background:var(--accent);color:#fff}
+.sheet tbody tr:focus-visible td{background:var(--surface2)}
+.facts{margin-top:28px}
+@media (max-width:1000px){.hero-grid{grid-template-columns:1fr}.hero .photo-card{max-width:200px;transform:rotate(2deg)}.hero{background:linear-gradient(var(--hero) 0,var(--hero) calc(100% - 420px),var(--bg) calc(100% - 420px))}}
+@media (max-width:680px){.hero .photo-card{max-width:140px}.hero h1{font-size:clamp(40px,11vw,56px)}}
+
+/* band ends mid-sheet */
+.hero,.hero{background:var(--bg);isolation:isolate;color:var(--ink)}
+@media (max-width:1000px){.hero{background:var(--bg)}}
+.hero-grid{position:relative;color:var(--hero-ink)}
+.hero-grid::before{content:"";position:absolute;left:50%;width:100vw;transform:translateX(-50%);top:-140px;bottom:-250px;background:var(--hero);z-index:-1}
+.sheet{position:relative;z-index:1}
+.hero h1{font-size:clamp(42px,6.2vw,80px);max-width:15ch}
+.photo-card img{height:auto}
 </style>
 </head>
 <body>
@@ -333,34 +438,50 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="pill rv"><span class="dot"></span> Available for work &amp; freelance — Vancouver &amp; remote</span>
-        <h1 class="rv">I build <span class="serif grad">AI tools, dashboards</span> &amp; web apps that businesses actually use.</h1>
-        <p class="lead rv">I'm Nilan — a <b>BCIT Business IT (AI Specialization)</b> graduate in Vancouver working across <b>data, AI, and full-stack development</b>. I've built for a grocery chain, a nonprofit, and small businesses — from SQL reports and Power BI dashboards to AI chatbots and full web platforms.</p>
-        <div class="cta-row rv">
-          <a class="btn primary" href="#services">See what I can build →</a>
-          <a class="btn" href="#work">View projects</a>
-          <a class="btn" href="Nilan_Beigi_Resume_2026.pdf" target="_blank" rel="noopener">Download résumé ↓</a>
+        <span class="pill"><span class="dot"></span> Open to AI, data and business analyst roles in Vancouver or remote</span>
+        <h1>I turn business data into reports, dashboards and AI tools people actually use.</h1>
+        <p class="lead">I'm Nilan, a <b>BCIT Business IT graduate</b> with an AI specialization. Right now I build <b>Excel finance reports</b>, the website and social content for Clawzone Arcade in Burnaby, and run <b>Nylan Digital Solutions</b>, my own AI and automation consultancy.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#work">View projects</a>
+          <a class="btn" href="Nilan_Beigi_Resume_2026.pdf" target="_blank" rel="noopener">Download résumé</a>
+          <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
-      <div class="rv">
+      <div>
         <div class="photo-card">
           <img src="profile.jpg" alt="Portrait of Nilan Beigi" width="480" height="600">
-          <div class="photo-tag"><b>Nilan Beigi</b><span>Burnaby / Vancouver, BC</span></div>
         </div>
       </div>
     </div>
 
-    <div class="facts rv">
-      <div class="fact"><div class="k">Education</div><div class="v">BCIT · AI Specialization '26</div></div>
-      <div class="fact"><div class="k">Focus</div><div class="v">Data · AI · Full-stack</div></div>
-      <div class="fact"><div class="k">Open to</div><div class="v">Analyst, dev &amp; support roles</div></div>
-      <div class="fact"><div class="k">Languages</div><div class="v">English · Persian · French (basic)</div></div>
+    <figure class="sheet" aria-labelledby="sheetCap">
+      <figcaption id="sheetCap"><span class="file">results.xlsx</span><span class="cap">I test what I build. Here is how it scored.</span></figcaption>
+      <div class="fx" aria-live="polite"><span class="fx-cell" id="fxCell">D1</span><span class="fx-i">fx</span><code id="fxText">=COUNTIF(eval[answer],"correct")</code></div>
+      <div class="sheet-scroll">
+      <table>
+        <thead><tr><th class="rn" scope="col"></th><th scope="col">Project</th><th scope="col">What I tested</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr tabindex="0" data-fx='=COUNTIF(eval[answer],"correct")'><td class="rn">1</td><td><b>PolicyPilot</b><span>Private RAG assistant</span></td><td>23 policy questions, including trick questions</td><td class="good">23 / 23 correct</td></tr>
+          <tr tabindex="0" data-fx='=COUNTIFS(invoices[flagged],TRUE,invoices[planted],TRUE)'><td class="rn">2</td><td><b>FinPilot</b><span>Small-business finance assistant</span></td><td>9 invoices, 5 with planted errors</td><td class="good">5 / 5 caught, 0 false alarms</td></tr>
+          <tr tabindex="0" data-fx='=AVERAGE(scenarios[right_tool])'><td class="rn">3</td><td><b>ShiftMate</b><span>Tool-calling AI agent</span></td><td>12 store-staff scenarios</td><td class="good">Tool accuracy 83% → 92%</td></tr>
+          <tr tabindex="0" data-fx='=(search_before - search_after) / search_before'><td class="rn">4</td><td><b>Homigo</b><span>Housing platform, team of 4</span></td><td>Search after query tuning</td><td class="good">30% more efficient</td></tr>
+          <tr tabindex="0" data-fx='=RSQ(actual_demand, predicted_demand)'><td class="rn">5</td><td><b>YVR demand forecast</b><span>Machine learning</span></td><td>Airport ground-transport demand</td><td class="good">R² 0.58, Random Forest</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </figure>
+
+    <div class="facts">
+      <div class="fact"><div class="k">Now</div><div class="v">Clawzone Arcade and Nylan Digital</div></div>
+      <div class="fact"><div class="k">Education</div><div class="v">BCIT, AI Specialization, 2026</div></div>
+      <div class="fact"><div class="k">Focus</div><div class="v">AI, data and finance reporting</div></div>
+      <div class="fact"><div class="k">Languages</div><div class="v">English, Persian, basic French</div></div>
     </div>
-    <div class="stack-strip rv">
-      <span class="lbl">Tech I build with</span>
-      <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Next.js</span><span class="chip">ASP.NET Core</span><span class="chip">C#</span><span class="chip">Streamlit</span><span class="chip">PostgreSQL</span><span class="chip">Azure</span><span class="chip">LLM APIs</span><span class="chip">n8n</span>
+    <div class="stack-strip">
+      <span class="lbl">Tools I use</span>
+      <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">Streamlit</span><span class="chip">Ollama</span><span class="chip">RAG</span><span class="chip">MCP</span><span class="chip">n8n</span><span class="chip">Azure</span><span class="chip">Next.js</span>
     </div>
-    <div class="explore">
+<div class="explore">
       <a class="tile rv" href="#services"><span class="tn">01</span><b>Services</b><span>What I can build for your business</span><i>→</i></a>
       <a class="tile rv" href="#work"><span class="tn">02</span><b>Projects</b><span>AI, data &amp; web case studies</span><i>→</i></a>
       <a class="tile rv" href="#experience"><span class="tn">03</span><b>Experience</b><span>Where I've worked</span><i>→</i></a>
@@ -788,14 +909,27 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     </div>
     <div class="timeline">
       <article class="job rv">
-        <div><div class="when">Oct 2026 – Present</div><div class="where">Burnaby, BC · Part-time</div></div>
+        <div><div class="when">2026 – Present</div><div class="where">Burnaby, BC<br>Full-time until Oct 2026, now part-time</div></div>
         <div>
           <h3>Arcade Attendant, Digital &amp; Sales Support</h3>
           <div class="co">Clawzone Arcade · Family entertainment centre</div>
           <ul>
+            <li>Build the arcade's <b>finance reports in Excel</b>, tracking sales and day-to-day money in and out.</li>
             <li>Update and maintain the arcade's <b>website</b>, keeping events, prices and party packages current.</li>
             <li>Run <b>social media</b>: shoot and edit <b>photos and videos</b>, and design posts and in-store promotional materials.</li>
-            <li>Handle <b>sales and payments</b> and support the store's day-to-day <b>finance</b> tasks.</li>
+            <li>Handle <b>sales and payments</b> at the counter.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><div class="when">Sep 2026 – Present</div><div class="where">Burnaby, BC · Remote</div></div>
+        <div>
+          <h3>Founder</h3>
+          <div class="co"><a href="https://nylandigital.com" target="_blank" rel="noopener">Nylan Digital Solutions</a> · AI, automation &amp; web consulting</div>
+          <ul>
+            <li>Run my own <b>AI, automation and web</b> consultancy for small businesses and companies, in English and Persian.</li>
+            <li>Built <b>10+ working sample systems</b> to show clients real options: CRM, invoicing, inventory, an analytics agent and a private CSV analyzer.</li>
+            <li>Business registered in BC since 2023; live at <a href="https://nylandigital.com" target="_blank" rel="noopener"><b>nylandigital.com</b></a>.</li>
           </ul>
         </div>
       </article>
@@ -974,11 +1108,10 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
   var root=document.documentElement;
   // theme
   var saved=null; try{saved=localStorage.getItem('nb-theme')}catch(e){}
-  if(saved){root.setAttribute('data-theme',saved)}
-  else if(window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches){root.setAttribute('data-theme','light')}
+  if(saved==='dark'){root.setAttribute('data-theme','dark')}
   document.getElementById('themeBtn').addEventListener('click',function(){
-    var t=root.getAttribute('data-theme')==='light'?'dark':'light';
-    root.setAttribute('data-theme',t); try{localStorage.setItem('nb-theme',t)}catch(e){}
+    var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    if(t==='dark'){root.setAttribute('data-theme','dark')}else{root.removeAttribute('data-theme')} try{localStorage.setItem('nb-theme',t)}catch(e){}
   });
   // nav bg on scroll
   var nav=document.getElementById('nav');
@@ -1025,7 +1158,7 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
     if(!target||!target.classList.contains('page')){target=document.getElementById('home');id='home'}
     pages.forEach(function(p){p.classList.toggle('show',p===target)});
     navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id)});
-    document.title=(id==='home'?'Nilan Beigi — AI, Data & Full-Stack Developer · Vancouver':target.dataset.title+' — Nilan Beigi');
+    document.title=(id==='home'?'Nilan Beigi — AI & Data Analyst · Vancouver':target.dataset.title+' — Nilan Beigi');
     window.scrollTo(0,0);
     target.querySelectorAll('.rv').forEach(function(el){
       var r=el.getBoundingClientRect(); if(r.top<innerHeight)el.classList.add('in');
@@ -1034,6 +1167,13 @@ section.sec{border-top:none;padding:124px 0 64px;min-height:calc(100vh - 110px)}
   window.addEventListener('hashchange',show);
   show();
   document.getElementById('yr').textContent=new Date().getFullYear();
+  // formula bar
+  var fxT=document.getElementById('fxText'), fxC=document.getElementById('fxCell');
+  document.querySelectorAll('.sheet tbody tr').forEach(function(r,i){
+    function sel(){document.querySelectorAll('.sheet tbody tr').forEach(function(x){x.classList.remove('sel')});r.classList.add('sel');fxT.textContent=r.dataset.fx;fxC.textContent='D'+(i+1);}
+    r.addEventListener('mouseenter',sel); r.addEventListener('focus',sel); r.addEventListener('click',sel);
+    if(i===0)r.classList.add('sel');
+  });
 })();
 </script>
 </body>
