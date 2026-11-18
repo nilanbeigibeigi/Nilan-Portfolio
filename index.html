@@ -9,7 +9,7 @@
 <meta property="og:title" content="Nilan Beigi — AI & Data Analyst">
 <meta property="og:description" content="AI tools, dashboards, and web apps that businesses actually use. Vancouver, BC.">
 <meta property="og:image" content="profile.jpg">
-<meta name="theme-color" content="#1F3BD1">
+<meta name="theme-color" content="#DCE6FF">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232747C9'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'>NB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -404,6 +404,28 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
 .sheet{position:relative;z-index:1}
 .hero h1{font-size:clamp(42px,6.2vw,80px);max-width:15ch}
 .photo-card img{height:auto}
+
+/* softer hero (v3) */
+:root{--hero:#DCE6FF;--hero-ink:#12201B;--hero-muted:#3E4C6E;--hero-h1:#13226B}
+:root[data-theme="dark"]{--hero:#1D2748;--hero-ink:#E8ECFA;--hero-muted:#B4BEDE;--hero-h1:#FFFFFF}
+.hero h1{color:var(--hero-h1)}
+.hero .lead{color:var(--hero-muted)}
+.hero .lead b{color:var(--hero-h1)}
+.hero .pill{background:rgba(255,255,255,.55);border-color:rgba(19,34,107,.18);color:var(--hero-ink)}
+.hero .btn{color:var(--hero-h1);border-color:rgba(19,34,107,.28);background:rgba(255,255,255,.4)}
+.hero .btn:hover{border-color:var(--hero-h1);background:rgba(255,255,255,.75)}
+.hero .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hero .btn.primary:hover{background:#1F3AAE}
+:root[data-theme="dark"] .hero .pill,:root[data-theme="dark"] .hero .btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
+:root[data-theme="dark"] .hero .btn.primary{background:var(--accent);color:#0E1513}
+.hero .photo-card{box-shadow:0 24px 50px -30px rgba(19,34,107,.45)}
+.sheet{box-shadow:0 30px 60px -40px rgba(19,34,107,.35)}
+.facts{grid-template-columns:repeat(3,1fr)}
+@media (max-width:680px){.facts{grid-template-columns:1fr}}
+/* about sections */
+.ab-h{font-size:17px;font-weight:600;margin:26px 0 10px}
+.about > div > .ab-h:first-child{margin-top:4px}
+.about .big{font-size:clamp(22px,2.4vw,30px)}
 </style>
 </head>
 <body>
@@ -440,7 +462,7 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
       <div>
         <span class="pill"><span class="dot"></span> Open to AI, data and business analyst roles in Vancouver or remote</span>
         <h1>I turn business data into reports, dashboards and AI tools people actually use.</h1>
-        <p class="lead">I'm Nilan, a <b>BCIT Business IT graduate</b> with an AI specialization. Right now I build <b>Excel finance reports</b>, the website and social content for Clawzone Arcade in Burnaby, and run <b>Nylan Digital Solutions</b>, my own AI and automation consultancy.</p>
+        <p class="lead">I'm Nilan, a <b>BCIT Business IT graduate</b> with an AI specialization, based in Burnaby. I work in digital, sales and finance reporting at an arcade, and I run my own AI consultancy, <b>Nylan Digital Solutions</b>.</p>
         <div class="cta-row">
           <a class="btn primary" href="#work">View projects</a>
           <a class="btn" href="Nilan_Beigi_Resume_2026.pdf" target="_blank" rel="noopener">Download résumé</a>
@@ -472,8 +494,7 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
     </figure>
 
     <div class="facts">
-      <div class="fact"><div class="k">Now</div><div class="v">Clawzone Arcade and Nylan Digital</div></div>
-      <div class="fact"><div class="k">Education</div><div class="v">BCIT, AI Specialization, 2026</div></div>
+            <div class="fact"><div class="k">Education</div><div class="v">BCIT, AI Specialization, 2026</div></div>
       <div class="fact"><div class="k">Focus</div><div class="v">AI, data and finance reporting</div></div>
       <div class="fact"><div class="k">Languages</div><div class="v">English, Persian, basic French</div></div>
     </div>
@@ -512,7 +533,7 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
       <article class="svc rv">
         <div class="ic">🤖</div>
         <h3>AI chatbots &amp; tools</h3>
-        <p>AI wired into how you already work — customer chatbots (incl. English/Persian), smart search, and data Q&amp;A.</p>
+        <p>AI wired into how you already work — customer chatbots, smart search, and data Q&amp;A.</p>
         <ul><li>Website &amp; support chatbots</li><li>Plain-language search</li><li>“Ask your data” assistants</li></ul>
         <div class="tools">LLM APIs · Python · Prompt engineering</div>
       </article>
@@ -553,7 +574,7 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
       <div class="step rv"><div class="n">04</div><h4>Launch &amp; support</h4><p>Go live, hand-over walkthrough, and help after launch.</p></div>
     </div>
     <div class="svc-cta rv">
-      <p>Have a project in mind?<span>Free 20-minute intro call — I usually reply within a day.</span></p>
+      <p>Have a project in mind?<span>Free 20-minute intro call.</span></p>
       <a class="btn primary" href="mailto:nilan.beigi.beigi@gmail.com?subject=Project%20inquiry">Start a project →</a>
     </div>
   </div>
@@ -565,13 +586,13 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
     <div class="sec-head rv">
       <div><div class="eyebrow">02 — Selected work</div><h2>Projects &amp; <span class="serif">case studies</span></h2></div>
       <div class="filters" role="group" aria-label="Filter projects">
-        <button class="on" data-f="all">All <span class="n">20</span></button>
+        <button class="on" data-f="all">All <span class="n">19</span></button>
         <button data-f="ai">AI &amp; ML <span class="n">5</span></button>
         <button data-f="data">Data <span class="n">2</span></button>
         <button data-f="fin">Finance <span class="n">3</span></button>
         <button data-f="crm">CRM <span class="n">2</span></button>
         <button data-f="build">Construction <span class="n">1</span></button>
-        <button data-f="web">Web <span class="n">6</span></button>
+        <button data-f="web">Web <span class="n">5</span></button>
         <button data-f="sec">Security <span class="n">1</span></button>
       </div>
     </div>
@@ -883,18 +904,6 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
     <p class="stack">Web Audio · E-commerce</p>
   </div>
 </article>
-<article class="proj" data-cat="web">
-  <div class="p-left">
-    <div class="p-meta"><span class="kind">Chat UI</span><span class="yr">2026</span></div>
-    <h3>AI Chatbot</h3>
-    <p class="hook">A chat interface that loads instantly, with no API keys.</p>
-    <div class="p-links"><a href="https://github.com/nilanbeigibeigi/ai-chatbot" target="_blank" rel="noopener">Code ↗</a></div>
-  </div>
-  <div class="p-right">
-    <p>A conversational UI with rule-based replies, built with Next.js and TypeScript.</p>
-    <p class="stack">Next.js · TypeScript</p>
-  </div>
-</article>
       </div>
     </div>
   </div>
@@ -951,7 +960,7 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
           <h3>Assistant Manager</h3>
           <div class="co">Persia Foods · Persian grocery chain, Metro Vancouver</div>
           <ul>
-            <li>Replaced manual ordering and loyalty tracking by independently building a <b>full-stack digital platform</b> for the chain.</li>
+            <li>Built a <b>digital ordering and loyalty platform</b> to replace manual tracking (see Projects).</li>
             <li>Supported ownership's purchasing and staffing decisions by producing regular <b>sales and inventory reports</b>.</li>
             <li>Kept a high-volume store running smoothly by supervising <b>scheduling, inventory, and customer service</b>.</li>
           </ul>
@@ -1045,8 +1054,6 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
       <div class="cert rv"><div class="ic">✨</div><div><b>Google AI for Business Applications</b><span>Google · 2026</span></div></div>
       <div class="cert rv"><div class="ic">🖥️</div><div><b>ICDL</b><span>International Computer Driving Licence</span></div></div>
       <div class="cert rv"><div class="ic">🎨</div><div><b>UI/UX Basics</b><span>Design course · Iran</span></div></div>
-      <div class="cert rv"><div class="ic">🧩</div><div><b>E-Kids</b><span>Computing program · Iran</span></div></div>
-      <div class="cert rv"><div class="ic">🍳</div><div><b>FoodSafe</b><span>Food handling certification · BC</span></div></div>
     </div>
   </div>
 </section>
@@ -1056,19 +1063,29 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
   <div class="wrap">
     <div class="sec-head rv"><div><div class="eyebrow">06 — About</div><h2>The person <span class="serif">behind the work</span></h2></div></div>
     <div class="about">
-      <div class="rv">
-        <p class="big">I'm not the loudest person in the room — I'm the one who notices what's slow and quietly fixes it.</p>
-        <p>I grew up in Tehran and moved to Vancouver about five years ago, rebuilding everything from zero — language, friends, and the way I work. That habit of rebuilding is how I approach systems: <b>look at how the work actually happens, then redesign the workflow underneath it.</b></p>
-        <p>I focus on <b>data and AI</b> — dashboards that change a decision and tools that save real hours — and I can build the full app around them when it's needed. Discipline from sport and 13 years of music, creativity from art: that mix shapes how I work.</p>
-        <p><b>What's next:</b> a role where I can put my BCIT training to work, while growing toward cybersecurity and building my own AI products.</p>
+      <div>
+        <p class="big">I notice what's slow and fix it, quietly.</p>
+        <p>I grew up in Tehran and moved to Vancouver about five years ago, rebuilding everything from zero: language, friends and the way I work. I approach systems the same way: <b>look at how the work actually happens, then redesign it.</b></p>
+        <p>I focus on <b>data and AI</b>: dashboards that change a decision and tools that save real hours. Sport taught me discipline, music taught me patience, and art keeps me creative.</p>
+        <h3 class="ab-h">What I want to study next</h3>
+        <div class="beyond">
+          <div class="bx"><b>🛡️ Cybersecurity</b><span>Keeping the systems I build safe</span></div>
+          <div class="bx"><b>🧠 Cognitive systems</b><span>Where neuroscience meets AI</span></div>
+        </div>
       </div>
-      <div class="beyond rv">
-        <div class="bx"><b>🎹 Piano &amp; guitar</b><span>~13 years, incl. public concerts</span></div>
-        <div class="bx"><b>🏃 Running &amp; archery</b><span>Focus under pressure</span></div>
-        <div class="bx"><b>🎨 Painting</b><span>Group exhibitions in Tehran</span></div>
-        <div class="bx"><b>▶️ AI content</b><span>Making AI easy to understand</span></div>
-        <div class="bx"><b>🎬 Short films</b><span>Writing, shooting &amp; editing</span></div>
-        <div class="bx"><b>🎮 Python games</b><span>Where I started coding</span></div>
+      <div>
+        <h3 class="ab-h">Digital marketing</h3>
+        <div class="beyond">
+          <div class="bx"><b>▶️ YouTube automation</b><span>An n8n system that turns a prompt into a finished video and posts it to social media</span></div>
+          <div class="bx"><b>🎬 Short films</b><span>Writing, shooting and editing</span></div>
+        </div>
+        <h3 class="ab-h">Music, art and sport</h3>
+        <div class="beyond">
+          <div class="bx"><b>🎹 Piano and guitar</b><span>About 13 years, including public concerts</span></div>
+          <div class="bx"><b>🎨 Painting</b><span>Group exhibitions in Tehran</span></div>
+          <div class="bx"><b>🏃 Running and archery</b><span>Focus under pressure</span></div>
+          <div class="bx"><b>🎮 Python games</b><span>Where I started coding</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1080,9 +1097,9 @@ header.nav,header.nav.scrolled{background:var(--bg);border-color:var(--line)}
     <div class="contact-card rv">
       <div class="eyebrow">07 — Contact</div>
       <h2>Have a project or a role <span class="serif grad">in mind?</span></h2>
-      <p class="sec-sub">Open to entry and junior roles in Vancouver or remote, plus freelance projects for small businesses. Email is the fastest way to reach me — I usually reply within a day.</p>
+      <p class="sec-sub">Open to junior AI, data and business analyst roles in Vancouver or remote, and freelance projects. Email is the fastest way to reach me; I usually reply within a day.</p>
       <div class="roles">
-        <span class="chip">AI Analyst</span><span class="chip">Data Analyst</span><span class="chip">Business Analyst</span><span class="chip">BI / Reporting Analyst</span><span class="chip">Junior Developer</span><span class="chip">IT / Customer Support</span><span class="chip">Freelance web &amp; AI</span>
+        <span class="chip">AI Analyst</span><span class="chip">Data Analyst</span><span class="chip">Business Analyst</span><span class="chip">BI / Reporting Analyst</span><span class="chip">Freelance AI &amp; web</span>
       </div>
       <div class="cta-row">
         <a class="btn primary" href="mailto:nilan.beigi.beigi@gmail.com">nilan.beigi.beigi@gmail.com</a>
